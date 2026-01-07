@@ -1,0 +1,66 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.venv/
+/ferrari-f1-predictor/venv/
+
+# dotenv files (local secrets)
+.env
+.env.*
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Streamlit
+.streamlit/
+
+# Data
+data/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Test / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Cache & tooling
+.mypy_cache/
+.cache/
+.ruff_cache/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Model & large artifacts
+models/
+*.h5
+*.pt
+*.ckpt
+*.pkl
+*.joblib
+
+# Misc
+*.swp
+
+# Keep example and config templates tracked
+!.env.example
