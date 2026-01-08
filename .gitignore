@@ -1,66 +1,458 @@
+# ============================================
+# Ferrari F1 Predictor - .gitignore
+# ============================================
+
+# ============================================
+# Python
+# ============================================
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
+*.so
 
-# Virtual environments
-venv/
-env/
-.venv/
-/ferrari-f1-predictor/venv/
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
-# dotenv files (local secrets)
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
 .env
-.env.*
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+
+# ============================================
+# Machine Learning Specific
+# ============================================
+# Large model files (optional - decide if you want to track these)
+models/saved/*.pkl
+models/saved/*.h5
+models/saved/*.pt
+models/saved/*.pth
+models/saved/*.joblib
+
+# Model checkpoints
+checkpoints/
+*.ckpt
+
+# TensorFlow
+*.tfrecord
+*.tfevents.*
+
+# PyTorch
+*.pth.tar
+
+# Weights & Biases
+wandb/
+
+
+# ============================================
+# Data Files
+# ============================================
+# Raw data (can be regenerated)
+data/raw/*.csv
+data/raw/*.json
+data/raw/*.xlsx
+data/raw/*.xls
+data/raw/*.parquet
+
+# Processed data (can be regenerated)
+data/processed/*.csv
+data/processed/*.json
+data/processed/*.pkl
+
+# External data
+data/external/*
+
+# Large datasets
+*.h5
+*.hdf5
+
+# Cache directories
+cache/
+.cache/
+*.cache
+
+# FastF1 cache
+cache/fastf1/
+
+
+# ============================================
+# Logs
+# ============================================
+logs/
+*.log
+*.log.*
+log/
+
+# Application logs
+app.log
+error.log
+access.log
+debug.log
+
+
+# ============================================
+# Node.js / React Frontend
+# ============================================
+# Dependencies
+frontend/node_modules/
+node_modules/
+jspm_packages/
+
+# Testing
+frontend/coverage/
+
+# Production
+frontend/build/
+frontend/dist/
+
+# Misc
+.DS_Store
+frontend/.DS_Store
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Yarn
+.yarn-integrity
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+
+# ============================================
+# IDEs and Editors
+# ============================================
+# Visual Studio Code
+.vscode/
+*.code-workspace
+.history/
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+.vim/
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Eclipse
+.project
+.classpath
+.settings/
 
 # Jupyter
 .ipynb_checkpoints/
 
-# Streamlit
-.streamlit/
 
-# Data
-data/
-
-# IDEs and editors
-.vscode/
-.idea/
-*.sublime-workspace
-
-# Test / coverage
-.pytest_cache/
-.coverage
-htmlcov/
-
-# Cache & tooling
-.mypy_cache/
-.cache/
-.ruff_cache/
-
-# Distribution / packaging
-build/
-dist/
-*.egg-info/
-pip-wheel-metadata/
-
-# Logs
-*.log
-logs/
-
-# OS files
+# ============================================
+# Operating System Files
+# ============================================
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
 Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
 
-# Model & large artifacts
-models/
-*.h5
-*.pt
-*.ckpt
-*.pkl
-*.joblib
+# Linux
+*~
+.directory
+.Trash-*
 
-# Misc
-*.swp
 
-# Keep example and config templates tracked
+# ============================================
+# Docker
+# ============================================
+# Docker volumes
+docker-compose.override.yml
+
+
+# ============================================
+# Secrets & Configuration
+# ============================================
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+*.env
+
+# API keys and secrets
+secrets.yaml
+secrets.json
+credentials.json
+*.key
+*.pem
+*.cert
+
+# AWS credentials
+.aws/
+
+
+# ============================================
+# Backups
+# ============================================
+*.bak
+*.backup
+*.old
+*.orig
+*.save
+*.tmp
+
+
+# ============================================
+# Database
+# ============================================
+*.db
+*.sqlite
+*.sqlite3
+*.sql
+
+
+# ============================================
+# Temporary Files
+# ============================================
+temp/
+tmp/
+*.temp
+*.tmp
+
+
+# ============================================
+# Archives
+# ============================================
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+
+# ============================================
+# Documentation Build
+# ============================================
+docs/_build/
+docs/build/
+site/
+
+
+# ============================================
+# CI/CD
+# ============================================
+.github/workflows/*.log
+
+
+# ============================================
+# Project Specific
+# ============================================
+# Notebooks output
+notebooks/output/
+notebooks/*.html
+
+# Experiments
+experiments/
+sandbox/
+
+# Large visualizations
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+# Exception: Keep specific images
+!docs/images/*.png
+!frontend/public/*.png
+!frontend/src/assets/*.png
+
+# Performance profiling
+*.prof
+*.lprof
+
+# Testing outputs
+test_output/
+test_results/
+
+# Monitoring
+monitoring/data/
+
+# Reports
+reports/*.pdf
+reports/*.docx
+
+# Scripts output
+scripts/output/
+
+
+# ============================================
+# Keep These Files (Exceptions)
+# ============================================
+# Important: Use ! to negate (keep these files)
+!.gitignore
+!README.md
+!requirements.txt
+!docker-compose.yml
+!Dockerfile
 !.env.example
+
+# Keep empty directories with .gitkeep
+!**/.gitkeep
+
+# Keep sample data (small files only)
+!data/samples/*.csv
+
+# Keep model architecture configs
+!models/configs/*.yaml
+!models/configs/*.json
