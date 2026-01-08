@@ -6,6 +6,7 @@ import pytest
 import pandas as pd
 import numpy as np
 from src.models.train import FerrariMLTrainer
+from unittest.mock import patch, MagicMock
 from src.models.predict import Ferrari2026Predictor
 
 @pytest.fixture
@@ -42,8 +43,13 @@ def test_model_training(sample_data):
     assert 'xgboost' in results
     assert results['xgboost']['test_r2'] > 0
 
-def test_prediction_output(sample_data):
+@patch('src.models.predict.joblib.load')
+def test_prediction_output(mock_load, sample_data):
     """Test prediction output format"""
+    # Mock loaded objects
+    mock_model = MagicMock()
+    mock_load.return_value = mock_model
+    
     predictor = Ferrari2026Predictor()
     # Mock the model loading for testing
     # In real tests, you'd load actual trained models

@@ -66,9 +66,15 @@ class FerrariChatbot:
         
         season_data = self.data[self.data['year'] == year].iloc[0]
         
+        pos_val = season_data.get('position', 'N/A')
+        try:
+            pos_str = f"P{int(pos_val)}"
+        except (ValueError, TypeError):
+            pos_str = "N/A"
+        
         response = f"""
 📊 Ferrari in {year}:
-- Championship Position: P{int(season_data.get('position', 'N/A'))}
+- Championship Position: {pos_str}
 - Total Points: {int(season_data.get('total_points', 0))}
 - Wins: {int(season_data.get('wins', 0))}
 - Podiums: {int(season_data.get('podiums', 0))}
@@ -89,25 +95,40 @@ class FerrariChatbot:
         
         pred = self.predictions
         
+        # Get driver standing inputs if available
+        drivers = pred.get('driver_standings', {})
+        leclerc = drivers.get('leclerc', {'points': 0, 'rank_est': 'N/A'})
+        hamilton = drivers.get('hamilton', {'points': 0, 'rank_est': 'N/A'})
+        
+        # Get constructors
+        constructors = pred.get('constructors_standings', [])
+        ferrari_const = next((c for c in constructors if c['team'] == 'Ferrari'), {'position': 'N/A'})
+        
         response = f"""
-🔮 Ferrari 2026 Predictions:
+🔮 Ferrari 2026 Detailed Forecast:
 
-📈 EXPECTED SCENARIO:
-- Championship Points: {pred['predicted_points']:.0f}
-- 95% Confidence: [{pred['confidence_interval'][0]:.0f}, {pred['confidence_interval'][1]:.0f}]
-- Championship Position: P{pred['predicted_position']}
-- Expected Wins: {pred['predicted_wins']}
-- Expected Podiums: {pred['predicted_podiums']}
+🏆 CHAMPIONSHIP OUTLOOK:
+- Constructors: P{ferrari_const.get('position')} ({int(pred['predicted_points'])} pts)
+- Drivers: Leclerc ({leclerc['rank_est']}), Hamilton ({hamilton['rank_est']})
 
-💡 KEY FACTORS:
-- Lewis Hamilton + Charles Leclerc = Strongest driver lineup
-- Need to improve race strategy (was 72/100 in 2025)
-- Reliability is good (86/100 expected)
-- Must recover from the disastrous 2025 season
+🏎️ DRIVER BATTLE:
+- Leclerc: {leclerc['points']} pts, {leclerc['wins']} wins
+- Hamilton: {hamilton['points']} pts, {hamilton['wins']} wins
 
-🎯 Prediction Confidence: 95%
+📅 RACE HIGHLIGHTS:
+- Expected Wins: {pred['predicted_wins']} (Targeting Monaco, Monza, Singapore)
+- Total Podiums: {pred['predicted_podiums']}
+
+💡 STRATEGY INSIGHT:
+- The model predicts a P{pred['predicted_position']} finish in the Constructors.
+- To win, Ferrari must improve reliability by 15% and nail strategy calls.
         """.strip()
         
+        if 'race_predictions' in pred:
+            response += "\n\n🏁 NEXT 5 RACES (Simulated):\n"
+            for race in pred['race_predictions'][:5]:
+                response += f"- {race['circuit']}: {race['predicted_points']} pts ({race['win_probability']} win prob)\n"
+                
         return response
     
     def answer_driver_query(self, driver: str) -> str:
@@ -181,7 +202,11 @@ class FerrariChatbot:
             comparison = []
             for year in years:
                 data = self.data[self.data['year'] == year].iloc[0]
-                comparison.append(f"{year}: {int(data['total_points'])} pts, {int(data['wins'])} wins, P{int(data['position'])}")
+                try:
+                    pos = int(data.get('position', 0))
+                except:
+                    pos = "N/A"
+                comparison.append(f"{year}: {int(data['total_points'])} pts, {int(data['wins'])} wins, P{pos}")
             
             return "📊 Season Comparison:\n" + "\n".join(comparison)
         
@@ -189,15 +214,25 @@ class FerrariChatbot:
         data_2024 = self.data[self.data['year'] == 2024].iloc[0]
         data_2025 = self.data[self.data['year'] == 2025].iloc[0]
         
+        try:
+             pos_2024 = str(int(data_2024.get('position', 0)))
+        except:
+             pos_2024 = "N/A"
+
+        try:
+             pos_2025 = str(int(data_2025.get('position', 0)))
+        except:
+             pos_2025 = "N/A"
+
         return f"""
 📉 Ferrari: 2024 vs 2025
 
 2024 (Strong Year):
-- Points: {int(data_2024['total_points'])} | Position: P{int(data_2024['position'])}
+- Points: {int(data_2024['total_points'])} | Position: P{pos_2024}
 - Wins: {int(data_2024['wins'])} | Podiums: {int(data_2024['podiums'])}
 
 2025 (Disaster Year):
-- Points: {int(data_2025['total_points'])} | Position: P{int(data_2025['position'])}
+- Points: {int(data_2025['total_points'])} | Position: P{pos_2025}
 - Wins: {int(data_2025['wins'])} | Podiums: {int(data_2025['podiums'])}
 
 DECLINE:

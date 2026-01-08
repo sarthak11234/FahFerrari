@@ -4,6 +4,7 @@ Ferrari F1 ML Model Training Pipeline
 
 import pandas as pd
 import numpy as np
+import os
 from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
@@ -11,9 +12,11 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 import xgboost as xgb
 import lightgbm as lgb
 import joblib
-from typing import Dict, Tuple
+from typing import Dict, Tuple, List
 import warnings
 warnings.filterwarnings('ignore')
+
+from src.models.predict import FerrariEnsemble
 
 class FerrariMLTrainer:
     """Train and evaluate ML models for Ferrari F1 predictions"""
@@ -155,20 +158,13 @@ class FerrariMLTrainer:
                 'gradient_boosting': 0.15
             }
         
-        def ensemble_predict(X):
-            predictions = []
-            for name, weight in weights.items():
-                model = results[name]['model']
-                pred = model.predict(X) * weight
-                predictions.append(pred)
-            return np.sum(predictions, axis=0)
-        
-        return ensemble_predict
+        return FerrariEnsemble(results, weights)
     
     def save_models(self, results: Dict, ensemble_fn: callable):
         """Save trained models to disk"""
         
         # Save individual models
+        os.makedirs('models/saved', exist_ok=True)
         for name, result in results.items():
             joblib.dump(result['model'], f'models/saved/{name}_model.pkl')
         

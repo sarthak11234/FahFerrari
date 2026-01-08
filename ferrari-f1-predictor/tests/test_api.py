@@ -6,10 +6,33 @@ import pytest
 from api.app import app
 import json
 
+import pandas as pd
+from unittest.mock import MagicMock
+import api.app
+
 @pytest.fixture
 def client():
     """Create test client"""
     app.config['TESTING'] = True
+    
+    # Mock data to handle missing models/data on startup
+    api.app.historical_data = pd.DataFrame([{
+        'year': 2025,
+        'total_points': 398,
+        'wins': 0,
+        'podiums': 10
+    }])
+    
+    api.app.predictions_2026 = {
+        'predicted_points': 520,
+        'confidence_interval': (480, 560),
+        'predicted_position': 3
+    }
+    
+    mock_bot = MagicMock()
+    mock_bot.generate_response.return_value = "Ferrari performed well in 2025 considering the challenges."
+    api.app.chatbot = mock_bot
+
     with app.test_client() as client:
         yield client
 

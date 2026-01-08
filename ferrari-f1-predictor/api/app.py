@@ -3,9 +3,11 @@ Ferrari F1 Predictor - Flask REST API
 """
 
 from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 import pandas as pd
 import numpy as np
+import json
 import joblib
 from src.chatbot.query_engine import FerrariChatbot
 from src.models.predict import Ferrari2026Predictor
@@ -13,6 +15,22 @@ import logging
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for frontend
+
+from flask.json.provider import DefaultJSONProvider
+
+class CustomJSONProvider(DefaultJSONProvider):
+    def default(self, obj):
+        if isinstance(obj, (np.integer, np.int64)):
+            return int(obj)
+        if isinstance(obj, (np.floating, np.float64)):
+            return float(obj)
+        if isinstance(obj, np.ndarray):
+            return obj.tolist()
+        return super().default(obj)
+
+app.json = CustomJSONProvider(app)
+
+# Configure logging
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

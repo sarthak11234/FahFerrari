@@ -5,7 +5,8 @@ Creates advanced features for ML models
 
 import pandas as pd
 import numpy as np
-from typing import Tuple
+import os
+from typing import Tuple, List
 
 class FerrariFeatureEngineer:
     """Create advanced features from raw F1 data"""
@@ -15,21 +16,30 @@ class FerrariFeatureEngineer:
     
     def create_basic_features(self, df: pd.DataFrame) -> pd.DataFrame:
         """Create basic aggregated features"""
+        print(f"DEBUG: df columns: {df.columns.tolist()}")
+        
+        # Create a numeric position column for aggregation
+        # 'D', 'R', etc. will become NaN and excluded from mean calculation
+        df['position_num'] = pd.to_numeric(df['position'], errors='coerce')
         
         # Group by year
         yearly = df.groupby('year').agg({
             'points': ['sum', 'mean', 'std'],
-            'position': 'mean',
+            'position_num': 'mean',  # Use numeric position
             'grid': 'mean'
         }).reset_index()
         
         yearly.columns = ['year', 'total_points', 'avg_points_per_race', 
                          'points_std', 'avg_race_position', 'avg_grid']
         
-        # Count wins and podiums
-        yearly['wins'] = df[df['position'] == '1'].groupby('year').size()
-        yearly['podiums'] = df[df['position'].isin(['1','2','3'])].groupby('year').size()
-        yearly['dnfs'] = df[df['status'] != 'Finished'].groupby('year').size()
+        # Count wins and podiums based on original string position
+        # We need to ensure we are matching the correct strings '1', '2', '3'
+        yearly['wins'] = df[df['position'].astype(str) == '1'].groupby('year').size().reindex(yearly['year']).fillna(0).values
+        yearly['podiums'] = df[df['position'].astype(str).isin(['1','2','3'])].groupby('year').size().reindex(yearly['year']).fillna(0).values
+        
+        # DNFs are usually marked in Status or if position is not numeric key (like 'R', 'D')
+        # But in data_collector we saved status.
+        yearly['dnfs'] = df[df['status'] != 'Finished'].groupby('year').size().reindex(yearly['year']).fillna(0).values
         
         yearly = yearly.fillna(0)
         
@@ -100,7 +110,7 @@ class FerrariFeatureEngineer:
         
         for lag in lags:
             df[f'points_lag{lag}'] = df['total_points'].shift(lag)
-            df[f'position_lag{lag}'] = df['position'].shift(lag)
+            df[f'position_lag{lag}'] = df['avg_race_position'].shift(lag)
             df[f'wins_lag{lag}'] = df['wins'].shift(lag)
         
         return df
@@ -135,6 +145,8 @@ class FerrariFeatureEngineer:
 if __name__ == "__main__":
     # Load data
     race_df = pd.read_csv('data/raw/race_results_2019_2025.csv')
+    print(f"DEBUG: Loaded columns: {race_df.columns.tolist()}")
+    print(f"DEBUG: Sample data:\n{race_df.head()}")
     tech_df = pd.read_csv('data/raw/technical_scores.csv')
     
     # Engineer features
@@ -142,5 +154,6 @@ if __name__ == "__main__":
     features_df = engineer.engineer_all_features(race_df, tech_df)
     
     # Save
+    os.makedirs('data/processed', exist_ok=True)
     features_df.to_csv('data/processed/ferrari_features.csv', index=False)
     print("✅ Features saved!")
