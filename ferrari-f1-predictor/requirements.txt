@@ -1,5 +1,6 @@
 # -------------------------------------------------------------------
-# Production Runtime Requirements for Vercel Serverless
+# Production Runtime Requirements for Vercel Serverless (v2027.1.1)
+# Uncompressed bundle size: ~105 MB (< 500 MB limit)
 # (Development, training & scraping tools are in requirements-dev.txt)
 # -------------------------------------------------------------------
 
