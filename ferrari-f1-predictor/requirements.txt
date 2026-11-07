@@ -1,5 +1,5 @@
 # -------------------------------------------------------------------
-# Production Runtime Requirements for Vercel Serverless & Cloud Run
+# Production Runtime Requirements for Vercel Serverless
 # (Development, training & scraping tools are in requirements-dev.txt)
 # -------------------------------------------------------------------
 
@@ -7,10 +7,9 @@
 flask>=3.0.0
 flask-cors>=4.0.0
 
-# Scientific & Data Processing
+# Scientific & Data Processing (Ultra-lean serverless footprint)
 numpy>=1.26.0,<2.0.0
 pandas>=2.2.0
-scipy>=1.12.0
 requests>=2.31.0
 python-dotenv>=1.0.0
 pyyaml>=6.0.1

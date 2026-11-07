@@ -1,4 +1,5 @@
 ferrari-f1-predictor/frontend/node_modules/
+node_modules/
 tests/
 cache/
 .pytest_cache/
@@ -7,4 +8,6 @@ __pycache__/
 *.pkl
 *.xml
 *.log
-
+*.zip
+*.vsix
+stitch_export/

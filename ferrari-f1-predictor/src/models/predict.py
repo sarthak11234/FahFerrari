@@ -6,7 +6,11 @@ import pandas as pd
 import numpy as np
 import joblib
 from typing import Dict, List
-from scipy import stats
+
+try:
+    from scipy import stats
+except ImportError:
+    stats = None
 
 class FerrariEnsemble:
     """Ensemble model wrapper for pickling"""
@@ -85,9 +89,12 @@ class Ferrari2026Predictor:
         
         # Calculate confidence interval
         pred_std = np.std(individual_preds)
-        confidence_interval = stats.norm.interval(
-            0.95, loc=points_pred, scale=pred_std
-        )
+        if stats is not None:
+            confidence_interval = stats.norm.interval(
+                0.95, loc=points_pred, scale=pred_std
+            )
+        else:
+            confidence_interval = (points_pred - 1.96 * pred_std, points_pred + 1.96 * pred_std)
         
         # Estimate other metrics based on historical correlations
         predicted_wins = max(0, int((points_pred / 850) * 7))
