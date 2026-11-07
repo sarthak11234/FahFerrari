@@ -136,6 +136,7 @@ export default function ChampionshipPage() {
       name: 'Charles Leclerc',
       team: 'Scuderia Ferrari',
       isFerrari: true,
+      image: '/leclerc.jpg',
       points: leclerc.mean_points,
       median: leclerc.median_points,
       ci90: leclerc.ci_90,
@@ -150,6 +151,7 @@ export default function ChampionshipPage() {
       name: 'Lewis Hamilton',
       team: 'Scuderia Ferrari',
       isFerrari: true,
+      image: '/hamilton.jpg',
       points: hamilton.mean_points,
       median: hamilton.median_points,
       ci90: hamilton.ci_90,
@@ -451,6 +453,11 @@ export default function ChampionshipPage() {
                 <div>
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-2.5">
+                      {d.image && (
+                        <div className="w-10 h-10 border border-border-subtle overflow-hidden bg-black shrink-0">
+                          <img src={d.image} alt={d.name} className="w-full h-full object-cover object-top" />
+                        </div>
+                      )}
                       <span className="font-headline-lg text-3xl font-bold leading-none" style={{ color: d.color }}>
                         {d.num}
                       </span>
