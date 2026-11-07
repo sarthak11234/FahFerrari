@@ -1,9 +1,11 @@
 import requests
 import json
+import os
 
 def verify_chat():
     print("Testing Chatbot API...")
-    url = 'http://localhost:5000/api/chat'
+    app_url = os.environ.get('APP_URL', 'http://localhost:5000').rstrip('/')
+    url = f"{app_url}/api/chat" if not app_url.endswith('/api') else f"{app_url}/chat"
     payload = {"query": "tell me about 2026 season predictions"}
     
     try:

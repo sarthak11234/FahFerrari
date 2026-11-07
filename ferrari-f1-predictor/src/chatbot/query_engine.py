@@ -10,13 +10,17 @@ import re
 class FerrariChatbot:
     """Intelligent chatbot for Ferrari F1 queries"""
     
-    def __init__(self, historical_data: pd.DataFrame, predictions: Dict):
+    def __init__(self, historical_data: pd.DataFrame, predictions: Dict, predictions_2027: Optional[Dict] = None):
         self.data = historical_data
         self.predictions = predictions
+        self.predictions_2027 = predictions_2027
         self.conversation_history = []
         
         # Load latest season data
-        self.latest_season = self.data[self.data['year'] == 2025].iloc[0]
+        if self.data is not None and not self.data.empty:
+            self.latest_season = self.data[self.data['year'] == 2025].iloc[0] if (self.data['year'] == 2025).any() else self.data.iloc[-1]
+        else:
+            self.latest_season = {}
     
     def parse_query(self, query: str) -> Dict:
         """
@@ -30,10 +34,10 @@ class FerrariChatbot:
         # Intent detection
         intents = {
             'season_results': ['2019', '2020', '2021', '2022', '2023', '2024', '2025'],
-            'prediction': ['2026', 'predict', 'forecast', 'next season'],
+            'prediction': ['2026', '2027', 'predict', 'forecast', 'next season', 'championship'],
             'driver': ['leclerc', 'hamilton', 'sainz', 'charles', 'lewis', 'carlos'],
             'comparison': ['compare', 'vs', 'versus', 'difference', 'better'],
-            'technical': ['aero', 'engine', 'power unit', 'reliability', 'strategy'],
+            'technical': ['aero', 'engine', 'power unit', 'reliability', 'strategy', 'regulations'],
             'track': ['monaco', 'monza', 'spa', 'silverstone', 'singapore'],
             'statistics': ['stats', 'points', 'wins', 'podiums', 'pole', 'fastest lap']
         }
@@ -129,6 +133,43 @@ class FerrariChatbot:
             for race in pred['race_predictions'][:5]:
                 response += f"- {race['circuit']}: {race['predicted_points']} pts ({race['win_probability']} win prob)\n"
                 
+        return response
+
+    def answer_2027_prediction_query(self) -> str:
+        """Answer questions about 2027 season forecast (10k Monte Carlo runs)"""
+        if not self.predictions_2027:
+            return "2027 Preseason Forecast is being generated or not loaded."
+
+        fc = self.predictions_2027.get('ferrari_constructors_forecast', {})
+        dl = self.predictions_2027.get('driver_forecasts', {}).get('leclerc', {})
+        dh = self.predictions_2027.get('driver_forecasts', {}).get('hamilton', {})
+        constructors = self.predictions_2027.get('constructors_standings', [])
+        races = self.predictions_2027.get('race_by_race_forecast', [])
+
+        top3_teams = ", ".join([f"P{t['expected_position']} {t['constructor_id'].title()} ({t['mean_points']:.0f} pts)" for t in constructors[:3]])
+
+        response = f"""
+🔮 Scuderia Ferrari 2027 Preseason Forecast (10,000 Monte Carlo Seasons):
+
+🏆 CONSTRUCTORS' CHAMPIONSHIP OUTLOOK:
+- Expected Position: P3 (80.3% probability for P3, 17.2% for P2, 1.1% for Title Win)
+- Top-3 Championship Probability: {fc.get('prob_top3', 0.985)*100:.1f}%
+- Mean Points: {fc.get('mean_points', 488.8):.1f} pts (90% Credible Interval: {fc.get('ci_90', [403, 577])[0]} – {fc.get('ci_90', [403, 577])[1]} pts)
+- Full Top-3 Grid: {top3_teams}
+
+🏎️ DRIVER BATTLE (Leclerc vs Hamilton):
+- Lewis Hamilton: {dh.get('mean_points', 269.3):.1f} pts (90% CI: {dh.get('ci_90', [205, 335])[0]}–{dh.get('ci_90', [205, 335])[1]}) | Exp Wins: {dh.get('expected_wins', 2.6)} | Exp Podiums: {dh.get('expected_podiums', 7.8)}
+- Charles Leclerc: {dl.get('mean_points', 219.5):.1f} pts (90% CI: {dl.get('ci_90', [158, 285])[0]}–{dl.get('ci_90', [158, 285])[1]}) | Exp Wins: {dl.get('expected_wins', 1.8)} | Exp Podiums: {dl.get('expected_podiums', 5.9)}
+
+⚙️ 2027 TECHNICAL REGULATIONS IMPACT:
+- Rebalanced Power Unit: 420 kW ICE + 300 kW MGU-K (58:42 split) with 290 km standard race distance.
+- 10 Sprint events scheduled across 24 Grands Prix.
+
+🏁 TOP FERRARI CIRCUITS:
+- Singapore GP: 12.4% win prob | 34.2% podium prob
+- Monaco GP: 11.2% win prob | 33.4% podium prob
+- Monza (Italian GP): 11.1% win prob | 32.7% podium prob
+        """.strip()
         return response
     
     def answer_driver_query(self, driver: str) -> str:

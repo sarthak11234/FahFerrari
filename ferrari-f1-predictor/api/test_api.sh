@@ -1,30 +1,32 @@
 #!/bin/bash
 
 # Test Ferrari F1 API endpoints
+API_HOST="${APP_URL:-http://localhost:5000}"
+API_HOST="${API_HOST%/}"
 
-echo "🧪 Testing Ferrari F1 API"
+echo "🧪 Testing Ferrari F1 API on ${API_HOST}"
 echo "=========================="
 
 # Health check
-echo "\n1. Health Check:"
-curl http://localhost:5000/api/health
+echo -e "\n1. Health Check:"
+curl "${API_HOST}/api/health"
 
 # Historical data
-echo "\n\n2. Historical Data (2025):"
-curl http://localhost:5000/api/historical/2025
+echo -e "\n\n2. Historical Data (2025):"
+curl "${API_HOST}/api/historical/2025"
 
 # Predictions
-echo "\n\n3. 2026 Predictions:"
-curl http://localhost:5000/api/predictions/2026
+echo -e "\n\n3. 2026 Predictions:"
+curl "${API_HOST}/api/predictions/2026"
 
 # Chat
-echo "\n\n4. Chatbot Test:"
-curl -X POST http://localhost:5000/api/chat \
+echo -e "\n\n4. Chatbot Test:"
+curl -X POST "${API_HOST}/api/chat" \
   -H "Content-Type: application/json" \
   -d '{"query": "How did Ferrari perform in 2025?"}'
 
 # Summary stats
-echo "\n\n5. Summary Statistics:"
-curl http://localhost:5000/api/stats/summary
+echo -e "\n\n5. Summary Statistics:"
+curl "${API_HOST}/api/stats/summary"
 
-echo "\n\n✅ API tests complete!"
+echo -e "\n\n✅ API tests complete!"

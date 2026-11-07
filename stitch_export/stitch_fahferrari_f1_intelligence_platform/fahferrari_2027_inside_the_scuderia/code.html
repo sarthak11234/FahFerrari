@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>FahFerrari 2027 F1 Performance Intelligence</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-dim":"#111317","border-subtle":"#292D33","surface-container-high":"#282a2e","error":"#ffb4ab","tertiary-fixed":"#d6e3ff","on-primary":"#680200","inverse-primary":"#c00500","canvas-base":"#08090B","outline-variant":"#5e3f3a","on-tertiary-fixed":"#001b3c","primary-fixed":"#ffdad4","secondary-fixed":"#89f9b9","surface-container":"#1e2024","surface-panel":"#111317","primary":"#ffb4a8","on-primary-fixed-variant":"#930300","on-background":"#e2e2e8","ferrari-red-hover":"#FF3028","secondary-container":"#2ea46c","surface-bright":"#37393e","error-container":"#93000a","outline":"#af8781","telemetry-delta-pos":"#55C58A","surface-variant":"#333539","tertiary-container":"#3070c3","surface-raised":"#191C21","on-primary-fixed":"#410100","on-primary-container":"#fff2f0","on-secondary-fixed":"#002111","text-primary":"#F4F4F2","border-focus":"#3E434D","on-secondary-container":"#00311b","surface-tint":"#ffb4a8","on-error":"#690005","text-subtle":"#6F7680","text-muted":"#A0A5AD","on-tertiary-fixed-variant":"#00468a","primary-fixed-dim":"#ffb4a8","tertiary":"#a8c8ff","primary-container":"#e10600","on-tertiary-container":"#f2f5ff","telemetry-amber":"#E7B45A","on-surface-variant":"#e9bcb5","inverse-on-surface":"#2f3035","surface-container-lowest":"#0c0e12","on-tertiary":"#003062","on-secondary":"#003920","on-surface":"#e2e2e8","secondary-fixed-dim":"#6cdc9f","tertiary-fixed-dim":"#a8c8ff","on-secondary-fixed-variant":"#005231","surface":"#111317","surface-container-low":"#1a1c20","secondary":"#6cdc9f","telemetry-delta-neg":"#E10600","inverse-surface":"#e2e2e8","background":"#111317","on-error-container":"#ffdad6","surface-container-highest":"#333539"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-lg":"1.5rem","gutter":"1.75rem","gutter-tablet":"1.75rem","space-md":"0.875rem","margin-tablet":"2rem","gutter-desktop":"3rem","gutter-mobile":"1.125rem","margin-desktop":"3rem","space-xl":"2.25rem","margin":"1.5rem","margin-mobile":"1rem","space-xs":"0.25rem","space-sm":"0.5rem"},fontFamily:{"body-md":["Inter"],"headline-sm":["Barlow Condensed"],"headline-lg-mobile":["Barlow Condensed"],"data-mono-md":["Inter"],"body-sm":["Inter"],"display-xl-mobile":["Barlow Condensed"],"label-caps":["Inter"],"display-xl":["Barlow Condensed"],"headline-lg":["Barlow Condensed"],"body-lg":["Inter"],"headline-md":["Barlow Condensed"],"data-mono-lg":["Inter"]},fontSize:{"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"headline-sm":["18px",{"lineHeight":"22px","letterSpacing":"0.05em","fontWeight":"600"}],"headline-lg-mobile":["28px",{"lineHeight":"32px","letterSpacing":"0.03em","fontWeight":"600"}],"data-mono-md":["14px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"600"}],"body-sm":["12px",{"lineHeight":"18px","fontWeight":"400"}],"display-xl-mobile":["38px",{"lineHeight":"42px","letterSpacing":"0.02em","fontWeight":"700"}],"label-caps":["11px",{"lineHeight":"14px","letterSpacing":"0.08em","fontWeight":"600"}],"display-xl":["56px",{"lineHeight":"60px","letterSpacing":"0.02em","fontWeight":"700"}],"headline-lg":["36px",{"lineHeight":"40px","letterSpacing":"0.03em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"headline-md":["24px",{"lineHeight":"28px","letterSpacing":"0.04em","fontWeight":"600"}],"data-mono-lg":["24px",{"lineHeight":"28px","letterSpacing":"-0.02em","fontWeight":"700"}]}}}};</script></head><body class="bg-canvas-base font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-text-primary"><header class="fixed top-0 left-0 w-full z-50 bg-canvas-base/95 backdrop-blur-md border-b border-border-subtle"><div class="h-16 w-full max-w-[1440px] mx-auto px-margin md:px-margin-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg shrink-0"><a class="flex flex-col group" data-path="overview" href="#"><div class="flex items-center gap-space-xs"><span class="w-2 h-4 bg-primary-container inline-block"></span><span class="font-headline-sm text-headline-sm uppercase text-text-primary tracking-wider group-hover:text-ferrari-red-hover transition-colors">FAHFERRARI</span></div><span class="font-label-caps text-label-caps uppercase text-text-muted tracking-widest pl-[12px]">F1 PERFORMANCE INTELLIGENCE</span></a></div><nav class="hidden xl:flex items-center gap-space-md self-stretch pt-[2px]" data-active-classes="text-text-primary border-b-2 border-primary-container pb-[22px] shadow-[0_4px_12px_rgba(225,6,0,0.35)]"><a class="font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary tracking-wider transition-colors pt-[22px] pb-[22px]" data-path="overview" href="#">Overview</a><a class="font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary tracking-wider transition-colors pt-[22px] pb-[22px]" data-path="championship" href="#">Championship</a><a class="font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary tracking-wider transition-colors pt-[22px] pb-[22px]" data-path="ferrari" href="#">Ferrari</a><a class="font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary tracking-wider transition-colors pt-[22px] pb-[22px]" data-path="race-calendar" href="#">Race Calendar</a><a class="font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary tracking-wider transition-colors pt-[22px] pb-[22px]" data-path="simulation-lab" href="#">Simulation Lab</a><a class="font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary tracking-wider transition-colors pt-[22px] pb-[22px]" data-path="model-intelligence" href="#">Model Intelligence</a><a class="font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary tracking-wider transition-colors pt-[22px] pb-[22px]" data-path="ai-strategist" href="#">AI Strategist</a><a class="font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary tracking-wider transition-colors pt-[22px] pb-[22px]" data-path="2026-retrospective" href="#">2026 Retrospective</a></nav><div class="flex items-center gap-space-sm shrink-0"><div class="hidden lg:flex items-center bg-surface-panel border border-border-subtle px-space-sm py-1"><span class="font-data-mono-md text-body-sm text-text-muted tracking-wider uppercase mr-1">SEASON</span><span class="font-data-mono-md text-body-sm text-text-primary uppercase">2027 PRESEASON</span><span class="material-symbols-outlined text-[16px] text-text-muted ml-1">expand_more</span></div><div class="hidden sm:flex items-center gap-space-xs bg-surface-panel border border-border-subtle px-space-sm py-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_8px_#55C58A] animate-pulse"></span><span class="font-label-caps text-label-caps uppercase text-text-primary">PRESEASON SNAPSHOT · FROZEN</span></div><div class="hidden 2xl:block bg-surface-panel border border-border-subtle px-space-sm py-1 font-label-caps text-label-caps uppercase text-text-subtle">DATA CUTOFF: FEB 18, 2027</div><button aria-label="Telemetry Terminal Search" class="p-1.5 bg-surface-panel border border-border-subtle hover:border-border-focus hover:bg-surface-raised text-text-muted hover:text-text-primary transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">terminal</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-canvas-base min-h-screen"><div class="flex flex-col w-full">
+<!-- Sub-Navigation / Breadcrumb Telemetry Bar -->
+<div class="w-full bg-surface-dim border-b border-border-subtle sticky top-16 z-40">
+<div class="max-w-[1440px] mx-auto px-margin md:px-margin-desktop py-2.5 flex flex-wrap items-center justify-between gap-3 text-text-muted text-body-sm">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-primary-container inline-block"></span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-text-primary">COMMAND: SF-27 IN-DEPTH</span>
+<span class="text-text-subtle font-label-caps">/</span>
+<span class="font-label-caps text-label-caps uppercase text-telemetry-delta-pos">TELEMETRY STREAM: SYNCHRONIZED</span>
+</div>
+<div class="flex items-center gap-4 text-body-sm">
+<span class="font-data-mono-md text-text-subtle text-body-sm">LATENCY: <strong class="text-text-primary font-normal">14ms</strong></span>
+<span class="font-data-mono-md text-text-subtle text-body-sm">MC ITERATIONS: <strong class="text-text-primary font-normal">10,000 SEASONS</strong></span>
+<span class="font-data-mono-md text-telemetry-delta-pos text-body-sm">POSTERIOR CONVERGENCE: <strong class="font-normal">R̂ = 1.002</strong></span>
+</div>
+</div>
+</div>
+<!-- Hero Header Section -->
+<section class="w-full bg-canvas-base border-b border-border-subtle relative overflow-hidden">
+<!-- Atmospheric subtle gradient -->
+<div class="absolute inset-0 bg-gradient-to-r from-primary-container/10 via-transparent to-transparent pointer-events-none"></div>
+<div class="max-w-[1440px] mx-auto px-margin md:px-margin-desktop py-space-xl relative z-10 flex flex-col gap-space-lg">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 text-text-subtle">
+<span class="inline-block w-2.5 h-2.5 bg-primary-container"></span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest text-primary-fixed">SCUDERIA FERRARI HP · MARANELLO PERFORMANCE INTELLIGENCE · 2027 CAMPAIGN</span>
+</div>
+<div class="flex flex-col lg:flex-row lg:items-baseline justify-between gap-4">
+<h1 class="font-display-xl text-display-xl uppercase text-text-primary tracking-wide">
+            INSIDE THE SCUDERIA
+          </h1>
+<span class="font-data-mono-md text-body-md text-text-muted">
+            CHASSIS SPECS: <strong class="text-text-primary">SF-27 (PROJECT 677)</strong>
+</span>
+</div>
+<p class="font-body-lg text-body-lg text-text-muted max-w-4xl leading-relaxed">
+          Comprehensive Bayesian pace decomposition, intra-team driver pairing telemetry, circuit archetype delta models, and power unit reliability expectations for chassis SF-27 across the 24-round 2027 FIA Formula One World Championship.
+        </p>
+</div>
+<!-- Quick Telemetry Status Chips -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 pt-2 border-t border-border-subtle">
+<div class="p-space-sm bg-surface border border-border-subtle flex flex-col gap-0.5">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">CHASSIS SPEC</span>
+<span class="font-data-mono-md text-body-md text-text-primary">SF-27 (PROJECT 677)</span>
+<span class="font-label-caps text-label-caps text-telemetry-delta-pos">HOMOLOGATED</span>
+</div>
+<div class="p-space-sm bg-surface border border-border-subtle flex flex-col gap-0.5">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">POWER UNIT</span>
+<span class="font-data-mono-md text-body-md text-text-primary">066/12 1.6L V6 TURBO</span>
+<span class="font-label-caps text-label-caps text-text-muted">SPEC 1.1 UPGRADE</span>
+</div>
+<div class="p-space-sm bg-surface border border-border-subtle flex flex-col gap-0.5">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">CHIEF RACE ENGINEER</span>
+<span class="font-data-mono-md text-body-md text-text-primary">MATTEO TOGNINALLI</span>
+<span class="font-label-caps text-label-caps text-text-muted">TRACKSIDE DIR.</span>
+</div>
+<div class="p-space-sm bg-surface border border-border-subtle flex flex-col gap-0.5">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">SIMULATION SEED</span>
+<span class="font-data-mono-md text-body-md text-text-primary">#4416 MONTE CARLO</span>
+<span class="font-label-caps text-label-caps text-text-muted">10,000 EPISODES</span>
+</div>
+<div class="p-space-sm bg-surface border border-border-subtle flex flex-col gap-0.5 col-span-2 md:col-span-1">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">INTRA-CHASSIS CORR.</span>
+<span class="font-data-mono-md text-body-md text-primary">ρ = +0.62</span>
+<span class="font-label-caps text-label-caps text-text-subtle">JOINT PAIRING HAZARD</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 1: Ferrari Championship Outlook & Performance Targets (KPI Matrix) -->
+<section class="w-full bg-surface-dim border-b border-border-subtle py-space-xl">
+<div class="max-w-[1440px] mx-auto px-margin md:px-margin-desktop flex flex-col gap-space-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-3 bg-primary-container"></span>
+<h2 class="font-headline-md text-headline-md uppercase tracking-wider text-text-primary">
+            SECTION 01 // 2027 CHAMPIONSHIP OUTLOOK &amp; PERFORMANCE TARGETS
+          </h2>
+</div>
+<span class="hidden md:inline-block font-label-caps text-label-caps text-text-subtle uppercase">BAYESIAN CREDIBLE INTERVAL 90% HDI</span>
+</div>
+<!-- 4 Primary KPI Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter-tablet">
+<!-- KPI 1 -->
+<div class="bg-surface border border-border-subtle p-space-md flex flex-col justify-between gap-space-md relative overflow-hidden group hover:border-border-focus transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container"></div>
+<div class="flex flex-col gap-1 pl-2">
+<span class="font-label-caps text-label-caps uppercase text-text-muted">EXPECTED WCC POINTS</span>
+<div class="flex items-baseline gap-2">
+<span class="font-data-mono-lg text-data-mono-lg text-text-primary">542.4</span>
+<span class="font-label-caps text-label-caps text-telemetry-delta-pos">P2 PREDICTED</span>
+</div>
+</div>
+<!-- Sparkline Distribution SVG -->
+<div class="w-full h-8 pl-2">
+<svg class="w-full h-full text-primary-container" preserveaspectratio="none" viewbox="0 0 100 24">
+<path d="M0,22 Q20,20 35,16 Q45,2 50,1 Q55,2 65,16 Q80,21 100,23" fill="none" stroke="currentColor" stroke-width="2"></path>
+<line stroke="#55C58A" stroke-dasharray="2,2" stroke-width="1.5" x1="50" x2="50" y1="0" y2="24"></line>
+</svg>
+</div>
+<div class="border-t border-border-subtle pt-2 pl-2 flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm">
+<span class="font-label-caps text-label-caps text-text-subtle">90% HDI</span>
+<span class="font-data-mono-md text-text-muted">468.0 — 618.5 pts</span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="font-label-caps text-label-caps text-text-subtle">P(WCC P1 TITLES)</span>
+<span class="font-data-mono-md text-primary font-bold">38.4%</span>
+</div>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface border border-border-subtle p-space-md flex flex-col justify-between gap-space-md relative overflow-hidden group hover:border-border-focus transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-telemetry-amber"></div>
+<div class="flex flex-col gap-1 pl-2">
+<span class="font-label-caps text-label-caps uppercase text-text-muted">EXPECTED PODIUM FINISHES</span>
+<div class="flex items-baseline gap-2">
+<span class="font-data-mono-lg text-data-mono-lg text-text-primary">27.0 <span class="text-body-lg text-text-subtle font-normal">/ 48</span></span>
+<span class="font-label-caps text-label-caps text-text-muted">56.3% CONV.</span>
+</div>
+</div>
+<!-- Bar gauge ratio -->
+<div class="w-full bg-surface-raised h-2 pl-2">
+<div class="bg-telemetry-amber h-full" style="width: 56.25%"></div>
+</div>
+<div class="border-t border-border-subtle pt-2 pl-2 flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm">
+<span class="font-label-caps text-label-caps text-text-subtle">CHARLES LECLERC (#16)</span>
+<span class="font-data-mono-md text-text-primary">14.2 PODIUMS</span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="font-label-caps text-label-caps text-text-subtle">LEWIS HAMILTON (#44)</span>
+<span class="font-data-mono-md text-text-primary">12.8 PODIUMS</span>
+</div>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface border border-border-subtle p-space-md flex flex-col justify-between gap-space-md relative overflow-hidden group hover:border-border-focus transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container"></div>
+<div class="flex flex-col gap-1 pl-2">
+<span class="font-label-caps text-label-caps uppercase text-text-muted">EXPECTED GP VICTORIES</span>
+<div class="flex items-baseline gap-2">
+<span class="font-data-mono-lg text-data-mono-lg text-text-primary">8.7 <span class="text-body-lg text-text-subtle font-normal">WINS</span></span>
+<span class="font-label-caps text-label-caps text-telemetry-delta-pos">36.2% P(WIN)</span>
+</div>
+</div>
+<div class="flex items-center gap-1 pl-2">
+<!-- Discretized probability blocks -->
+<div class="h-3 flex-1 bg-primary-container"></div>
+<div class="h-3 flex-1 bg-primary-container"></div>
+<div class="h-3 flex-1 bg-primary-container"></div>
+<div class="h-3 flex-1 bg-primary-container/60"></div>
+<div class="h-3 flex-1 bg-surface-raised"></div>
+<div class="h-3 flex-1 bg-surface-raised"></div>
+</div>
+<div class="border-t border-border-subtle pt-2 pl-2 flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm">
+<span class="font-label-caps text-label-caps text-text-subtle">LECLERC P(WIN) CONTRIBUTION</span>
+<span class="font-data-mono-md text-text-primary">4.8 WINS</span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="font-label-caps text-label-caps text-text-subtle">HAMILTON P(WIN) CONTRIBUTION</span>
+<span class="font-data-mono-md text-text-primary">3.9 WINS</span>
+</div>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface border border-border-subtle p-space-md flex flex-col justify-between gap-space-md relative overflow-hidden group hover:border-border-focus transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary"></div>
+<div class="flex flex-col gap-1 pl-2">
+<span class="font-label-caps text-label-caps uppercase text-text-muted">BASELINE PACE DELTA</span>
+<div class="flex items-baseline gap-2">
+<span class="font-data-mono-lg text-data-mono-lg text-secondary">-0.045s</span>
+<span class="font-label-caps text-label-caps text-text-subtle">VS MCL39</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 pl-2 text-body-sm">
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-text-subtle">SLOW-SPEED TRACTION</span>
+<span class="font-data-mono-md text-telemetry-delta-pos">-0.118s (LEAD)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-text-subtle">HIGH-SPEED CORNERS</span>
+<span class="font-data-mono-md text-telemetry-delta-neg">+0.072s (DEFICIT)</span>
+</div>
+</div>
+<div class="border-t border-border-subtle pt-2 pl-2 flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm">
+<span class="font-label-caps text-label-caps text-text-subtle">RANKING ACROSS GRID</span>
+<span class="font-data-mono-md text-text-primary font-bold">2ND OVERALL</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Visual Telemetry Spotlight & Teammate Intra-Team Equation -->
+<section class="w-full bg-canvas-base border-b border-border-subtle py-space-xl">
+<div class="max-w-[1440px] mx-auto px-margin md:px-margin-desktop flex flex-col gap-space-xl">
+<!-- Cockpit & Car Telemetry Visual Interlude -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-stretch">
+<div class="lg:col-span-7 bg-surface border border-border-subtle flex flex-col overflow-hidden">
+<div class="p-space-md border-b border-border-subtle flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-primary-container"></span>
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary">SF-27 CHASSIS PROFILE // SPECIFICATION ARCHITECTURE</span>
+</div>
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">MARANELLO TUNNEL #2 DATA</span>
+</div>
+<div class="relative w-full h-72 sm:h-96 bg-surface-dim overflow-hidden flex items-center justify-center">
+<img class="w-full h-full object-cover object-center mix-blend-luminosity hover:mix-blend-normal transition duration-500" data-alt="High resolution studio photography of the Ferrari SF-27 Formula 1 car in dark cinematic lighting with matte Rosso Corsa paint, exposed carbon fiber wings, sidepods with complex vortex generators, Pirelli yellow-striped tires, and subtle red reflective highlights against a graphite black background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPIFPtYQUlcwFsAZZHE12iT1zf1lxLDT5a3CiVIfuQGRTcrslMR34C51yExFJqbGbnQPMS88uC0wkq890izo95qMvKAQnQpSPO6ng9_qNzijl8MsJjoHLi-GdNHT52dh8o_DmrOJo_bJE6ykKUkmknMPh55JTBw8BHMdshjJRp0xCP9PdBG5e7pvwxTHPmDMAwGOd2HSBNfv9SP0i1ckeGgjLoyB9DFKlBwHaRIw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent pointer-events-none"></div>
+<!-- Interactive telemetry tag pins -->
+<div class="absolute top-8 left-12 bg-surface/90 border border-primary-container px-2 py-1 flex items-center gap-2 backdrop-blur-sm">
+<span class="w-1.5 h-1.5 bg-primary-container animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-text-primary uppercase">INWASH S-DUCT: 14.8% VORTEX LIFT</span>
+</div>
+<div class="absolute bottom-12 right-12 bg-surface/90 border border-border-subtle px-2 py-1 flex items-center gap-2 backdrop-blur-sm">
+<span class="w-1.5 h-1.5 bg-secondary"></span>
+<span class="font-label-caps text-label-caps text-text-primary uppercase">DIFFUSER THROAT EXPANSION: +22 PA</span>
+</div>
+</div>
+<div class="p-space-md grid grid-cols-3 gap-2 bg-surface-panel border-t border-border-subtle text-body-sm">
+<div>
+<span class="font-label-caps text-label-caps text-text-subtle block">WHEELBASE</span>
+<span class="font-data-mono-md text-text-primary">3,600 mm</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-text-subtle block">MINIMUM WEIGHT</span>
+<span class="font-data-mono-md text-text-primary">798.0 kg (BALLASTED)</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-text-subtle block">DRAG COEFFICIENT (CD)</span>
+<span class="font-data-mono-md text-telemetry-delta-pos">0.718 (-0.012 vs SF-26)</span>
+</div>
+</div>
+</div>
+<!-- Cockpit Display / Steering Wheel Interface Simulation -->
+<div class="lg:col-span-5 bg-surface border border-border-subtle flex flex-col justify-between overflow-hidden">
+<div class="p-space-md border-b border-border-subtle flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-secondary"></span>
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary">COCKPIT ERS &amp; HARVEST TELEMETRY</span>
+</div>
+<span class="font-data-mono-md text-label-caps text-telemetry-delta-pos">ACTIVE TELEMETRY</span>
+</div>
+<div class="relative w-full h-72 sm:h-96 bg-surface-dim overflow-hidden flex items-center justify-center">
+<img class="w-full h-full object-cover object-center" data-alt="First person driver cockpit point of view inside Formula 1 steering wheel display at night with glowing OLED telemetry screen showing gear 7, deploy 58%, battery state of charge icon, delta -0.32, high-grip carbon fiber controls, rev shift lights illuminated blue and green." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1Kqq_CUTuJrQ6ocJKx9qb5v6Jv4GRUlfalEO2mViuOxyRU8tNY_RqK4RkU0eLKNboZQIuWFmP2guj8MNNhyYEbzANwYc02tgcdb74v5djIOa2wnqssAMViXADVRSaeE07G4SFyIhd71TI8nHUK_MQre6RUYyLHQRfFDL1gy3Xyu5ZyDYb_kJaKe7HeMU6xTaAo7fUEgAfTk8I_cRCLAvHNs4O7gPRMsGJADH0cw"/>
+<div class="absolute inset-0 bg-canvas-base/30 backdrop-blur-[1px] pointer-events-none"></div>
+<!-- Overlay cockpit digital metrics -->
+<div class="absolute inset-4 p-4 border border-border-subtle bg-canvas-base/85 flex flex-col justify-between">
+<div class="flex justify-between items-center font-data-mono-md text-body-sm">
+<span class="text-text-muted">LAP 26 / 53</span>
+<span class="text-telemetry-delta-pos font-bold">DELTA: -0.320s</span>
+</div>
+<div class="flex items-center justify-around py-4">
+<div class="text-center">
+<span class="font-label-caps text-label-caps text-text-subtle block">GEAR</span>
+<span class="font-display-xl text-display-xl text-text-primary leading-none">7</span>
+</div>
+<div class="text-center border-l border-r border-border-subtle px-6">
+<span class="font-label-caps text-label-caps text-text-subtle block">DEPLOY MGU-K</span>
+<span class="font-headline-lg text-headline-lg text-primary leading-none">58%</span>
+<span class="font-label-caps text-label-caps text-secondary block mt-1">SOC OPTIMAL</span>
+</div>
+<div class="text-center">
+<span class="font-label-caps text-label-caps text-text-subtle block">SPEED</span>
+<span class="font-headline-lg text-headline-lg text-text-primary leading-none">328</span>
+<span class="font-label-caps text-label-caps text-text-subtle block">KM/H</span>
+</div>
+</div>
+<div class="flex justify-between items-center text-body-sm font-data-mono-md border-t border-border-subtle pt-2">
+<span class="text-text-muted">BBAL: <strong class="text-text-primary">56.2%</strong></span>
+<span class="text-text-muted">ENG MAP: <strong class="text-primary">STRAT 2</strong></span>
+<span class="text-text-muted">TYRE: <strong class="text-telemetry-amber">C2 94°C</strong></span>
+</div>
+</div>
+</div>
+<div class="p-space-md bg-surface-panel border-t border-border-subtle">
+<p class="font-body-sm text-body-sm text-text-muted">
+              Live CAN-Bus energy telemetry sampled at 100Hz from Maranello engine dyno cell #4. MGU-K recovery rate measured at 120kW peak in braking zones.
+            </p>
+</div>
+</div>
+</div>
+<!-- Driver Intra-Team Head-to-Head Section -->
+<div class="flex flex-col gap-space-md pt-space-lg">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-3 bg-primary-container"></span>
+<h2 class="font-headline-md text-headline-md uppercase text-text-primary tracking-wider">
+              SECTION 02 // THE DRIVER EQUATION · CHARLES LECLERC VS LEWIS HAMILTON
+            </h2>
+</div>
+<p class="font-body-md text-body-md text-text-muted">
+            Paired joint posterior simulation (10,000 iterations). Teammate margin calculated strictly from joint paired seasons, preserving shared chassis reliability hazards and race strategy offsets.
+          </p>
+</div>
+<!-- Two Driver Cards Side-by-Side -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter-desktop items-stretch">
+<!-- Driver 1: Charles Leclerc -->
+<div class="bg-surface border border-border-subtle flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 left-0 w-2 h-full bg-primary-container"></div>
+<div class="p-space-lg border-b border-border-subtle flex items-start justify-between">
+<div class="flex items-center gap-space-md">
+<div class="w-14 h-14 bg-surface-raised border border-border-subtle flex items-center justify-center font-headline-lg text-headline-lg text-primary-container">
+                  16
+                </div>
+<div>
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">MONACO · CAR #16</span>
+<h3 class="font-headline-lg text-headline-lg uppercase text-text-primary">CHARLES LECLERC</h3>
+<span class="font-label-caps text-label-caps text-primary uppercase font-bold">FAH RATING: 94.8</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-caps text-label-caps text-text-subtle uppercase">WDC WIN PROBABILITY</span>
+<span class="font-headline-lg text-headline-lg text-telemetry-delta-pos block">22.8%</span>
+</div>
+</div>
+<!-- Detailed Telemetry Metrics -->
+<div class="p-space-lg grid grid-cols-2 gap-x-6 gap-y-4">
+<div class="flex flex-col border-b border-border-subtle pb-2">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">EXPECTED POINTS</span>
+<span class="font-data-mono-lg text-data-mono-lg text-text-primary">278.6 <span class="text-body-sm text-text-muted font-normal">pts</span></span>
+<span class="font-label-caps text-label-caps text-text-subtle">Median: 276.0 | 90% HDI: [232 — 324]</span>
+</div>
+<div class="flex flex-col border-b border-border-subtle pb-2">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">EXP WINS / PODIUMS</span>
+<span class="font-data-mono-lg text-data-mono-lg text-text-primary">4.8 <span class="text-body-sm text-text-muted font-normal">W</span> · 14.2 <span class="text-body-sm text-text-muted font-normal">POD</span></span>
+<span class="font-label-caps text-label-caps text-text-subtle">Exp Poles: 6.2 (Grid Leader)</span>
+</div>
+<div class="flex flex-col border-b border-border-subtle pb-2">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">QUALIFYING DELTA</span>
+<span class="font-data-mono-lg text-data-mono-lg text-secondary">-0.082s</span>
+<span class="font-label-caps text-label-caps text-text-subtle">62.4% Q3 head-to-head advantage</span>
+</div>
+<div class="flex flex-col border-b border-border-subtle pb-2">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">RACE PACE DELTA</span>
+<span class="font-data-mono-lg text-data-mono-lg text-secondary">-0.014s / lap</span>
+<span class="font-label-caps text-label-caps text-text-subtle">Optimal one-lap chassis extraction</span>
+</div>
+<div class="col-span-2 flex flex-col pt-1">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">TYRE THERMAL DEGRADATION INDEX</span>
+<div class="flex items-center gap-3 mt-1">
+<div class="flex-1 bg-surface-raised h-2">
+<div class="bg-telemetry-amber h-full" style="width: 72%"></div>
+</div>
+<span class="font-data-mono-md text-text-primary text-body-sm">1.04x baseline</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-subtle mt-1">Higher wear penalty in continuous high-energy loaded corners (Sector 1 Suzuka, Silverstone Becketts).</span>
+</div>
+</div>
+<div class="p-space-md bg-surface-panel border-t border-border-subtle flex justify-between items-center text-body-sm">
+<span class="font-label-caps text-label-caps uppercase text-text-muted">DRIVER SEED POSTERIOR</span>
+<span class="font-data-mono-md text-text-subtle">DISTRIBUTION: NORMAL(μ=0.082, σ=0.031)</span>
+</div>
+</div>
+<!-- Driver 2: Lewis Hamilton -->
+<div class="bg-surface border border-border-subtle flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 left-0 w-2 h-full bg-text-subtle"></div>
+<div class="p-space-lg border-b border-border-subtle flex items-start justify-between">
+<div class="flex items-center gap-space-md">
+<div class="w-14 h-14 bg-surface-raised border border-border-subtle flex items-center justify-center font-headline-lg text-headline-lg text-text-primary">
+                  44
+                </div>
+<div>
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">GREAT BRITAIN · CAR #44</span>
+<h3 class="font-headline-lg text-headline-lg uppercase text-text-primary">LEWIS HAMILTON</h3>
+<span class="font-label-caps text-label-caps text-text-muted uppercase font-bold">FAH RATING: 93.6</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-caps text-label-caps text-text-subtle uppercase">WDC WIN PROBABILITY</span>
+<span class="font-headline-lg text-headline-lg text-telemetry-amber block">15.6%</span>
+</div>
+</div>
+<!-- Detailed Telemetry Metrics -->
+<div class="p-space-lg grid grid-cols-2 gap-x-6 gap-y-4">
+<div class="flex flex-col border-b border-border-subtle pb-2">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">EXPECTED POINTS</span>
+<span class="font-data-mono-lg text-data-mono-lg text-text-primary">263.8 <span class="text-body-sm text-text-muted font-normal">pts</span></span>
+<span class="font-label-caps text-label-caps text-text-subtle">Median: 262.0 | 90% HDI: [219 — 309]</span>
+</div>
+<div class="flex flex-col border-b border-border-subtle pb-2">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">EXP WINS / PODIUMS</span>
+<span class="font-data-mono-lg text-data-mono-lg text-text-primary">3.9 <span class="text-body-sm text-text-muted font-normal">W</span> · 12.8 <span class="text-body-sm text-text-muted font-normal">POD</span></span>
+<span class="font-label-caps text-label-caps text-text-subtle">Exp Poles: 3.8</span>
+</div>
+<div class="flex flex-col border-b border-border-subtle pb-2">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">QUALIFYING DELTA</span>
+<span class="font-data-mono-lg text-data-mono-lg text-telemetry-delta-neg">+0.082s</span>
+<span class="font-label-caps text-label-caps text-text-subtle">Slightly more conservative tire warm-up</span>
+</div>
+<div class="flex flex-col border-b border-border-subtle pb-2">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">RACE PACE DELTA (STINT 2/3)</span>
+<span class="font-data-mono-lg text-data-mono-lg text-secondary">+0.041s offset</span>
+<span class="font-label-caps text-label-caps text-text-subtle">Advantage on hard C1/C2 compounds</span>
+</div>
+<div class="col-span-2 flex flex-col pt-1">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">SUNDAY RACE-CRAFT &amp; PRESERVATION INDEX</span>
+<div class="flex items-center gap-3 mt-1">
+<div class="flex-1 bg-surface-raised h-2">
+<div class="bg-secondary h-full" style="width: 93%"></div>
+</div>
+<span class="font-data-mono-md text-text-primary text-body-sm">0.931 (Top 4)</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-subtle mt-1">Exceptional tire degradation preservation over high ambient temperature tracks (+3.4 laps delta on hard rubber).</span>
+</div>
+</div>
+<div class="p-space-md bg-surface-panel border-t border-border-subtle flex justify-between items-center text-body-sm">
+<span class="font-label-caps text-label-caps uppercase text-text-muted">DRIVER SEED POSTERIOR</span>
+<span class="font-data-mono-md text-text-subtle">DISTRIBUTION: NORMAL(μ=-0.082, σ=0.038)</span>
+</div>
+</div>
+</div>
+<!-- Joint Paired Teammate Head-to-Head Comparison Gauge -->
+<div class="bg-surface border border-border-subtle p-space-lg flex flex-col gap-space-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+<span class="font-label-caps text-label-caps uppercase text-text-muted tracking-wider">
+              SIMULATION HEAD-TO-HEAD BATTLE RATE (10,000 PAIRED MC ITERATIONS)
+            </span>
+<span class="font-data-mono-md text-body-sm text-primary">
+              MEDIAN SEASON MARGIN: +14.8 PTS (LECLERC ADVANTAGE)
+            </span>
+</div>
+<div class="w-full flex flex-col gap-2">
+<!-- Proportion Bar -->
+<div class="w-full h-8 flex overflow-hidden border border-border-subtle">
+<div class="bg-primary-container h-full flex items-center justify-start px-3 text-text-primary font-data-mono-md text-body-sm" style="width: 56.4%">
+<span>LECLERC: 56.4% (5,640 SEASONS)</span>
+</div>
+<div class="bg-surface-raised h-full flex items-center justify-end px-3 text-text-muted font-data-mono-md text-body-sm" style="width: 43.6%">
+<span>HAMILTON: 43.6% (4,360 SEASONS)</span>
+</div>
+</div>
+<div class="flex justify-between items-center text-body-sm text-text-subtle font-label-caps">
+<span>0% MARGIN (PARITY LINE)</span>
+<span>10,000 RESAMPLED EPISODES</span>
+<span>SHARED CHASSIS DNF COUPLING ρ=0.62</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Circuit Archetype & Track Characteristic Sensitivity Matrix -->
+<section class="w-full bg-surface-dim border-b border-border-subtle py-space-xl">
+<div class="max-w-[1440px] mx-auto px-margin md:px-margin-desktop flex flex-col gap-space-lg">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-3 bg-primary-container"></span>
+<h2 class="font-headline-md text-headline-md uppercase text-text-primary tracking-wider">
+            SECTION 03 // CIRCUIT ARCHETYPE SENSITIVITY &amp; AERODYNAMIC PROFILES
+          </h2>
+</div>
+<p class="font-body-md text-body-md text-text-muted">
+          Expected Ferrari pace delta (seconds per lap vs McLaren MCL39 benchmark) categorized by aerodynamic and mechanical circuit demands across the 24-race calendar.
+        </p>
+</div>
+<!-- Archetype Matrix Table Container -->
+<div class="border border-border-subtle bg-surface overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-canvas-base border-b border-border-subtle">
+<th class="p-space-md font-label-caps text-label-caps uppercase text-text-subtle tracking-wider">CIRCUIT ARCHETYPE &amp; EXAMPLES</th>
+<th class="p-space-md font-label-caps text-label-caps uppercase text-text-subtle tracking-wider">FERRARI PACE DELTA (VS MCL39)</th>
+<th class="p-space-md font-label-caps text-label-caps uppercase text-text-subtle tracking-wider">EXPECTED FINISH</th>
+<th class="p-space-md font-label-caps text-label-caps uppercase text-text-subtle tracking-wider">PODIUM PROB.</th>
+<th class="p-space-md font-label-caps text-label-caps uppercase text-text-subtle tracking-wider">CRITICAL ENGINEERING VARIABLE</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle font-body-sm">
+<!-- Row 1: High Downforce -->
+<tr class="hover:bg-surface-raised/60 transition-colors">
+<td class="p-space-md border-l-2 border-primary-container">
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary block">1. HIGH DOWNFORCE &amp; MECHANICAL TRACTION</span>
+<span class="font-body-sm text-text-muted">Monaco, Hungaroring, Singapore Marina Bay</span>
+</td>
+<td class="p-space-md">
+<span class="font-data-mono-md text-telemetry-delta-pos text-body-md block">-0.142s</span>
+<span class="font-label-caps text-label-caps text-telemetry-delta-pos">STRONG ADVANTAGE</span>
+</td>
+<td class="p-space-md font-data-mono-md text-text-primary">P1 — P2</td>
+<td class="p-space-md">
+<div class="flex items-center gap-2">
+<span class="font-data-mono-md text-text-primary">84.0%</span>
+<div class="w-16 bg-surface-raised h-1.5"><div class="bg-telemetry-delta-pos h-full" style="width: 84%"></div></div>
+</div>
+</td>
+<td class="p-space-md text-text-muted">
+                Front-axle rapid rotation in low-speed hairpins and traction drive out of slow 2nd gear corners.
+              </td>
+</tr>
+<!-- Row 2: High Speed Sweepers -->
+<tr class="hover:bg-surface-raised/60 transition-colors">
+<td class="p-space-md border-l-2 border-telemetry-delta-neg">
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary block">2. HIGH-EFFICIENCY &amp; HIGH-SPEED SWEEPERS</span>
+<span class="font-body-sm text-text-muted">Silverstone, Suzuka, Spa-Francorchamps</span>
+</td>
+<td class="p-space-md">
+<span class="font-data-mono-md text-telemetry-delta-neg text-body-md block">+0.085s</span>
+<span class="font-label-caps text-label-caps text-telemetry-delta-neg">CHALLENGING SPREAD</span>
+</td>
+<td class="p-space-md font-data-mono-md text-text-primary">P2 — P3</td>
+<td class="p-space-md">
+<div class="flex items-center gap-2">
+<span class="font-data-mono-md text-text-primary">68.0%</span>
+<div class="w-16 bg-surface-raised h-1.5"><div class="bg-telemetry-amber h-full" style="width: 68%"></div></div>
+</div>
+</td>
+<td class="p-space-md text-text-muted">
+                McLaren floor ground-effect downforce stability in sustained 240+ km/h loaded corners.
+              </td>
+</tr>
+<!-- Row 3: Low Downforce Power -->
+<tr class="hover:bg-surface-raised/60 transition-colors">
+<td class="p-space-md border-l-2 border-primary-container">
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary block">3. LOW DOWNFORCE &amp; STRAIGHT-LINE POWER</span>
+<span class="font-body-sm text-text-muted">Monza, Baku City Circuit, Las Vegas Strip</span>
+</td>
+<td class="p-space-md">
+<span class="font-data-mono-md text-telemetry-delta-pos text-body-md block">-0.095s</span>
+<span class="font-label-caps text-label-caps text-telemetry-delta-pos">FERRARI ADVANTAGE</span>
+</td>
+<td class="p-space-md font-data-mono-md text-text-primary">P1 — P2</td>
+<td class="p-space-md">
+<div class="flex items-center gap-2">
+<span class="font-data-mono-md text-text-primary">81.0%</span>
+<div class="w-16 bg-surface-raised h-1.5"><div class="bg-telemetry-delta-pos h-full" style="width: 81%"></div></div>
+</div>
+</td>
+<td class="p-space-md text-text-muted">
+                066/12 PU top-end ERS MGU-K kinetic sustained deployment and minimal wing beam induced drag.
+              </td>
+</tr>
+<!-- Row 4: Medium Downforce Balanced -->
+<tr class="hover:bg-surface-raised/60 transition-colors">
+<td class="p-space-md border-l-2 border-text-subtle">
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary block">4. MEDIUM DOWNFORCE BALANCED</span>
+<span class="font-body-sm text-text-muted">Bahrain Sakhir, Circuit de Barcelona, Austin COTA, Qatar</span>
+</td>
+<td class="p-space-md">
+<span class="font-data-mono-md text-text-primary text-body-md block">-0.015s</span>
+<span class="font-label-caps text-label-caps text-text-muted">TIGHT PARITY</span>
+</td>
+<td class="p-space-md font-data-mono-md text-text-primary">P2</td>
+<td class="p-space-md">
+<div class="flex items-center gap-2">
+<span class="font-data-mono-md text-text-primary">76.0%</span>
+<div class="w-16 bg-surface-raised h-1.5"><div class="bg-text-subtle h-full" style="width: 76%"></div></div>
+</div>
+</td>
+<td class="p-space-md text-text-muted">
+                Tire thermal management in high ambient track surface temperatures exceeding 38°C.
+              </td>
+</tr>
+<!-- Row 5: Street Transient Bumping -->
+<tr class="hover:bg-surface-raised/60 transition-colors">
+<td class="p-space-md border-l-2 border-primary-container">
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary block">5. STREET TRANSIENT BUMPING &amp; KERB RIDING</span>
+<span class="font-body-sm text-text-muted">Albert Park Melbourne, Montreal Gilles Villeneuve, Jeddah</span>
+</td>
+<td class="p-space-md">
+<span class="font-data-mono-md text-telemetry-delta-pos text-body-md block">-0.060s</span>
+<span class="font-label-caps text-label-caps text-telemetry-delta-pos">MODERATE ADVANTAGE</span>
+</td>
+<td class="p-space-md font-data-mono-md text-text-primary">P1 — P2</td>
+<td class="p-space-md">
+<div class="flex items-center gap-2">
+<span class="font-data-mono-md text-text-primary">79.5%</span>
+<div class="w-16 bg-surface-raised h-1.5"><div class="bg-telemetry-delta-pos h-full" style="width: 79.5%"></div></div>
+</div>
+</td>
+<td class="p-space-md text-text-muted">
+                Kerb-riding mechanical compliance, suspension damper blow-off valves, and ride height stability.
+              </td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Section 4: Power Unit & Chassis Reliability Hazard Function -->
+<section class="w-full bg-canvas-base border-b border-border-subtle py-space-xl">
+<div class="max-w-[1440px] mx-auto px-margin md:px-margin-desktop flex flex-col gap-space-lg">
+<div class="flex items-center justify-between">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-3 bg-primary-container"></span>
+<h2 class="font-headline-md text-headline-md uppercase text-text-primary tracking-wider">
+              SECTION 04 // WEIBULL RELIABILITY &amp; DNF HAZARD MODELLING
+            </h2>
+</div>
+<p class="font-body-md text-body-md text-text-muted">
+            Parametric survival model (Weibull shape k=1.24, scale λ=0.041) accounting for component cycle fatigue wear, cooling margin constraints, and thermal stress.
+          </p>
+</div>
+<div class="hidden lg:flex items-center gap-2 bg-surface border border-border-subtle px-3 py-1.5">
+<span class="w-2 h-2 bg-telemetry-delta-pos"></span>
+<span class="font-label-caps text-label-caps text-text-primary uppercase">EXPECTED TEAM MECH DNFs: 3.5 / 48 STARTS</span>
+</div>
+</div>
+<!-- Reliability Component Gauges -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter-tablet">
+<!-- Component 1 -->
+<div class="bg-surface border border-border-subtle p-space-md flex flex-col gap-space-md">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-text-subtle uppercase">INTERNAL COMBUSTION (ICE)</span>
+<span class="font-data-mono-md text-telemetry-amber text-body-sm">3.1% HAZARD</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-data-mono-lg text-data-mono-lg text-text-primary">7.2 <span class="text-body-sm text-text-subtle font-normal">RACES</span></span>
+<span class="font-body-sm text-body-sm text-text-muted">Expected component lifespan</span>
+</div>
+<!-- Discretized thermal step gauge -->
+<div class="flex gap-1 w-full">
+<div class="h-2 flex-1 bg-secondary"></div>
+<div class="h-2 flex-1 bg-secondary"></div>
+<div class="h-2 flex-1 bg-secondary"></div>
+<div class="h-2 flex-1 bg-telemetry-amber"></div>
+<div class="h-2 flex-1 bg-border-subtle"></div>
+</div>
+<div class="font-label-caps text-label-caps text-text-subtle border-t border-border-subtle pt-2">
+            THERMAL MARGIN: 98.4°C WATER / 128.0°C OIL
+          </div>
+</div>
+<!-- Component 2 -->
+<div class="bg-surface border border-border-subtle p-space-md flex flex-col gap-space-md">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-text-subtle uppercase">TURBO &amp; MGU-H</span>
+<span class="font-data-mono-md text-telemetry-delta-pos text-body-sm">2.4% HAZARD</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-data-mono-lg text-data-mono-lg text-text-primary">8.1 <span class="text-body-sm text-text-subtle font-normal">RACES</span></span>
+<span class="font-body-sm text-body-sm text-text-muted">Expected component lifespan</span>
+</div>
+<div class="flex gap-1 w-full">
+<div class="h-2 flex-1 bg-secondary"></div>
+<div class="h-2 flex-1 bg-secondary"></div>
+<div class="h-2 flex-1 bg-secondary"></div>
+<div class="h-2 flex-1 bg-secondary"></div>
+<div class="h-2 flex-1 bg-border-subtle"></div>
+</div>
+<div class="font-label-caps text-label-caps text-text-subtle border-t border-border-subtle pt-2">
+            SHAFT BEARING LOAD: 125,000 RPM NOMINAL
+          </div>
+</div>
+<!-- Component 3 -->
+<div class="bg-surface border border-border-subtle p-space-md flex flex-col gap-space-md">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-text-subtle uppercase">ENERGY STORE &amp; MGU-K</span>
+<span class="font-data-mono-md text-telemetry-delta-pos text-body-sm">1.8% HAZARD</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-data-mono-lg text-data-mono-lg text-text-primary">9.5 <span class="text-body-sm text-text-subtle font-normal">RACES</span></span>
+<span class="font-body-sm text-body-sm text-text-muted">Expected component lifespan</span>
+</div>
+<div class="flex gap-1 w-full">
+<div class="h-2 flex-1 bg-secondary"></div>
+<div class="h-2 flex-1 bg-secondary"></div>
+<div class="h-2 flex-1 bg-secondary"></div>
+<div class="h-2 flex-1 bg-secondary"></div>
+<div class="h-2 flex-1 bg-secondary"></div>
+</div>
+<div class="font-label-caps text-label-caps text-text-subtle border-t border-border-subtle pt-2">
+            CELL VOLTAGE DEGRADATION: 0.003% PER 100KM
+          </div>
+</div>
+<!-- Component 4 -->
+<div class="bg-surface border border-border-subtle p-space-md flex flex-col gap-space-md">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-label-caps text-text-subtle uppercase">GEARBOX &amp; CASING</span>
+<span class="font-data-mono-md text-telemetry-amber text-body-sm">2.9% HAZARD</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-data-mono-lg text-data-mono-lg text-text-primary">6.8 <span class="text-body-sm text-text-subtle font-normal">RACES</span></span>
+<span class="font-body-sm text-body-sm text-text-muted">Expected component lifespan</span>
+</div>
+<div class="flex gap-1 w-full">
+<div class="h-2 flex-1 bg-secondary"></div>
+<div class="h-2 flex-1 bg-secondary"></div>
+<div class="h-2 flex-1 bg-telemetry-amber"></div>
+<div class="h-2 flex-1 bg-border-subtle"></div>
+<div class="h-2 flex-1 bg-border-subtle"></div>
+</div>
+<div class="font-label-caps text-label-caps text-text-subtle border-t border-border-subtle pt-2">
+            SEAMLESS DOG-RING IMPACT CYCLES: NOMINAL
+          </div>
+</div>
+</div>
+<!-- Hazard Breakdown Banner -->
+<div class="p-space-md bg-surface border border-border-subtle flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container text-[20px]">warning</span>
+<span class="font-body-sm text-body-sm text-text-muted">
+            Driver DNF distribution expectation: <strong class="text-text-primary">1.6 DNFs for Charles Leclerc</strong> vs <strong class="text-text-primary">1.9 DNFs for Lewis Hamilton</strong> across 2027 calendar.
+          </span>
+</div>
+<span class="font-label-caps text-label-caps text-text-subtle uppercase">ESTIMATED GRID PENALTY RISK: 18.2% PROBABILITY IN GP 20-24</span>
+</div>
+</div>
+</section>
+<!-- Section 5: Ferrari vs Key Rival Benchmarking (Direct Paired Differentials) -->
+<section class="w-full bg-surface-dim border-b border-border-subtle py-space-xl">
+<div class="max-w-[1440px] mx-auto px-margin md:px-margin-desktop flex flex-col gap-space-lg">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-3 bg-primary-container"></span>
+<h2 class="font-headline-md text-headline-md uppercase text-text-primary tracking-wider">
+            SECTION 05 // BENCHMARKING THE RIVALS · SCUDERIA VS CONTENDERS
+          </h2>
+</div>
+<p class="font-body-md text-body-md text-text-muted">
+          Direct Monte Carlo paired difference simulations across 10,000 season runs. Metrics compare aggregate points output, head-to-head win probability, and dynamic lap-time deltas.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter-desktop">
+<!-- Rival 1: McLaren Mercedes -->
+<div class="bg-surface border border-border-subtle p-space-lg flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase text-telemetry-amber">CHAMPIONSHIP RIVAL #1</span>
+<span class="font-data-mono-md text-label-caps text-text-muted">MCL39</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase text-text-primary">MCLAREN MERCEDES</h3>
+<span class="font-body-sm text-body-sm text-text-muted">Norris · Piastri</span>
+</div>
+<div class="flex flex-col gap-3 py-2 border-t border-b border-border-subtle text-body-sm">
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-text-subtle">POINTS DELTA</span>
+<span class="font-data-mono-md text-telemetry-delta-neg">-15.8 pts (Deficit)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-text-subtle">FERRARI WIN RATE H2H</span>
+<span class="font-data-mono-md text-text-primary">44.2%</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-text-subtle">LAP PACE ADVANTAGE</span>
+<span class="font-data-mono-md text-telemetry-delta-neg">+0.045s McLaren Edge</span>
+</div>
+</div>
+<div class="font-body-sm text-body-sm text-text-muted">
+            Tire wear in high-lateral load environments remains McLaren's primary advantage. Ferrari maintains traction and top-speed edge.
+          </div>
+</div>
+<!-- Rival 2: Red Bull RBPT -->
+<div class="bg-surface border border-border-subtle p-space-lg flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase text-telemetry-delta-pos">CHAMPIONSHIP RIVAL #2</span>
+<span class="font-data-mono-md text-label-caps text-text-muted">RB23</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase text-text-primary">ORACLE RED BULL RACING</h3>
+<span class="font-body-sm text-body-sm text-text-muted">Verstappen · Lawson</span>
+</div>
+<div class="flex flex-col gap-3 py-2 border-t border-b border-border-subtle text-body-sm">
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-text-subtle">POINTS DELTA</span>
+<span class="font-data-mono-md text-telemetry-delta-pos">+47.8 pts (Lead)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-text-subtle">FERRARI WIN RATE H2H</span>
+<span class="font-data-mono-md text-text-primary">74.6%</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-text-subtle">LAP PACE ADVANTAGE</span>
+<span class="font-data-mono-md text-telemetry-delta-pos">-0.098s Ferrari Edge</span>
+</div>
+</div>
+<div class="font-body-sm text-body-sm text-text-muted">
+            Ferrari holds clear mechanical grip advantage and higher baseline qualifying pace against Red Bull's 2027 concept.
+          </div>
+</div>
+<!-- Rival 3: Mercedes-AMG -->
+<div class="bg-surface border border-border-subtle p-space-lg flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase text-telemetry-delta-pos">CHAMPIONSHIP RIVAL #3</span>
+<span class="font-data-mono-md text-label-caps text-text-muted">W18</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase text-text-primary">MERCEDES-AMG PETRONAS</h3>
+<span class="font-body-sm text-body-sm text-text-muted">Russell · Antonelli</span>
+</div>
+<div class="flex flex-col gap-3 py-2 border-t border-b border-border-subtle text-body-sm">
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-text-subtle">POINTS DELTA</span>
+<span class="font-data-mono-md text-telemetry-delta-pos">+130.4 pts (Lead)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-text-subtle">FERRARI WIN RATE H2H</span>
+<span class="font-data-mono-md text-text-primary">94.2%</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-text-subtle">LAP PACE ADVANTAGE</span>
+<span class="font-data-mono-md text-telemetry-delta-pos">-0.245s Ferrari Edge</span>
+</div>
+</div>
+<div class="font-body-sm text-body-sm text-text-muted">
+            Substantial thermal operating window and high-speed stability deficit on the W18 chassis relative to Maranello.
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 6: Actionable Simulation Lab Trigger -->
+<section class="w-full bg-canvas-base py-space-xl">
+<div class="max-w-[1440px] mx-auto px-margin md:px-margin-desktop">
+<div class="bg-surface border border-border-subtle p-space-lg flex flex-col md:flex-row items-center justify-between gap-space-lg">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-primary-container"></span>
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary">TEST SCUDERIA TACTICS IN THE SIMULATION LAB</span>
+</div>
+<p class="font-body-md text-body-md text-text-muted max-w-2xl">
+            Execute custom Monte Carlo simulations for chassis SF-27 across variable rain distributions, safety car probabilities, and aggressive alternative tire offset strategies.
+          </p>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<a class="bg-primary-container hover:bg-ferrari-red-hover text-text-primary font-headline-sm text-headline-sm uppercase px-6 py-3 transition-colors tracking-wider" href="#">
+            LAUNCH SCENARIO LAB
+          </a>
+<button class="bg-surface-raised border border-border-subtle hover:border-border-focus text-text-muted hover:text-text-primary font-label-caps text-label-caps uppercase px-4 py-3 transition-colors" type="button">
+            EXPORT RAW DATA (CSV)
+          </button>
+</div>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-surface-panel border-t border-border-subtle"><div class="w-full max-w-[1440px] mx-auto px-margin md:px-margin-desktop py-space-xl"><div class="grid grid-cols-1 md:grid-cols-12 gap-gutter-desktop items-start pb-space-lg border-b border-border-subtle"><div class="md:col-span-6 flex flex-col gap-space-sm"><div class="flex items-center gap-space-xs"><span class="w-2 h-4 bg-primary-container inline-block"></span><span class="font-headline-sm text-headline-sm uppercase text-text-primary tracking-wider">FAHFERRARI</span><span class="font-label-caps text-label-caps uppercase text-text-subtle ml-2">v2.7.4 ENTERPRISE</span></div><p class="font-body-sm text-body-sm text-text-muted max-w-xl leading-relaxed">FahFerrari is an independent performance intelligence project and is not affiliated with, endorsed by, or sponsored by Scuderia Ferrari, Ferrari S.p.A., or Formula 1.</p><div class="mt-space-xs"><span class="font-label-caps text-label-caps uppercase text-text-subtle block mb-1">ENGINEERING ARCHITECTURE</span><span class="font-data-mono-md text-body-sm text-text-muted">Hybrid Bayesian Hierarchical Pace + Gradient-Boosted Residuals + 10,000 Monte Carlo Simulations</span></div></div><div class="md:col-span-3 flex flex-col gap-space-sm"><span class="font-label-caps text-label-caps uppercase text-text-subtle tracking-wider">FAST NAVIGATION</span><nav class="flex flex-col gap-1.5" data-active-classes="text-text-primary"><a class="font-body-sm text-body-sm text-text-muted hover:text-text-primary transition-colors" data-path="overview" href="#">Overview</a><a class="font-body-sm text-body-sm text-text-muted hover:text-text-primary transition-colors" data-path="model-integrity" href="#">Model Integrity</a><a class="font-body-sm text-body-sm text-text-muted hover:text-text-primary transition-colors" data-path="api-docs" href="#">API Docs</a><a class="font-body-sm text-body-sm text-text-muted hover:text-text-primary transition-colors" data-path="github" href="#">GitHub</a><a class="font-body-sm text-body-sm text-text-muted hover:text-text-primary transition-colors" data-path="2026-retrospective" href="#">Retrospective</a></nav></div><div class="md:col-span-3 flex flex-col gap-space-sm"><span class="font-label-caps text-label-caps uppercase text-text-subtle tracking-wider">SYSTEM VERIFICATION</span><div class="p-space-sm bg-surface-raised border border-border-subtle flex flex-col gap-1"><div class="flex items-center justify-between"><span class="font-label-caps text-label-caps text-text-muted">PROVENANCE</span><span class="font-label-caps text-label-caps text-telemetry-delta-pos">ACTIVE</span></div><span class="font-data-mono-md text-body-sm text-text-primary">BUILD v2.7.4 · SEED #4416</span><span class="font-label-caps text-label-caps text-text-subtle">POINT-IN-TIME VERIFIED</span></div></div></div><div class="pt-space-md flex flex-col sm:flex-row items-center justify-between gap-space-sm font-label-caps text-label-caps text-text-subtle uppercase"><span>© 2027 FAHFERRARI PERFORMANCE INTELLIGENCE. ALL RIGHTS RESERVED.</span><span>HIGH-THROUGHPUT FORMULA 1 PREDICTIVE TELEMETRY</span></div></div></footer></body></html>

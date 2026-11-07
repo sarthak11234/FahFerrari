@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>FahFerrari 2027 F1 Performance Intelligence</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-dim":"#111317","border-subtle":"#292D33","surface-container-high":"#282a2e","error":"#ffb4ab","tertiary-fixed":"#d6e3ff","on-primary":"#680200","inverse-primary":"#c00500","canvas-base":"#08090B","outline-variant":"#5e3f3a","on-tertiary-fixed":"#001b3c","primary-fixed":"#ffdad4","secondary-fixed":"#89f9b9","surface-container":"#1e2024","surface-panel":"#111317","primary":"#ffb4a8","on-primary-fixed-variant":"#930300","on-background":"#e2e2e8","ferrari-red-hover":"#FF3028","secondary-container":"#2ea46c","surface-bright":"#37393e","error-container":"#93000a","outline":"#af8781","telemetry-delta-pos":"#55C58A","surface-variant":"#333539","tertiary-container":"#3070c3","surface-raised":"#191C21","on-primary-fixed":"#410100","on-primary-container":"#fff2f0","on-secondary-fixed":"#002111","text-primary":"#F4F4F2","border-focus":"#3E434D","on-secondary-container":"#00311b","surface-tint":"#ffb4a8","on-error":"#690005","text-subtle":"#6F7680","text-muted":"#A0A5AD","on-tertiary-fixed-variant":"#00468a","primary-fixed-dim":"#ffb4a8","tertiary":"#a8c8ff","primary-container":"#e10600","on-tertiary-container":"#f2f5ff","telemetry-amber":"#E7B45A","on-surface-variant":"#e9bcb5","inverse-on-surface":"#2f3035","surface-container-lowest":"#0c0e12","on-tertiary":"#003062","on-secondary":"#003920","on-surface":"#e2e2e8","secondary-fixed-dim":"#6cdc9f","tertiary-fixed-dim":"#a8c8ff","on-secondary-fixed-variant":"#005231","surface":"#111317","surface-container-low":"#1a1c20","secondary":"#6cdc9f","telemetry-delta-neg":"#E10600","inverse-surface":"#e2e2e8","background":"#111317","on-error-container":"#ffdad6","surface-container-highest":"#333539"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-lg":"1.5rem","gutter":"1.75rem","gutter-tablet":"1.75rem","space-md":"0.875rem","margin-tablet":"2rem","gutter-desktop":"3rem","gutter-mobile":"1.125rem","margin-desktop":"3rem","space-xl":"2.25rem","margin":"1.5rem","margin-mobile":"1rem","space-xs":"0.25rem","space-sm":"0.5rem"},fontFamily:{"body-md":["Inter"],"headline-sm":["Barlow Condensed"],"headline-lg-mobile":["Barlow Condensed"],"data-mono-md":["Inter"],"body-sm":["Inter"],"display-xl-mobile":["Barlow Condensed"],"label-caps":["Inter"],"display-xl":["Barlow Condensed"],"headline-lg":["Barlow Condensed"],"body-lg":["Inter"],"headline-md":["Barlow Condensed"],"data-mono-lg":["Inter"]},fontSize:{"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"headline-sm":["18px",{"lineHeight":"22px","letterSpacing":"0.05em","fontWeight":"600"}],"headline-lg-mobile":["28px",{"lineHeight":"32px","letterSpacing":"0.03em","fontWeight":"600"}],"data-mono-md":["14px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"600"}],"body-sm":["12px",{"lineHeight":"18px","fontWeight":"400"}],"display-xl-mobile":["38px",{"lineHeight":"42px","letterSpacing":"0.02em","fontWeight":"700"}],"label-caps":["11px",{"lineHeight":"14px","letterSpacing":"0.08em","fontWeight":"600"}],"display-xl":["56px",{"lineHeight":"60px","letterSpacing":"0.02em","fontWeight":"700"}],"headline-lg":["36px",{"lineHeight":"40px","letterSpacing":"0.03em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"headline-md":["24px",{"lineHeight":"28px","letterSpacing":"0.04em","fontWeight":"600"}],"data-mono-lg":["24px",{"lineHeight":"28px","letterSpacing":"-0.02em","fontWeight":"700"}]}}}};</script></head><body class="bg-canvas-base font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-text-primary"><header class="fixed top-0 left-0 w-full z-50 bg-canvas-base/95 backdrop-blur-md border-b border-border-subtle"><div class="h-16 w-full max-w-[1440px] mx-auto px-margin md:px-margin-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg shrink-0"><a class="flex flex-col group" data-path="overview" href="#"><div class="flex items-center gap-space-xs"><span class="w-2 h-4 bg-primary-container inline-block"></span><span class="font-headline-sm text-headline-sm uppercase text-text-primary tracking-wider group-hover:text-ferrari-red-hover transition-colors">FAHFERRARI</span></div><span class="font-label-caps text-label-caps uppercase text-text-muted tracking-widest pl-[12px]">F1 PERFORMANCE INTELLIGENCE</span></a></div><nav class="hidden xl:flex items-center gap-space-md self-stretch pt-[2px]" data-active-classes="text-text-primary border-b-2 border-primary-container pb-[22px] shadow-[0_4px_12px_rgba(225,6,0,0.35)]"><a class="font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary tracking-wider transition-colors pt-[22px] pb-[22px]" data-path="overview" href="#">Overview</a><a class="font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary tracking-wider transition-colors pt-[22px] pb-[22px]" data-path="championship" href="#">Championship</a><a class="font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary tracking-wider transition-colors pt-[22px] pb-[22px]" data-path="ferrari" href="#">Ferrari</a><a class="font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary tracking-wider transition-colors pt-[22px] pb-[22px]" data-path="race-calendar" href="#">Race Calendar</a><a class="font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary tracking-wider transition-colors pt-[22px] pb-[22px]" data-path="simulation-lab" href="#">Simulation Lab</a><a class="font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary tracking-wider transition-colors pt-[22px] pb-[22px]" data-path="model-intelligence" href="#">Model Intelligence</a><a class="font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary tracking-wider transition-colors pt-[22px] pb-[22px]" data-path="ai-strategist" href="#">AI Strategist</a><a class="font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary tracking-wider transition-colors pt-[22px] pb-[22px]" data-path="2026-retrospective" href="#">2026 Retrospective</a></nav><div class="flex items-center gap-space-sm shrink-0"><div class="hidden lg:flex items-center bg-surface-panel border border-border-subtle px-space-sm py-1"><span class="font-data-mono-md text-body-sm text-text-muted tracking-wider uppercase mr-1">SEASON</span><span class="font-data-mono-md text-body-sm text-text-primary uppercase">2027 PRESEASON</span><span class="material-symbols-outlined text-[16px] text-text-muted ml-1">expand_more</span></div><div class="hidden sm:flex items-center gap-space-xs bg-surface-panel border border-border-subtle px-space-sm py-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_8px_#55C58A] animate-pulse"></span><span class="font-label-caps text-label-caps uppercase text-text-primary">PRESEASON SNAPSHOT · FROZEN</span></div><div class="hidden 2xl:block bg-surface-panel border border-border-subtle px-space-sm py-1 font-label-caps text-label-caps uppercase text-text-subtle">DATA CUTOFF: FEB 18, 2027</div><button aria-label="Telemetry Terminal Search" class="p-1.5 bg-surface-panel border border-border-subtle hover:border-border-focus hover:bg-surface-raised text-text-muted hover:text-text-primary transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">terminal</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-canvas-base min-h-screen"><div class="flex flex-col w-full">
+<!-- Command Header & Telemetry Strip -->
+<div class="w-full bg-surface-dim px-margin md:px-margin-desktop py-space-lg">
+<div class="max-w-[1440px] mx-auto flex flex-col gap-space-md">
+<!-- Eyebrow & Status Bar -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm text-text-subtle">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-telemetry-delta-pos"></span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest text-text-primary">PREDICTIVE STANDINGS · 10,000 MONTE CARLO SEASONS</span>
+<span class="text-border-focus px-space-xs">/</span>
+<span class="font-label-caps text-label-caps uppercase text-telemetry-amber">POSTERIOR CONVERGENCE ASSURED</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-data-mono-md text-body-sm text-text-muted bg-surface-raised px-space-sm py-0.5 rounded">MCMC SEED #4416 · R-HAT &lt; 1.01</span>
+<span class="font-label-caps text-label-caps uppercase text-text-subtle bg-surface-raised px-space-sm py-0.5 rounded">CALENDAR: 24 GP + 6 SPRINTS</span>
+</div>
+</div>
+<!-- Main Title Block -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md">
+<div class="flex flex-col">
+<h1 class="font-headline-lg text-headline-lg uppercase text-text-primary tracking-wide">THE CHAMPIONSHIP MODEL</h1>
+<p class="font-body-md text-body-md text-text-muted max-w-3xl mt-1">
+            Explore the full posterior probability distributions, paired teammate margins, and credible intervals behind the 2027 Formula 1 World Championships.
+          </p>
+</div>
+<!-- Quick Stats Badge -->
+<div class="flex items-center gap-space-md bg-surface-raised p-space-sm rounded">
+<div class="flex flex-col border-r border-border-subtle pr-space-md">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">FERRARI P(WCC)</span>
+<span class="font-data-mono-lg text-data-mono-lg text-primary-container">38.4%</span>
+</div>
+<div class="flex flex-col border-r border-border-subtle pr-space-md">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">MCLAREN P(WCC)</span>
+<span class="font-data-mono-lg text-data-mono-lg text-text-primary">41.2%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">DELTA EXP PTS</span>
+<span class="font-data-mono-lg text-data-mono-lg text-telemetry-amber">-15.8</span>
+</div>
+</div>
+</div>
+<!-- Interactive Controls Toolbar -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+<!-- Championship Toggle -->
+<div class="flex items-center bg-canvas-base p-0.5 rounded">
+<button class="px-space-md py-1 font-label-caps text-label-caps uppercase text-text-primary bg-surface-raised transition-colors flex items-center gap-1.5 shadow-sm" id="toggle-wcc">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+            Constructors' Championship (WCC)
+          </button>
+<button class="px-space-md py-1 font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary transition-colors" id="toggle-wdc">
+            Drivers' Championship (WDC)
+          </button>
+</div>
+<!-- Metric Filter & Scenario Selection -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<div class="flex items-center bg-canvas-base p-0.5 rounded">
+<button class="px-space-sm py-1 font-label-caps text-label-caps uppercase text-text-primary bg-surface-raised">Expected (Mean)</button>
+<button class="px-space-sm py-1 font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary">Median (50th)</button>
+<button class="px-space-sm py-1 font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary">P(P1 Win)</button>
+</div>
+<div class="flex items-center bg-canvas-base p-0.5 rounded">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle px-space-xs">SCENARIO:</span>
+<button class="px-space-sm py-1 font-label-caps text-label-caps uppercase text-text-primary bg-surface-raised">10,000 Runs</button>
+<button class="px-space-sm py-1 font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary">High-Aero Bias</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Primary Analytic Core Container -->
+<div class="w-full px-margin md:px-margin-desktop py-space-xl max-w-[1440px] mx-auto flex flex-col gap-space-xl">
+<!-- SECTION 1: POINT EXPECTATION & 90% CREDIBLE INTERVAL (HDI) -->
+<div class="flex flex-col bg-surface-panel p-space-lg rounded">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm mb-space-lg pb-space-sm">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-3 bg-primary-container"></span>
+<h2 class="font-headline-md text-headline-md uppercase text-text-primary">2027 CONSTRUCTORS' CHAMPIONSHIP — POINT EXPECTATION &amp; 90% CREDIBLE INTERVAL (HDI)</h2>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted mt-0.5">
+            Horizontal whisker distributions displaying 5th percentile, median, mean, and 95th percentile with posterior title probability.
+          </p>
+</div>
+<div class="flex items-center gap-space-md text-text-subtle font-label-caps text-label-caps uppercase shrink-0">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-1.5 bg-surface-variant inline-block rounded-xs"></span>
+<span>90% HDI SPAN</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-1 h-3 bg-text-primary inline-block"></span>
+<span>MEDIAN</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary-container inline-block"></span>
+<span>TARGET ENTITY</span>
+</div>
+</div>
+</div>
+<!-- Whisker Plot Matrix -->
+<div class="flex flex-col gap-2.5">
+<!-- Scale Header Row -->
+<div class="grid grid-cols-12 gap-space-sm items-center font-label-caps text-label-caps uppercase text-text-subtle px-space-sm py-1 bg-surface-raised rounded">
+<div class="col-span-3">Constructor &amp; Powertrain</div>
+<div class="col-span-5 relative">
+<div class="flex justify-between w-full">
+<span>0 PTS</span>
+<span>150</span>
+<span>300</span>
+<span>450</span>
+<span>600</span>
+<span>750 PTS</span>
+</div>
+</div>
+<div class="col-span-2 text-right">Expected Mean [90% HDI]</div>
+<div class="col-span-1 text-right">P(WCC)</div>
+<div class="col-span-1 text-right">P(Top 3)</div>
+</div>
+<!-- 1. McLaren -->
+<div class="grid grid-cols-12 gap-space-sm items-center px-space-sm py-2 hover:bg-surface-raised transition-colors rounded">
+<div class="col-span-3 flex items-center gap-2">
+<span class="font-data-mono-md text-body-sm text-text-subtle w-4">01</span>
+<div class="w-1.5 h-6 bg-telemetry-amber rounded-xs"></div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary leading-tight">McLaren Mercedes</span>
+<span class="font-label-caps text-label-caps text-text-subtle uppercase">MCL39 · MERCEDES HPP</span>
+</div>
+</div>
+<!-- Whisker Bar (Scale 0-750 pts) -->
+<div class="col-span-5 relative h-8 flex items-center">
+<div class="absolute inset-0 grid grid-cols-5 opacity-10">
+<div class="border-r border-text-muted h-full"></div>
+<div class="border-r border-text-muted h-full"></div>
+<div class="border-r border-text-muted h-full"></div>
+<div class="border-r border-text-muted h-full"></div>
+<div class="h-full"></div>
+</div>
+<!-- Range Bar: 480 to 632 pts (64.0% to 84.2%) -->
+<div class="absolute h-2.5 bg-surface-variant rounded-xs" style="left: 64%; width: 20.2%;"></div>
+<!-- Median tick: 554 (73.8%) -->
+<div class="absolute w-0.5 h-5 bg-text-primary z-10" style="left: 73.8%;"></div>
+<!-- Mean diamond: 558.2 (74.4%) -->
+<div class="absolute w-2 h-2 rotate-45 bg-telemetry-amber z-20" style="left: calc(74.4% - 4px);"></div>
+</div>
+<div class="col-span-2 text-right">
+<span class="font-data-mono-md text-data-mono-md text-text-primary">558.2</span>
+<span class="font-data-mono-md text-body-sm text-text-subtle block">[480.0 – 632.0]</span>
+</div>
+<div class="col-span-1 text-right">
+<span class="font-data-mono-md text-data-mono-md text-telemetry-delta-pos">41.2%</span>
+</div>
+<div class="col-span-1 text-right">
+<span class="font-data-mono-md text-body-md text-text-primary">91.4%</span>
+</div>
+</div>
+<!-- 2. Scuderia Ferrari (Target / Highlighted) -->
+<div class="grid grid-cols-12 gap-space-sm items-center px-space-sm py-2.5 bg-surface-raised rounded">
+<div class="col-span-3 flex items-center gap-2">
+<span class="font-data-mono-md text-body-sm text-primary-container w-4 font-bold">02</span>
+<div class="w-1.5 h-7 bg-primary-container rounded-xs"></div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary leading-tight font-bold">Scuderia Ferrari</span>
+<span class="bg-primary-container text-text-primary text-[9px] px-1 py-0.2 uppercase font-bold tracking-wider rounded-xs">TARGET</span>
+</div>
+<span class="font-label-caps text-label-caps text-text-muted uppercase">SF-27 · 066/12 V6 T</span>
+</div>
+</div>
+<!-- Whisker Bar (Scale 0-750 pts) -->
+<div class="col-span-5 relative h-8 flex items-center">
+<div class="absolute inset-0 grid grid-cols-5 opacity-10">
+<div class="border-r border-text-muted h-full"></div>
+<div class="border-r border-text-muted h-full"></div>
+<div class="border-r border-text-muted h-full"></div>
+<div class="border-r border-text-muted h-full"></div>
+<div class="h-full"></div>
+</div>
+<!-- Range Bar: 468 to 618.5 pts (62.4% to 82.4%) -->
+<div class="absolute h-3 bg-primary-container/20 rounded-xs" style="left: 62.4%; width: 20.0%;"></div>
+<div class="absolute h-1 bg-primary-container" style="left: 62.4%; width: 20.0%;"></div>
+<!-- Median tick: 538.0 (71.7%) -->
+<div class="absolute w-1 h-5 bg-text-primary z-10" style="left: 71.7%;"></div>
+<!-- Mean point: 542.4 (72.3%) -->
+<div class="absolute w-2.5 h-2.5 rotate-45 bg-ferrari-red-hover z-20 shadow-[0_0_8px_#E10600]" style="left: calc(72.3% - 5px);"></div>
+</div>
+<div class="col-span-2 text-right">
+<span class="font-data-mono-md text-data-mono-lg text-primary-container">542.4</span>
+<span class="font-data-mono-md text-body-sm text-text-muted block">[468.0 – 618.5]</span>
+</div>
+<div class="col-span-1 text-right">
+<span class="font-data-mono-md text-data-mono-md text-primary-container">38.4%</span>
+</div>
+<div class="col-span-1 text-right">
+<span class="font-data-mono-md text-body-md text-text-primary">88.2%</span>
+</div>
+</div>
+<!-- 3. Red Bull Racing -->
+<div class="grid grid-cols-12 gap-space-sm items-center px-space-sm py-2 hover:bg-surface-raised transition-colors rounded">
+<div class="col-span-3 flex items-center gap-2">
+<span class="font-data-mono-md text-body-sm text-text-subtle w-4">03</span>
+<div class="w-1.5 h-6 bg-tertiary-container rounded-xs"></div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary leading-tight">Red Bull Honda RBPT</span>
+<span class="font-label-caps text-label-caps text-text-subtle uppercase">RB23 · HONDA HRC RBPTH003</span>
+</div>
+</div>
+<!-- Whisker Bar -->
+<div class="col-span-5 relative h-8 flex items-center">
+<div class="absolute inset-0 grid grid-cols-5 opacity-10">
+<div class="border-r border-text-muted h-full"></div>
+<div class="border-r border-text-muted h-full"></div>
+<div class="border-r border-text-muted h-full"></div>
+<div class="border-r border-text-muted h-full"></div>
+<div class="h-full"></div>
+</div>
+<!-- Range Bar: 415 to 572 pts (55.3% to 76.2%) -->
+<div class="absolute h-2.5 bg-surface-variant rounded-xs" style="left: 55.3%; width: 20.9%;"></div>
+<div class="absolute w-0.5 h-5 bg-text-primary z-10" style="left: 65.5%;"></div>
+<div class="absolute w-2 h-2 rotate-45 bg-tertiary z-20" style="left: calc(65.9% - 4px);"></div>
+</div>
+<div class="col-span-2 text-right">
+<span class="font-data-mono-md text-data-mono-md text-text-primary">494.6</span>
+<span class="font-data-mono-md text-body-sm text-text-subtle block">[415.0 – 572.0]</span>
+</div>
+<div class="col-span-1 text-right">
+<span class="font-data-mono-md text-data-mono-md text-text-primary">16.1%</span>
+</div>
+<div class="col-span-1 text-right">
+<span class="font-data-mono-md text-body-md text-text-primary">78.5%</span>
+</div>
+</div>
+<!-- 4. Mercedes-AMG -->
+<div class="grid grid-cols-12 gap-space-sm items-center px-space-sm py-2 hover:bg-surface-raised transition-colors rounded">
+<div class="col-span-3 flex items-center gap-2">
+<span class="font-data-mono-md text-body-sm text-text-subtle w-4">04</span>
+<div class="w-1.5 h-6 bg-secondary-container rounded-xs"></div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary leading-tight">Mercedes-AMG Petronas</span>
+<span class="font-label-caps text-label-caps text-text-subtle uppercase">F1 W18 · MERCEDES M18</span>
+</div>
+</div>
+<!-- Whisker Bar -->
+<div class="col-span-5 relative h-8 flex items-center">
+<div class="absolute inset-0 grid grid-cols-5 opacity-10">
+<div class="border-r border-text-muted h-full"></div>
+<div class="border-r border-text-muted h-full"></div>
+<div class="border-r border-text-muted h-full"></div>
+<div class="border-r border-text-muted h-full"></div>
+<div class="h-full"></div>
+</div>
+<!-- Range Bar: 340 to 482 pts (45.3% to 64.2%) -->
+<div class="absolute h-2.5 bg-surface-variant rounded-xs" style="left: 45.3%; width: 18.9%;"></div>
+<div class="absolute w-0.5 h-5 bg-text-primary z-10" style="left: 54.8%;"></div>
+<div class="absolute w-2 h-2 rotate-45 bg-secondary-fixed z-20" style="left: calc(54.9% - 4px);"></div>
+</div>
+<div class="col-span-2 text-right">
+<span class="font-data-mono-md text-data-mono-md text-text-primary">412.0</span>
+<span class="font-data-mono-md text-body-sm text-text-subtle block">[340.0 – 482.0]</span>
+</div>
+<div class="col-span-1 text-right">
+<span class="font-data-mono-md text-data-mono-md text-text-muted">4.1%</span>
+</div>
+<div class="col-span-1 text-right">
+<span class="font-data-mono-md text-body-md text-text-primary">38.6%</span>
+</div>
+</div>
+<!-- 5. Aston Martin -->
+<div class="grid grid-cols-12 gap-space-sm items-center px-space-sm py-2 hover:bg-surface-raised transition-colors rounded">
+<div class="col-span-3 flex items-center gap-2">
+<span class="font-data-mono-md text-body-sm text-text-subtle w-4">05</span>
+<div class="w-1.5 h-6 bg-secondary rounded-xs"></div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary leading-tight">Aston Martin Aramco</span>
+<span class="font-label-caps text-label-caps text-text-subtle uppercase">AMR27 · HONDA RA27H</span>
+</div>
+</div>
+<div class="col-span-5 relative h-8 flex items-center">
+<div class="absolute inset-0 grid grid-cols-5 opacity-10">
+<div class="border-r border-text-muted h-full"></div>
+<div class="border-r border-text-muted h-full"></div>
+<div class="border-r border-text-muted h-full"></div>
+<div class="border-r border-text-muted h-full"></div>
+<div class="h-full"></div>
+</div>
+<!-- Range Bar: 142 to 258 pts (18.9% to 34.4%) -->
+<div class="absolute h-2 bg-surface-variant rounded-xs" style="left: 18.9%; width: 15.5%;"></div>
+<div class="absolute w-0.5 h-4 bg-text-primary z-10" style="left: 26.2%;"></div>
+<div class="absolute w-1.5 h-1.5 rotate-45 bg-text-muted z-20" style="left: calc(26.4% - 3px);"></div>
+</div>
+<div class="col-span-2 text-right">
+<span class="font-data-mono-md text-data-mono-md text-text-primary">198.4</span>
+<span class="font-data-mono-md text-body-sm text-text-subtle block">[142.0 – 258.0]</span>
+</div>
+<div class="col-span-1 text-right">
+<span class="font-data-mono-md text-data-mono-md text-text-subtle">0.2%</span>
+</div>
+<div class="col-span-1 text-right">
+<span class="font-data-mono-md text-body-md text-text-muted">3.1%</span>
+</div>
+</div>
+<!-- 6. Alpine -->
+<div class="grid grid-cols-12 gap-space-sm items-center px-space-sm py-1.5 hover:bg-surface-raised transition-colors rounded text-text-muted">
+<div class="col-span-3 flex items-center gap-2">
+<span class="font-data-mono-md text-body-sm text-text-subtle w-4">06</span>
+<div class="w-1.5 h-5 bg-tertiary-fixed-dim rounded-xs"></div>
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary">Alpine F1 Team</span>
+</div>
+<div class="col-span-5 relative h-6 flex items-center">
+<div class="absolute h-1.5 bg-surface-variant rounded-xs" style="left: 10.4%; width: 11.4%;"></div>
+<div class="absolute w-0.5 h-3 bg-text-muted" style="left: 15.7%;"></div>
+</div>
+<div class="col-span-2 text-right">
+<span class="font-data-mono-md text-body-sm text-text-primary">118.2</span>
+<span class="font-data-mono-md text-body-sm text-text-subtle block">[78.0 – 164.0]</span>
+</div>
+<div class="col-span-1 text-right font-data-mono-md text-body-sm text-text-subtle">&lt;0.1%</div>
+<div class="col-span-1 text-right font-data-mono-md text-body-sm text-text-subtle">0.2%</div>
+</div>
+<!-- 7. Williams -->
+<div class="grid grid-cols-12 gap-space-sm items-center px-space-sm py-1.5 hover:bg-surface-raised transition-colors rounded text-text-muted">
+<div class="col-span-3 flex items-center gap-2">
+<span class="font-data-mono-md text-body-sm text-text-subtle w-4">07</span>
+<div class="w-1.5 h-5 bg-tertiary-container rounded-xs"></div>
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary">Williams Racing</span>
+</div>
+<div class="col-span-5 relative h-6 flex items-center">
+<div class="absolute h-1.5 bg-surface-variant rounded-xs" style="left: 7.7%; width: 10.4%;"></div>
+<div class="absolute w-0.5 h-3 bg-text-muted" style="left: 12.5%;"></div>
+</div>
+<div class="col-span-2 text-right">
+<span class="font-data-mono-md text-body-sm text-text-primary">94.0</span>
+<span class="font-data-mono-md text-body-sm text-text-subtle block">[58.0 – 136.0]</span>
+</div>
+<div class="col-span-1 text-right font-data-mono-md text-body-sm text-text-subtle">0.0%</div>
+<div class="col-span-1 text-right font-data-mono-md text-body-sm text-text-subtle">&lt;0.1%</div>
+</div>
+<!-- 8. Racing Bulls -->
+<div class="grid grid-cols-12 gap-space-sm items-center px-space-sm py-1.5 hover:bg-surface-raised transition-colors rounded text-text-muted">
+<div class="col-span-3 flex items-center gap-2">
+<span class="font-data-mono-md text-body-sm text-text-subtle w-4">08</span>
+<div class="w-1.5 h-5 bg-surface-bright rounded-xs"></div>
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary">Visa Cash App RB</span>
+</div>
+<div class="col-span-5 relative h-6 flex items-center">
+<div class="absolute h-1.5 bg-surface-variant rounded-xs" style="left: 5.6%; width: 8.8%;"></div>
+<div class="absolute w-0.5 h-3 bg-text-muted" style="left: 9.6%;"></div>
+</div>
+<div class="col-span-2 text-right">
+<span class="font-data-mono-md text-body-sm text-text-primary">72.6</span>
+<span class="font-data-mono-md text-body-sm text-text-subtle block">[42.0 – 108.0]</span>
+</div>
+<div class="col-span-1 text-right font-data-mono-md text-body-sm text-text-subtle">0.0%</div>
+<div class="col-span-1 text-right font-data-mono-md text-body-sm text-text-subtle">0.0%</div>
+</div>
+<!-- 9. Audi Revolut -->
+<div class="grid grid-cols-12 gap-space-sm items-center px-space-sm py-1.5 hover:bg-surface-raised transition-colors rounded text-text-muted">
+<div class="col-span-3 flex items-center gap-2">
+<span class="font-data-mono-md text-body-sm text-text-subtle w-4">09</span>
+<div class="w-1.5 h-5 bg-error-container rounded-xs"></div>
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary">Audi Revolut F1</span>
+</div>
+<div class="col-span-5 relative h-6 flex items-center">
+<div class="absolute h-1.5 bg-surface-variant rounded-xs" style="left: 2.8%; width: 7.0%;"></div>
+<div class="absolute w-0.5 h-3 bg-text-muted" style="left: 5.9%;"></div>
+</div>
+<div class="col-span-2 text-right">
+<span class="font-data-mono-md text-body-sm text-text-primary">44.8</span>
+<span class="font-data-mono-md text-body-sm text-text-subtle block">[21.0 – 74.0]</span>
+</div>
+<div class="col-span-1 text-right font-data-mono-md text-body-sm text-text-subtle">0.0%</div>
+<div class="col-span-1 text-right font-data-mono-md text-body-sm text-text-subtle">0.0%</div>
+</div>
+<!-- 10. Haas -->
+<div class="grid grid-cols-12 gap-space-sm items-center px-space-sm py-1.5 hover:bg-surface-raised transition-colors rounded text-text-muted">
+<div class="col-span-3 flex items-center gap-2">
+<span class="font-data-mono-md text-body-sm text-text-subtle w-4">10</span>
+<div class="w-1.5 h-5 bg-border-focus rounded-xs"></div>
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary">Haas F1 Team</span>
+</div>
+<div class="col-span-5 relative h-6 flex items-center">
+<div class="absolute h-1.5 bg-surface-variant rounded-xs" style="left: 2.4%; width: 6.4%;"></div>
+<div class="absolute w-0.5 h-3 bg-text-muted" style="left: 5.0%;"></div>
+</div>
+<div class="col-span-2 text-right">
+<span class="font-data-mono-md text-body-sm text-text-primary">38.2</span>
+<span class="font-data-mono-md text-body-sm text-text-subtle block">[18.0 – 66.0]</span>
+</div>
+<div class="col-span-1 text-right font-data-mono-md text-body-sm text-text-subtle">0.0%</div>
+<div class="col-span-1 text-right font-data-mono-md text-body-sm text-text-subtle">0.0%</div>
+</div>
+</div>
+</div>
+<!-- SECTION 2: POSITION PROBABILITY HEATMAP MATRIX -->
+<div class="flex flex-col bg-surface-panel p-space-lg rounded">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm mb-space-lg">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-3 bg-primary-container"></span>
+<h2 class="font-headline-md text-headline-md uppercase text-text-primary">FINISHING POSITION PROBABILITY HEATMAP (P1 TO P10+)</h2>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted mt-0.5">
+            Simulated finishing probability across all 10,000 Monte Carlo iterations. Values indicate percentage of seasons finishing in exact rank.
+          </p>
+</div>
+<div class="flex items-center gap-space-sm bg-surface-raised px-space-md py-1 rounded">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">HEATMAP DENSITY:</span>
+<div class="flex items-center gap-1">
+<span class="w-3 h-3 bg-surface-variant rounded-xs" title="0-5%"></span>
+<span class="w-3 h-3 bg-primary-container/30 rounded-xs" title="5-20%"></span>
+<span class="w-3 h-3 bg-primary-container/60 rounded-xs" title="20-35%"></span>
+<span class="w-3 h-3 bg-primary-container rounded-xs" title="35%+"></span>
+</div>
+</div>
+</div>
+<!-- Heatmap Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="font-label-caps text-label-caps uppercase text-text-subtle bg-canvas-base">
+<th class="py-2.5 px-space-md">Constructor</th>
+<th class="py-2.5 px-space-sm text-center">P1</th>
+<th class="py-2.5 px-space-sm text-center">P2</th>
+<th class="py-2.5 px-space-sm text-center">P3</th>
+<th class="py-2.5 px-space-sm text-center">P4</th>
+<th class="py-2.5 px-space-sm text-center">P5</th>
+<th class="py-2.5 px-space-sm text-center">P6–P10</th>
+<th class="py-2.5 px-space-md text-right">Expected Rank</th>
+</tr>
+</thead>
+<tbody class="font-data-mono-md text-body-sm">
+<!-- McLaren -->
+<tr class="hover:bg-surface-raised transition-colors">
+<td class="py-2.5 px-space-md font-headline-sm text-headline-sm uppercase text-text-primary">
+                McLaren Mercedes
+              </td>
+<td class="py-2.5 px-space-sm text-center bg-primary-container/60 text-text-primary font-bold">41.2%</td>
+<td class="py-2.5 px-space-sm text-center bg-primary-container/50 text-text-primary">34.6%</td>
+<td class="py-2.5 px-space-sm text-center bg-primary-container/20 text-text-muted">15.6%</td>
+<td class="py-2.5 px-space-sm text-center bg-surface-raised text-text-subtle">7.2%</td>
+<td class="py-2.5 px-space-sm text-center bg-surface-variant/40 text-text-subtle">1.4%</td>
+<td class="py-2.5 px-space-sm text-center text-text-subtle">0.0%</td>
+<td class="py-2.5 px-space-md text-right text-text-primary font-bold">1.9</td>
+</tr>
+<!-- Scuderia Ferrari -->
+<tr class="bg-surface-raised shadow-inner">
+<td class="py-2.5 px-space-md font-headline-sm text-headline-sm uppercase text-text-primary flex items-center gap-2">
+<span class="w-1.5 h-4 bg-primary-container rounded-xs"></span>
+<span class="font-bold">Scuderia Ferrari</span>
+</td>
+<td class="py-2.5 px-space-sm text-center bg-primary-container/60 text-text-primary font-bold">38.4%</td>
+<td class="py-2.5 px-space-sm text-center bg-primary-container/50 text-text-primary font-bold">35.1%</td>
+<td class="py-2.5 px-space-sm text-center bg-primary-container/20 text-text-muted">14.7%</td>
+<td class="py-2.5 px-space-sm text-center bg-surface-variant/50 text-text-subtle">9.8%</td>
+<td class="py-2.5 px-space-sm text-center bg-surface-variant/20 text-text-subtle">2.0%</td>
+<td class="py-2.5 px-space-sm text-center text-text-subtle">0.0%</td>
+<td class="py-2.5 px-space-md text-right text-primary-container font-bold text-data-mono-md">2.0</td>
+</tr>
+<!-- Red Bull -->
+<tr class="hover:bg-surface-raised transition-colors">
+<td class="py-2.5 px-space-md font-headline-sm text-headline-sm uppercase text-text-primary">
+                Red Bull Honda RBPT
+              </td>
+<td class="py-2.5 px-space-sm text-center bg-primary-container/20 text-text-muted">16.1%</td>
+<td class="py-2.5 px-space-sm text-center bg-primary-container/30 text-text-primary">21.8%</td>
+<td class="py-2.5 px-space-sm text-center bg-primary-container/60 text-text-primary font-bold">40.6%</td>
+<td class="py-2.5 px-space-sm text-center bg-primary-container/20 text-text-muted">15.2%</td>
+<td class="py-2.5 px-space-sm text-center bg-surface-variant/40 text-text-subtle">5.8%</td>
+<td class="py-2.5 px-space-sm text-center text-text-subtle">0.5%</td>
+<td class="py-2.5 px-space-md text-right text-text-primary font-bold">2.7</td>
+</tr>
+<!-- Mercedes -->
+<tr class="hover:bg-surface-raised transition-colors">
+<td class="py-2.5 px-space-md font-headline-sm text-headline-sm uppercase text-text-primary">
+                Mercedes-AMG
+              </td>
+<td class="py-2.5 px-space-sm text-center bg-surface-variant/30 text-text-subtle">4.1%</td>
+<td class="py-2.5 px-space-sm text-center bg-surface-variant/50 text-text-subtle">8.3%</td>
+<td class="py-2.5 px-space-sm text-center bg-primary-container/30 text-text-primary">26.2%</td>
+<td class="py-2.5 px-space-sm text-center bg-primary-container/60 text-text-primary font-bold">43.1%</td>
+<td class="py-2.5 px-space-sm text-center bg-primary-container/20 text-text-muted">15.6%</td>
+<td class="py-2.5 px-space-sm text-center text-text-subtle">2.7%</td>
+<td class="py-2.5 px-space-md text-right text-text-primary font-bold">3.8</td>
+</tr>
+<!-- Aston Martin -->
+<tr class="hover:bg-surface-raised transition-colors">
+<td class="py-2.5 px-space-md font-headline-sm text-headline-sm uppercase text-text-primary">
+                Aston Martin Aramco
+              </td>
+<td class="py-2.5 px-space-sm text-center text-text-subtle">0.2%</td>
+<td class="py-2.5 px-space-sm text-center text-text-subtle">0.2%</td>
+<td class="py-2.5 px-space-sm text-center bg-surface-variant/20 text-text-subtle">2.7%</td>
+<td class="py-2.5 px-space-sm text-center bg-primary-container/20 text-text-muted">18.5%</td>
+<td class="py-2.5 px-space-sm text-center bg-primary-container/60 text-text-primary font-bold">52.4%</td>
+<td class="py-2.5 px-space-sm text-center bg-primary-container/30 text-text-primary">26.0%</td>
+<td class="py-2.5 px-space-md text-right text-text-primary font-bold">5.1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- SECTION 3: DRIVERS' CHAMPIONSHIP (WDC) OUTLOOK & CONTENDERS -->
+<div class="flex flex-col gap-space-md">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-3 bg-primary-container"></span>
+<h2 class="font-headline-md text-headline-md uppercase text-text-primary">DRIVERS' CHAMPIONSHIP (WDC) — TITLE OUTLOOK &amp; PAIRED SAMPLES</h2>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted mt-0.5">
+            Individual driver distributions, median point baselines, and simulated title capture probabilities over 24 Grands Prix.
+          </p>
+</div>
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">TOP 6 DRIVER CONTENDERS · MODEL CONFIDENCE: HIGH</span>
+</div>
+<!-- Driver Cards Mosaic Grid (3x2 Desktop, 1 Col Mobile) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-md">
+<!-- CARD 1: Charles Leclerc (Ferrari) -->
+<div class="flex flex-col bg-surface-panel p-space-md rounded border-t-2 border-primary-container relative overflow-hidden group">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2.5">
+<span class="font-headline-lg text-headline-lg font-bold text-primary-container leading-none">16</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary font-bold">Charles Leclerc</span>
+<span class="font-label-caps text-label-caps text-text-subtle uppercase">SCUDERIA FERRARI</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">P(WDC TITLE)</span>
+<span class="font-data-mono-lg text-data-mono-lg text-primary-container">22.8%</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-space-xs my-space-md bg-surface-raised p-space-sm rounded">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">EXP POINTS</span>
+<span class="font-data-mono-md text-data-mono-md text-text-primary">278.6</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">EXP WINS</span>
+<span class="font-data-mono-md text-data-mono-md text-text-primary">4.8</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">EXP PODIUMS</span>
+<span class="font-data-mono-md text-data-mono-md text-text-primary">14.2</span>
+</div>
+</div>
+<!-- Credible Interval Whisker -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-label-caps text-label-caps text-text-subtle">
+<span>90% HDI: [232.0 – 324.0]</span>
+<span>MEDIAN: 276.0 PTS</span>
+</div>
+<div class="w-full bg-surface-raised h-2 rounded relative">
+<div class="absolute h-full bg-primary-container/40 rounded-xs" style="left: 25%; width: 55%;"></div>
+<div class="absolute w-1 h-3 bg-text-primary -top-0.5 rounded-xs" style="left: 58%;"></div>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs text-text-muted font-body-sm text-body-sm flex items-center justify-between">
+<span class="text-text-subtle">Teammate Margin vs HAM:</span>
+<span class="font-data-mono-md text-body-sm text-telemetry-delta-pos font-semibold">+14.8 pts median</span>
+</div>
+</div>
+<!-- CARD 2: Lando Norris (McLaren) -->
+<div class="flex flex-col bg-surface-panel p-space-md rounded relative overflow-hidden group">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2.5">
+<span class="font-headline-lg text-headline-lg font-bold text-telemetry-amber leading-none">04</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary">Lando Norris</span>
+<span class="font-label-caps text-label-caps text-text-subtle uppercase">MCLAREN MERCEDES</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">P(WDC TITLE)</span>
+<span class="font-data-mono-lg text-data-mono-lg text-telemetry-amber">24.5%</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-space-xs my-space-md bg-surface-raised p-space-sm rounded">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">EXP POINTS</span>
+<span class="font-data-mono-md text-data-mono-md text-text-primary">284.1</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">EXP WINS</span>
+<span class="font-data-mono-md text-data-mono-md text-text-primary">5.2</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">EXP PODIUMS</span>
+<span class="font-data-mono-md text-data-mono-md text-text-primary">15.0</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-label-caps text-label-caps text-text-subtle">
+<span>90% HDI: [238.0 – 332.0]</span>
+<span>MEDIAN: 282.5 PTS</span>
+</div>
+<div class="w-full bg-surface-raised h-2 rounded relative">
+<div class="absolute h-full bg-telemetry-amber/40 rounded-xs" style="left: 28%; width: 56%;"></div>
+<div class="absolute w-1 h-3 bg-text-primary -top-0.5 rounded-xs" style="left: 61%;"></div>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs text-text-muted font-body-sm text-body-sm flex items-center justify-between">
+<span class="text-text-subtle">Title Favorite Margin:</span>
+<span class="font-data-mono-md text-body-sm text-telemetry-amber font-semibold">+1.7% over Leclerc</span>
+</div>
+</div>
+<!-- CARD 3: Oscar Piastri (McLaren) -->
+<div class="flex flex-col bg-surface-panel p-space-md rounded relative overflow-hidden group">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2.5">
+<span class="font-headline-lg text-headline-lg font-bold text-text-muted leading-none">81</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary">Oscar Piastri</span>
+<span class="font-label-caps text-label-caps text-text-subtle uppercase">MCLAREN MERCEDES</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">P(WDC TITLE)</span>
+<span class="font-data-mono-lg text-data-mono-lg text-text-primary">19.8%</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-space-xs my-space-md bg-surface-raised p-space-sm rounded">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">EXP POINTS</span>
+<span class="font-data-mono-md text-data-mono-md text-text-primary">274.1</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">EXP WINS</span>
+<span class="font-data-mono-md text-data-mono-md text-text-primary">4.3</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">EXP PODIUMS</span>
+<span class="font-data-mono-md text-data-mono-md text-text-primary">13.8</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-label-caps text-label-caps text-text-subtle">
+<span>90% HDI: [228.0 – 321.0]</span>
+<span>MEDIAN: 272.0 PTS</span>
+</div>
+<div class="w-full bg-surface-raised h-2 rounded relative">
+<div class="absolute h-full bg-surface-variant rounded-xs" style="left: 23%; width: 54%;"></div>
+<div class="absolute w-1 h-3 bg-text-primary -top-0.5 rounded-xs" style="left: 55%;"></div>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs text-text-muted font-body-sm text-body-sm flex items-center justify-between">
+<span class="text-text-subtle">Teammate Delta vs NOR:</span>
+<span class="font-data-mono-md text-body-sm text-telemetry-delta-neg font-semibold">-10.0 pts median</span>
+</div>
+</div>
+<!-- CARD 4: Lewis Hamilton (Ferrari) -->
+<div class="flex flex-col bg-surface-panel p-space-md rounded border-t-2 border-primary-container relative overflow-hidden group">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2.5">
+<span class="font-headline-lg text-headline-lg font-bold text-primary-container leading-none">44</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary font-bold">Lewis Hamilton</span>
+<span class="font-label-caps text-label-caps text-text-subtle uppercase">SCUDERIA FERRARI</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">P(WDC TITLE)</span>
+<span class="font-data-mono-lg text-data-mono-lg text-primary-container">15.6%</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-space-xs my-space-md bg-surface-raised p-space-sm rounded">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">EXP POINTS</span>
+<span class="font-data-mono-md text-data-mono-md text-text-primary">263.8</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">EXP WINS</span>
+<span class="font-data-mono-md text-data-mono-md text-text-primary">3.9</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">EXP PODIUMS</span>
+<span class="font-data-mono-md text-data-mono-md text-text-primary">12.8</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-label-caps text-label-caps text-text-subtle">
+<span>90% HDI: [219.0 – 309.5]</span>
+<span>MEDIAN: 262.0 PTS</span>
+</div>
+<div class="w-full bg-surface-raised h-2 rounded relative">
+<div class="absolute h-full bg-primary-container/30 rounded-xs" style="left: 20%; width: 52%;"></div>
+<div class="absolute w-1 h-3 bg-text-primary -top-0.5 rounded-xs" style="left: 50%;"></div>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs text-text-muted font-body-sm text-body-sm flex items-center justify-between">
+<span class="text-text-subtle">Sunday Race-Pace Index:</span>
+<span class="font-data-mono-md text-body-sm text-text-primary font-semibold">0.931 (Top 4)</span>
+</div>
+</div>
+<!-- CARD 5: Max Verstappen (Red Bull) -->
+<div class="flex flex-col bg-surface-panel p-space-md rounded relative overflow-hidden group">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2.5">
+<span class="font-headline-lg text-headline-lg font-bold text-tertiary leading-none">01</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary">Max Verstappen</span>
+<span class="font-label-caps text-label-caps text-text-subtle uppercase">RED BULL RACING</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">P(WDC TITLE)</span>
+<span class="font-data-mono-lg text-data-mono-lg text-text-primary">14.8%</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-space-xs my-space-md bg-surface-raised p-space-sm rounded">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">EXP POINTS</span>
+<span class="font-data-mono-md text-data-mono-md text-text-primary">298.4</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">EXP WINS</span>
+<span class="font-data-mono-md text-data-mono-md text-text-primary">5.6</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">EXP PODIUMS</span>
+<span class="font-data-mono-md text-data-mono-md text-text-primary">14.1</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-label-caps text-label-caps text-text-subtle">
+<span>90% HDI: [242.0 – 356.0]</span>
+<span>MEDIAN: 295.0 PTS</span>
+</div>
+<div class="w-full bg-surface-raised h-2 rounded relative">
+<div class="absolute h-full bg-tertiary/30 rounded-xs" style="left: 30%; width: 62%;"></div>
+<div class="absolute w-1 h-3 bg-text-primary -top-0.5 rounded-xs" style="left: 68%;"></div>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs text-text-muted font-body-sm text-body-sm flex items-center justify-between">
+<span class="text-text-subtle">Pace Index / Contention:</span>
+<span class="font-data-mono-md text-body-sm text-text-primary font-semibold">0.942 (Field High)</span>
+</div>
+</div>
+<!-- CARD 6: George Russell (Mercedes) -->
+<div class="flex flex-col bg-surface-panel p-space-md rounded relative overflow-hidden group">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2.5">
+<span class="font-headline-lg text-headline-lg font-bold text-text-subtle leading-none">63</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary">George Russell</span>
+<span class="font-label-caps text-label-caps text-text-subtle uppercase">MERCEDES-AMG</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">P(WDC TITLE)</span>
+<span class="font-data-mono-lg text-data-mono-lg text-text-muted">2.5%</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-space-xs my-space-md bg-surface-raised p-space-sm rounded">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">EXP POINTS</span>
+<span class="font-data-mono-md text-data-mono-md text-text-primary">224.5</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">EXP WINS</span>
+<span class="font-data-mono-md text-data-mono-md text-text-primary">1.8</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">EXP PODIUMS</span>
+<span class="font-data-mono-md text-data-mono-md text-text-primary">8.4</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-label-caps text-label-caps text-text-subtle">
+<span>90% HDI: [181.0 – 268.0]</span>
+<span>MEDIAN: 223.0 PTS</span>
+</div>
+<div class="w-full bg-surface-raised h-2 rounded relative">
+<div class="absolute h-full bg-surface-variant rounded-xs" style="left: 10%; width: 48%;"></div>
+<div class="absolute w-1 h-3 bg-text-primary -top-0.5 rounded-xs" style="left: 36%;"></div>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs text-text-muted font-body-sm text-body-sm flex items-center justify-between">
+<span class="text-text-subtle">Chassis Pace Disadvantage:</span>
+<span class="font-data-mono-md text-body-sm text-telemetry-delta-neg font-semibold">-0.19s / Lap Delta</span>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION 4: TEAM-TO-TEAM DIRECT DELTA DISTRIBUTION -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+<!-- Panel 1: Ferrari vs McLaren -->
+<div class="flex flex-col bg-surface-panel p-space-lg rounded">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-3 bg-primary-container"></span>
+<h3 class="font-headline-sm text-headline-sm uppercase text-text-primary">HEAD-TO-HEAD: FERRARI VS MCLAREN</h3>
+</div>
+<span class="font-label-caps text-label-caps uppercase text-telemetry-amber bg-surface-raised px-space-sm py-0.5 rounded">TIGHT SPREAD</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted mb-space-md">
+          Points margin distribution across all 10,000 paired simulations (SF-27 Points minus MCL39 Points).
+        </p>
+<!-- Density Distribution SVG Graph -->
+<div class="w-full h-44 bg-surface-raised p-space-sm rounded relative flex flex-col justify-end">
+<svg class="w-full h-32 overflow-visible" preserveaspectratio="none" viewbox="0 0 400 120">
+<!-- Center 0 Axis line -->
+<line stroke="#3E434D" stroke-dasharray="2 2" stroke-width="1" x1="210" x2="210" y1="0" y2="120"></line>
+<!-- Shaded Area for McLaren Win (Ferrari < 0) -->
+<path d="M 40,120 Q 120,115 160,50 T 210,35 L 210,120 Z" fill="rgba(231, 180, 90, 0.15)"></path>
+<!-- Shaded Area for Ferrari Win (Ferrari > 0) -->
+<path d="M 210,35 Q 260,25 290,65 T 370,120 L 210,120 Z" fill="rgba(225, 6, 0, 0.25)"></path>
+<!-- Distribution Bell Curve Stroke -->
+<path d="M 40,120 C 100,118 150,70 190,30 C 210,10 240,20 270,55 C 310,95 340,118 370,120" fill="none" stroke="#F4F4F2" stroke-width="2"></path>
+<!-- Median Marker -->
+<line stroke="#FF3028" stroke-width="2" x1="190" x2="190" y1="20" y2="120"></line>
+</svg>
+<!-- Graph X-Axis Labels -->
+<div class="flex justify-between font-data-mono-md text-[11px] text-text-subtle pt-2 border-t border-border-subtle mt-1">
+<span>-150 PTS</span>
+<span>-75 PTS</span>
+<span class="text-text-primary font-bold">0 PTS (PARITY)</span>
+<span>+75 PTS</span>
+<span>+150 PTS</span>
+</div>
+</div>
+<!-- Metrics Strip -->
+<div class="grid grid-cols-3 gap-space-sm mt-space-md pt-space-xs border-t border-border-subtle">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">MEDIAN DEFICIT</span>
+<span class="font-data-mono-md text-data-mono-md text-telemetry-delta-neg">-15.8 PTS</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">P(FERRARI WINS)</span>
+<span class="font-data-mono-md text-data-mono-md text-text-primary">44.2%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">STANDARD DEV</span>
+<span class="font-data-mono-md text-data-mono-md text-text-muted">σ = 58.4 PTS</span>
+</div>
+</div>
+<span class="font-label-caps text-[10px] text-text-subtle uppercase mt-space-sm block">KEY FACTOR: AERODYNAMIC CORRELATION IN EUROPEAN HIGH-DOWNFORCE LEG.</span>
+</div>
+<!-- Panel 2: Ferrari vs Red Bull -->
+<div class="flex flex-col bg-surface-panel p-space-lg rounded">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-3 bg-primary-container"></span>
+<h3 class="font-headline-sm text-headline-sm uppercase text-text-primary">HEAD-TO-HEAD: FERRARI VS RED BULL</h3>
+</div>
+<span class="font-label-caps text-label-caps uppercase text-telemetry-delta-pos bg-surface-raised px-space-sm py-0.5 rounded">FAVORABLE ADVANTAGE</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted mb-space-md">
+          Points margin distribution across all 10,000 paired simulations (SF-27 Points minus RB23 Points).
+        </p>
+<!-- Density Distribution SVG Graph -->
+<div class="w-full h-44 bg-surface-raised p-space-sm rounded relative flex flex-col justify-end">
+<svg class="w-full h-32 overflow-visible" preserveaspectratio="none" viewbox="0 0 400 120">
+<!-- Center 0 Axis line -->
+<line stroke="#3E434D" stroke-dasharray="2 2" stroke-width="1" x1="160" x2="160" y1="0" y2="120"></line>
+<!-- Shaded Area for Red Bull Win (Ferrari < 0) -->
+<path d="M 50,120 Q 100,115 130,85 T 160,70 L 160,120 Z" fill="rgba(111, 168, 255, 0.15)"></path>
+<!-- Shaded Area for Ferrari Win (Ferrari > 0) -->
+<path d="M 160,70 Q 210,15 240,15 T 360,120 L 160,120 Z" fill="rgba(225, 6, 0, 0.25)"></path>
+<!-- Distribution Bell Curve Stroke -->
+<path d="M 50,120 C 100,115 140,85 180,45 C 220,5 250,15 290,55 C 320,85 340,115 360,120" fill="none" stroke="#F4F4F2" stroke-width="2"></path>
+<!-- Median Marker -->
+<line stroke="#FF3028" stroke-width="2" x1="235" x2="235" y1="12" y2="120"></line>
+</svg>
+<!-- Graph X-Axis Labels -->
+<div class="flex justify-between font-data-mono-md text-[11px] text-text-subtle pt-2 border-t border-border-subtle mt-1">
+<span>-100 PTS</span>
+<span class="text-text-primary font-bold">0 PTS (PARITY)</span>
+<span>+50 PTS</span>
+<span>+100 PTS</span>
+<span>+200 PTS</span>
+</div>
+</div>
+<!-- Metrics Strip -->
+<div class="grid grid-cols-3 gap-space-sm mt-space-md pt-space-xs border-t border-border-subtle">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">MEDIAN MARGIN</span>
+<span class="font-data-mono-md text-data-mono-md text-telemetry-delta-pos">+47.8 PTS</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">P(FERRARI WINS)</span>
+<span class="font-data-mono-md text-data-mono-md text-text-primary">74.6%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">STANDARD DEV</span>
+<span class="font-data-mono-md text-data-mono-md text-text-muted">σ = 62.1 PTS</span>
+</div>
+</div>
+<span class="font-label-caps text-[10px] text-text-subtle uppercase mt-space-sm block">KEY FACTOR: SECOND DRIVER POINTS VARIANCE AND POWERTRAIN DEGRADATION HAZARD MODEL.</span>
+</div>
+</div>
+<!-- SECTION 5: METHODOLOGY & SCIENTIFIC RIGOR STRIP -->
+<div class="w-full bg-surface-panel p-space-md rounded border-l-4 border-border-focus flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-1 max-w-4xl">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-text-muted">info</span>
+<span class="font-label-caps text-label-caps uppercase text-text-primary font-semibold">METHODOLOGICAL NOTE ON UNCERTAINTY QUANTIFICATION</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted">
+          All 90% intervals represent Bayesian Highest Posterior Density Intervals (HDI) calculated over 10,000 paired Monte Carlo runs. Teammate head-to-head metrics account for shared chassis/PU correlation (<span class="font-data-mono-md text-text-primary">ρ = +0.62</span>) and are not derived from independent marginal distributions.
+        </p>
+</div>
+<div class="shrink-0 flex items-center gap-space-sm">
+<a class="px-space-md py-2 bg-surface-raised hover:bg-surface-variant font-label-caps text-label-caps uppercase text-text-primary transition-colors flex items-center gap-1.5 rounded" data-path="model-intelligence" href="#">
+<span>INSPECT MCMC TRACE DIAGNOSTICS</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    const btnWcc = document.getElementById('toggle-wcc');
+    const btnWdc = document.getElementById('toggle-wdc');
+
+    if (btnWcc && btnWdc) {
+      btnWdc.addEventListener('click', function() {
+        btnWdc.className = "px-space-md py-1 font-label-caps text-label-caps uppercase text-text-primary bg-surface-raised transition-colors flex items-center gap-1.5 shadow-sm";
+        btnWcc.className = "px-space-md py-1 font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary transition-colors";
+      });
+
+      btnWcc.addEventListener('click', function() {
+        btnWcc.className = "px-space-md py-1 font-label-caps text-label-caps uppercase text-text-primary bg-surface-raised transition-colors flex items-center gap-1.5 shadow-sm";
+        btnWdc.className = "px-space-md py-1 font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary transition-colors";
+      });
+    }
+  })();
+</script></main><footer class="w-full bg-surface-panel border-t border-border-subtle"><div class="w-full max-w-[1440px] mx-auto px-margin md:px-margin-desktop py-space-xl"><div class="grid grid-cols-1 md:grid-cols-12 gap-gutter-desktop items-start pb-space-lg border-b border-border-subtle"><div class="md:col-span-6 flex flex-col gap-space-sm"><div class="flex items-center gap-space-xs"><span class="w-2 h-4 bg-primary-container inline-block"></span><span class="font-headline-sm text-headline-sm uppercase text-text-primary tracking-wider">FAHFERRARI</span><span class="font-label-caps text-label-caps uppercase text-text-subtle ml-2">v2.7.4 ENTERPRISE</span></div><p class="font-body-sm text-body-sm text-text-muted max-w-xl leading-relaxed">FahFerrari is an independent performance intelligence project and is not affiliated with, endorsed by, or sponsored by Scuderia Ferrari, Ferrari S.p.A., or Formula 1.</p><div class="mt-space-xs"><span class="font-label-caps text-label-caps uppercase text-text-subtle block mb-1">ENGINEERING ARCHITECTURE</span><span class="font-data-mono-md text-body-sm text-text-muted">Hybrid Bayesian Hierarchical Pace + Gradient-Boosted Residuals + 10,000 Monte Carlo Simulations</span></div></div><div class="md:col-span-3 flex flex-col gap-space-sm"><span class="font-label-caps text-label-caps uppercase text-text-subtle tracking-wider">FAST NAVIGATION</span><nav class="flex flex-col gap-1.5" data-active-classes="text-text-primary"><a class="font-body-sm text-body-sm text-text-muted hover:text-text-primary transition-colors" data-path="overview" href="#">Overview</a><a class="font-body-sm text-body-sm text-text-muted hover:text-text-primary transition-colors" data-path="model-integrity" href="#">Model Integrity</a><a class="font-body-sm text-body-sm text-text-muted hover:text-text-primary transition-colors" data-path="api-docs" href="#">API Docs</a><a class="font-body-sm text-body-sm text-text-muted hover:text-text-primary transition-colors" data-path="github" href="#">GitHub</a><a class="font-body-sm text-body-sm text-text-muted hover:text-text-primary transition-colors" data-path="2026-retrospective" href="#">Retrospective</a></nav></div><div class="md:col-span-3 flex flex-col gap-space-sm"><span class="font-label-caps text-label-caps uppercase text-text-subtle tracking-wider">SYSTEM VERIFICATION</span><div class="p-space-sm bg-surface-raised border border-border-subtle flex flex-col gap-1"><div class="flex items-center justify-between"><span class="font-label-caps text-label-caps text-text-muted">PROVENANCE</span><span class="font-label-caps text-label-caps text-telemetry-delta-pos">ACTIVE</span></div><span class="font-data-mono-md text-body-sm text-text-primary">BUILD v2.7.4 · SEED #4416</span><span class="font-label-caps text-label-caps text-text-subtle">POINT-IN-TIME VERIFIED</span></div></div></div><div class="pt-space-md flex flex-col sm:flex-row items-center justify-between gap-space-sm font-label-caps text-label-caps text-text-subtle uppercase"><span>© 2027 FAHFERRARI PERFORMANCE INTELLIGENCE. ALL RIGHTS RESERVED.</span><span>HIGH-THROUGHPUT FORMULA 1 PREDICTIVE TELEMETRY</span></div></div></footer></body></html>
