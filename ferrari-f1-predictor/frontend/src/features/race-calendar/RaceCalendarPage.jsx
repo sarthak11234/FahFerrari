@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { get2027Predictions } from '../../services/api';
 import CredibleIntervalBar from '../../components/common/CredibleIntervalBar';
+import CircuitTrackSvg from '../../components/common/CircuitTrackSvg';
 import frozenForecast2027 from '../../data/preseason2027Data.json';
 import {
   Calendar,
@@ -256,6 +257,9 @@ export default function RaceCalendarPage() {
                   </span>
                 </div>
               </div>
+
+              {/* Interactive Circuit Track Map Visualizer */}
+              <CircuitTrackSvg circuitId={selectedRace.circuit_id} circuitName={selectedRace.circuit} />
 
               {/* Simulation Forecast Metrics */}
               <div className="flex flex-col gap-3">
