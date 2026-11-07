@@ -45,24 +45,51 @@ try:
 except Exception as e:
     logger.warning(f"Could not load 2027 forecast: {e}")
 
-# Load data and models on startup
+# Load 2026 Preseason Legacy Forecast & Scenarios artifacts
+predictions_2026 = None
+scenarios_2026 = None
 try:
-    historical_data = pd.read_csv('data/processed/ferrari_features.csv')
-    predictor = Ferrari2026Predictor()
-    
-    # Generate predictions
-    features_2026 = predictor.prepare_2026_features(historical_data)
-    predictions_2026 = predictor.predict_2026(features_2026)
-    
-    # Initialize chatbot
-    chatbot = FerrariChatbot(historical_data, predictions_2026)
-    
-    logger.info("✅ Models and data loaded successfully")
+    pred_2026_path = Path(__file__).resolve().parents[1] / "data" / "predictions" / "legacy_2026_forecast.json"
+    if pred_2026_path.exists():
+        with pred_2026_path.open("r", encoding="utf-8") as f:
+            predictions_2026 = json.load(f)
+        logger.info("✅ 2026 Legacy Forecast loaded successfully")
+        
+    scenarios_path = Path(__file__).resolve().parents[1] / "data" / "predictions" / "scenarios_2026.json"
+    if scenarios_path.exists():
+        with scenarios_path.open("r", encoding="utf-8") as f:
+            scenarios_2026 = json.load(f)
 except Exception as e:
-    logger.error(f"❌ Error loading models: {e}")
-    historical_data = None
-    predictions_2026 = None
-    chatbot = None
+    logger.warning(f"Could not load 2026 pre-cached artifacts: {e}")
+
+# Load historical data and models on startup
+historical_data = None
+try:
+    csv_path = Path(__file__).resolve().parents[1] / "data" / "processed" / "ferrari_features.csv"
+    if csv_path.exists():
+        historical_data = pd.read_csv(csv_path)
+    elif Path('data/processed/ferrari_features.csv').exists():
+        historical_data = pd.read_csv('data/processed/ferrari_features.csv')
+    logger.info("✅ Historical features loaded successfully")
+except Exception as e:
+    logger.warning(f"Could not load historical features: {e}")
+
+predictor = None
+try:
+    predictor = Ferrari2026Predictor()
+    if historical_data is not None and predictions_2026 is None:
+        features_2026 = predictor.prepare_2026_features(historical_data)
+        predictions_2026 = predictor.predict_2026(features_2026)
+except Exception as e:
+    logger.info(f"Model engine inference bypassed; utilizing pre-cached 2026 baseline: {e}")
+
+# Initialize chatbot
+chatbot = None
+try:
+    chatbot = FerrariChatbot(historical_data, predictions_2026, predictions_2027)
+    logger.info("✅ Chatbot initialized successfully")
+except Exception as e:
+    logger.warning(f"Could not initialize chatbot: {e}")
 
 # ============ API ROUTES ============
 
@@ -149,11 +176,12 @@ def get_2027_provenance():
 def get_scenario_predictions():
     """Get scenario-based predictions"""
     try:
-        features_2026 = predictor.prepare_2026_features(historical_data)
-        scenarios = predictor.generate_scenario_predictions(features_2026)
-        
-        return jsonify(scenarios)
-    
+        if predictor is not None and historical_data is not None:
+            features_2026 = predictor.prepare_2026_features(historical_data)
+            return jsonify(predictor.generate_scenario_predictions(features_2026))
+        if scenarios_2026 is not None:
+            return jsonify(scenarios_2026)
+        return jsonify({'error': 'Scenarios not available'}), 404
     except Exception as e:
         logger.error(f"Error generating scenarios: {e}")
         return jsonify({'error': str(e)}), 500

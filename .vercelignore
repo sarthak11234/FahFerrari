@@ -1,0 +1,10 @@
+ferrari-f1-predictor/frontend/node_modules/
+tests/
+cache/
+.pytest_cache/
+__pycache__/
+*.pyc
+*.pkl
+*.xml
+*.log
+

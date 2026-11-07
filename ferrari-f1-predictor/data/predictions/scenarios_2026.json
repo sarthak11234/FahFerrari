@@ -1,0 +1,24 @@
+{
+  "optimistic": {
+    "points": 710.0,
+    "position": 1,
+    "wins": 9,
+    "podiums": 20,
+    "description": "Aggressive aerodynamic upgrades and flawless PU reliability"
+  },
+  "expected": {
+    "points": 650.0,
+    "position": 1,
+    "wins": 6,
+    "podiums": 18,
+    "description": "Baseline projection with consistent operational execution"
+  },
+  "pessimistic": {
+    "points": 575.0,
+    "position": 3,
+    "wins": 3,
+    "podiums": 14,
+    "description": "Tire degradation vulnerabilities and mid-season development plateaus"
+  }
+}
+
