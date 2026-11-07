@@ -1,0 +1,14 @@
+services:
+  # 1. Full-Stack Web Service (Flask + Embedded Frontend)
+  - type: web
+    name: fahferrari-intelligence
+    env: python
+    rootDir: ferrari-f1-predictor
+    plan: free
+    buildCommand: "pip install -r requirements.txt gunicorn && cd frontend && npm install && npm run build && cd .."
+    startCommand: "gunicorn --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 120 api.app:app"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: NODE_VERSION
+        value: 20.x

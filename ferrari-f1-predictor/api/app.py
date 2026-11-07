@@ -2,8 +2,7 @@
 Ferrari F1 Predictor - Flask REST API
 """
 
-from flask import Flask, request, jsonify
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import pandas as pd
 import numpy as np
@@ -253,6 +252,25 @@ def get_summary_stats():
     except Exception as e:
         logger.error(f"Error getting stats: {e}")
         return jsonify({'error': str(e)}), 500
+
+# Static Frontend SPA Routing (Single-Container Full-Stack Support)
+STATIC_DIST = Path(__file__).resolve().parents[1] / "frontend" / "dist"
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve_frontend(path):
+    if path.startswith('api'):
+        return jsonify({'error': 'Endpoint not found'}), 404
+    if STATIC_DIST.exists():
+        target = STATIC_DIST / path
+        if path != "" and target.exists() and not target.is_dir():
+            return send_from_directory(STATIC_DIST, path)
+        return send_from_directory(STATIC_DIST, 'index.html')
+    return jsonify({
+        'name': 'FahFerrari Performance Intelligence API',
+        'season': '2027',
+        'status': 'OPERATIONAL'
+    }), 200
 
 # Error handlers
 @app.errorhandler(404)

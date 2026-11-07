@@ -12,6 +12,8 @@ import {
   TrendingUp,
   Cpu,
   BarChart2,
+  Download,
+  Bookmark
 } from 'lucide-react';
 
 export default function SimulationLabPage() {
@@ -43,6 +45,59 @@ export default function SimulationLabPage() {
     setReliabilityFactor(1.0);
     setQualyDelta(0.0);
     setDegDelta(0);
+  };
+
+  const presets = [
+    { label: 'Monza Low-Drag Trim', aero: -0.14, rel: 1.0, qualy: -0.08, deg: -4 },
+    { label: 'Monaco Max Downforce', aero: -0.22, rel: 1.0, qualy: -0.16, deg: -8 },
+    { label: 'PU Reliability Crisis', aero: 0.0, rel: 1.8, qualy: 0.04, deg: 10 },
+    { label: 'In-Season Aero Upgrade', aero: -0.26, rel: 1.1, qualy: -0.14, deg: -2 },
+  ];
+
+  const applyPreset = (preset) => {
+    setAeroDelta(preset.aero);
+    setReliabilityFactor(preset.rel);
+    setQualyDelta(preset.qualy);
+    setDegDelta(preset.deg);
+  };
+
+  const exportScenario = () => {
+    if (!scenario || !data) return;
+    const exportData = {
+      scenario_title: 'FahFerrari 2027 Counterfactual Simulation Run',
+      timestamp: new Date().toISOString(),
+      provenance: {
+        model_version: '2027.1-preseason',
+        commit_baseline: 'ae91b36',
+        sampling_seed: 2027,
+      },
+      inputs: {
+        aerodynamic_delta_sec_per_lap: aeroDelta,
+        pu_reliability_hazard_factor: reliabilityFactor,
+        qualifying_execution_delta_sec: qualyDelta,
+        tire_degradation_index_delta_pct: degDelta,
+      },
+      predicted_outcomes: {
+        mean_points: Number(scenario.points.toFixed(1)),
+        points_delta_vs_baseline: Number((scenario.points - data.ferrari_constructors_forecast.mean_points).toFixed(1)),
+        win_probability: Number(scenario.winProb.toFixed(4)),
+        ci_90_interval: [Number(scenario.ciLow.toFixed(0)), Number(scenario.ciHigh.toFixed(0))],
+        position_probabilities: {
+          P1: Number(scenario.p1.toFixed(4)),
+          P2: Number(scenario.p2.toFixed(4)),
+          P3: Number(scenario.p3.toFixed(4)),
+          P4_plus: Number(scenario.p4.toFixed(4)),
+        },
+      },
+    };
+
+    const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `fahferrari_scenario_${Date.now()}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
   };
 
   // Compute counterfactual shifts from the baseline
@@ -135,13 +190,23 @@ export default function SimulationLabPage() {
               <strong className="text-text-primary uppercase font-label-caps">GOVERNANCE RULE:</strong> Slider interactions run local exploratory sensitivity recalculations. The frozen preseason baseline (488.8 pts, 10,000 seasons) is permanently anchored.
             </span>
           </div>
-          <button
-            onClick={resetSliders}
-            className="px-3 py-1 bg-surface-raised border border-border-subtle hover:border-border-focus text-text-primary font-label-caps uppercase text-[11px] flex items-center gap-1 transition-colors shrink-0"
-          >
-            <RotateCcw className="w-3 h-3" />
-            Reset Baseline
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={exportScenario}
+              className="px-3 py-1 bg-surface-raised border border-border-subtle hover:border-border-focus text-text-primary font-label-caps uppercase text-[11px] flex items-center gap-1.5 transition-colors shrink-0"
+              title="Download Scenario Parameters & Outcomes JSON"
+            >
+              <Download className="w-3 h-3 text-secondary" />
+              Export Scenario JSON
+            </button>
+            <button
+              onClick={resetSliders}
+              className="px-3 py-1 bg-surface-raised border border-border-subtle hover:border-border-focus text-text-primary font-label-caps uppercase text-[11px] flex items-center gap-1 transition-colors shrink-0"
+            >
+              <RotateCcw className="w-3 h-3" />
+              Reset Baseline
+            </button>
+          </div>
         </div>
 
         {/* Counterfactual Controls & Real-Time Impact Grid */}
@@ -154,6 +219,25 @@ export default function SimulationLabPage() {
                 <h3 className="font-headline-sm text-lg uppercase text-text-primary font-bold">
                   COUNTERFACTUAL CONTROLS
                 </h3>
+              </div>
+            </div>
+
+            {/* Presets Grid */}
+            <div className="flex flex-col gap-2">
+              <span className="text-[10px] font-label-caps text-text-subtle uppercase flex items-center gap-1.5">
+                <Bookmark className="w-3 h-3 text-secondary" />
+                <span>SCENARIO BENCHMARK PRESETS</span>
+              </span>
+              <div className="grid grid-cols-2 gap-2">
+                {presets.map((p) => (
+                  <button
+                    key={p.label}
+                    onClick={() => applyPreset(p)}
+                    className="p-2 text-left bg-surface-raised border border-border-subtle hover:border-border-focus hover:bg-surface-bright transition-colors text-[10px] font-label-caps text-text-muted hover:text-text-primary truncate"
+                  >
+                    {p.label}
+                  </button>
+                ))}
               </div>
             </div>
 
