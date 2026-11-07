@@ -2,12 +2,14 @@
   "name": "fahferrari",
   "version": "2027.1.0",
   "scripts": {
-    "build": "npm --prefix ferrari-f1-predictor/frontend run build",
+    "postinstall": "npm --prefix ferrari-f1-predictor/frontend install",
+    "build": "npm --prefix ferrari-f1-predictor/frontend install && npm --prefix ferrari-f1-predictor/frontend run build",
     "dev": "npm --prefix ferrari-f1-predictor/frontend run dev"
   },
   "dependencies": {
     "axios": "^1.13.2",
     "lucide-react": "^0.562.0",
-    "recharts": "^3.6.0"
+    "recharts": "^3.6.0",
+    "vite": "^5.0.8"
   }
 }
