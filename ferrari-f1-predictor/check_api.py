@@ -1,7 +1,9 @@
 import requests
 import json
+import os
 
-base_url = 'http://localhost:5000/api'
+app_url = os.environ.get('APP_URL', 'http://localhost:5000').rstrip('/')
+base_url = app_url if app_url.endswith('/api') else f"{app_url}/api"
 
 def check_endpoint(endpoint):
     print(f"\nChecking {endpoint}...")

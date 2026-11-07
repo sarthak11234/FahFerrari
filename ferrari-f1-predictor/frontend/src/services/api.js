@@ -1,7 +1,19 @@
 import axios from 'axios';
 import frozenForecast2027 from '../data/preseason2027Data.json';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+// Resolve API Base URL across Vercel Services binding (APP_URL), Vite env (VITE_API_BASE_URL), or relative public path (/api)
+const resolveApiBaseUrl = () => {
+  if (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_API_BASE_URL) {
+    return import.meta.env.VITE_API_BASE_URL;
+  }
+  if (typeof process !== 'undefined' && process.env && process.env.APP_URL) {
+    const url = process.env.APP_URL.replace(/\/$/, '');
+    return url.endsWith('/api') ? url : `${url}/api`;
+  }
+  return '/api';
+};
+
+const API_BASE_URL = resolveApiBaseUrl();
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
