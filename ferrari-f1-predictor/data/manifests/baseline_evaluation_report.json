@@ -1,0 +1,114 @@
+{
+  "folds": [
+    {
+      "test_season": 2021,
+      "train_seasons": [
+        2019,
+        2020
+      ],
+      "train_entries": 760,
+      "test_entries": 440,
+      "test_events": 22
+    },
+    {
+      "test_season": 2022,
+      "train_seasons": [
+        2019,
+        2020,
+        2021
+      ],
+      "train_entries": 1200,
+      "test_entries": 240,
+      "test_events": 12
+    },
+    {
+      "test_season": 2023,
+      "train_seasons": [
+        2019,
+        2020,
+        2021,
+        2022
+      ],
+      "train_entries": 1440,
+      "test_entries": 100,
+      "test_events": 5
+    },
+    {
+      "test_season": 2024,
+      "train_seasons": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "train_entries": 1540,
+      "test_entries": 99,
+      "test_events": 5
+    },
+    {
+      "test_season": 2025,
+      "train_seasons": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "train_entries": 1639,
+      "test_entries": 100,
+      "test_events": 5
+    }
+  ],
+  "baselines": {
+    "baseline1_historical_mean": {
+      "points_mae": 3.952,
+      "points_rmse": 5.774,
+      "finish_order_mae": 3.816,
+      "spearman_rank_correlation": 0.596,
+      "top3_accuracy": 0.565,
+      "brier_score_win": 0.0867,
+      "brier_score_podium": 0.1429,
+      "brier_score_dnf": 0.1243,
+      "ece_win": 0.1537,
+      "ece_podium": 0.1771
+    },
+    "baseline2_recent_weighted": {
+      "points_mae": 3.883,
+      "points_rmse": 5.736,
+      "finish_order_mae": 3.72,
+      "spearman_rank_correlation": 0.598,
+      "top3_accuracy": 0.605,
+      "brier_score_win": 0.0844,
+      "brier_score_podium": 0.1372,
+      "brier_score_dnf": 0.1243,
+      "ece_win": 0.1538,
+      "ece_podium": 0.1742
+    },
+    "baseline3_teammate_relative": {
+      "points_mae": 3.903,
+      "points_rmse": 6.532,
+      "finish_order_mae": 4.037,
+      "spearman_rank_correlation": 0.554,
+      "top3_accuracy": 0.483,
+      "brier_score_win": 0.0488,
+      "brier_score_podium": 0.1242,
+      "brier_score_dnf": 0.1245,
+      "ece_win": 0.026,
+      "ece_podium": 0.0681
+    },
+    "baseline4_probabilistic_ranking": {
+      "points_mae": 3.719,
+      "points_rmse": 6.297,
+      "finish_order_mae": 3.935,
+      "spearman_rank_correlation": 0.565,
+      "top3_accuracy": 0.544,
+      "brier_score_win": 0.0435,
+      "brier_score_podium": 0.1024,
+      "brier_score_dnf": 0.1292,
+      "ece_win": 0.0302,
+      "ece_podium": 0.0765
+    }
+  }
+}

@@ -11,6 +11,7 @@ import json
 import joblib
 from src.chatbot.query_engine import FerrariChatbot
 from src.models.predict import Ferrari2026Predictor
+from pathlib import Path
 import logging
 
 app = Flask(__name__)
@@ -31,10 +32,19 @@ class CustomJSONProvider(DefaultJSONProvider):
 app.json = CustomJSONProvider(app)
 
 # Configure logging
-
-# Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+# Load 2027 Preseason Forecast artifact (10,000 Monte Carlo runs)
+predictions_2027 = None
+try:
+    pred_2027_path = Path(__file__).resolve().parents[1] / "data" / "predictions" / "preseason_2027_forecast.json"
+    if pred_2027_path.exists():
+        with pred_2027_path.open("r", encoding="utf-8") as f:
+            predictions_2027 = json.load(f)
+        logger.info("✅ 2027 Preseason Forecast loaded successfully")
+except Exception as e:
+    logger.warning(f"Could not load 2027 forecast: {e}")
 
 # Load data and models on startup
 try:
@@ -108,6 +118,32 @@ def get_2026_predictions():
     
     except Exception as e:
         logger.error(f"Error fetching predictions: {e}")
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/predictions/2027', methods=['GET'])
+def get_2027_predictions():
+    """Get 2027 season predictions (10,000 Monte Carlo simulations)"""
+    try:
+        if predictions_2027 is None:
+            return jsonify({'error': '2027 Predictions not available'}), 404
+        
+        return jsonify(predictions_2027)
+    
+    except Exception as e:
+        logger.error(f"Error fetching 2027 predictions: {e}")
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/predictions/2027/provenance', methods=['GET'])
+def get_2027_provenance():
+    """Get 2027 forecast freeze metadata and provenance"""
+    try:
+        if predictions_2027 is None:
+            return jsonify({'error': '2027 Predictions not available'}), 404
+        
+        return jsonify(predictions_2027.get('freeze_metadata', {}))
+    
+    except Exception as e:
+        logger.error(f"Error fetching 2027 provenance: {e}")
         return jsonify({'error': str(e)}), 500
 
 @app.route('/api/predictions/scenarios', methods=['GET'])

@@ -1,85 +1,67 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Dashboard from './components/Dashboard';
-import PredictionView from './components/PredictionView';
-import ChatBot from './components/ChatBot';
-import './App.css';
+import React from 'react';
+import { RouterProvider, useRouter } from './context/RouterContext';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
 
-const API_BASE_URL = 'http://localhost:5000/api';
+// 8 Feature Pages
+import OverviewPage from './features/overview/OverviewPage';
+import ChampionshipPage from './features/championship/ChampionshipPage';
+import InsideTheScuderiaPage from './features/inside-the-scuderia/InsideTheScuderiaPage';
+import RaceCalendarPage from './features/race-calendar/RaceCalendarPage';
+import SimulationLabPage from './features/simulation-lab/SimulationLabPage';
+import ModelIntelligencePage from './features/model-intelligence/ModelIntelligencePage';
+import AiStrategistPage from './features/ai-strategist/AiStrategistPage';
+import RetrospectivePage from './features/retrospective/RetrospectivePage';
 
-function App() {
-  const [historicalData, setHistoricalData] = useState([]);
-  const [predictions, setPredictions] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState('dashboard');
+function AppContent() {
+  const { currentPath } = useRouter();
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    try {
-      const [histResponse, predResponse] = await Promise.all([
-        axios.get(`${API_BASE_URL}/historical`),
-        axios.get(`${API_BASE_URL}/predictions/2026`)
-      ]);
-
-      setHistoricalData(histResponse.data);
-      setPredictions(predResponse.data);
-      setLoading(false);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      setLoading(false);
+  const renderCurrentPage = () => {
+    switch (currentPath) {
+      case '/':
+        return <OverviewPage />;
+      case '/championship':
+        return <ChampionshipPage />;
+      case '/ferrari':
+        return <InsideTheScuderiaPage />;
+      case '/race-calendar':
+        return <RaceCalendarPage />;
+      case '/simulation-lab':
+        return <SimulationLabPage />;
+      case '/model-intelligence':
+        return <ModelIntelligencePage />;
+      case '/ai-strategist':
+        return <AiStrategistPage />;
+      case '/2026-retrospective':
+        return <RetrospectivePage />;
+      default:
+        // Support hash variations or fallback to Overview
+        if (currentPath.includes('championship')) return <ChampionshipPage />;
+        if (currentPath.includes('ferrari')) return <InsideTheScuderiaPage />;
+        if (currentPath.includes('calendar')) return <RaceCalendarPage />;
+        if (currentPath.includes('simulation')) return <SimulationLabPage />;
+        if (currentPath.includes('intelligence')) return <ModelIntelligencePage />;
+        if (currentPath.includes('strategist') || currentPath.includes('ai')) return <AiStrategistPage />;
+        if (currentPath.includes('retrospective') || currentPath.includes('2026')) return <RetrospectivePage />;
+        return <OverviewPage />;
     }
   };
 
-  if (loading) {
-    return (
-      <div className="loading-screen">
-        <h1>🏎️ Loading Ferrari Data...</h1>
-      </div>
-    );
-  }
-
   return (
-    <div className="App">
-      <header className="app-header">
-        <h1>🏎️ Ferrari F1 2026 Predictor</h1>
-        <nav className="tabs">
-          <button 
-            className={activeTab === 'dashboard' ? 'active' : ''}
-            onClick={() => setActiveTab('dashboard')}
-          >
-            📊 Dashboard
-          </button>
-          <button 
-            className={activeTab === 'predictions' ? 'active' : ''}
-            onClick={() => setActiveTab('predictions')}
-          >
-            🔮 Predictions
-          </button>
-          <button 
-            className={activeTab === 'chat' ? 'active' : ''}
-            onClick={() => setActiveTab('chat')}
-          >
-            💬 Chat
-          </button>
-        </nav>
-      </header>
-
-      <main className="app-content">
-        {activeTab === 'dashboard' && (
-          <Dashboard data={historicalData} />
-        )}
-        {activeTab === 'predictions' && (
-          <PredictionView predictions={predictions} />
-        )}
-        {activeTab === 'chat' && (
-          <ChatBot apiUrl={API_BASE_URL} />
-        )}
+    <div className="min-h-screen bg-canvas-base text-text-primary flex flex-col font-body-md selection:bg-primary-container selection:text-text-primary">
+      <Navbar />
+      <main className="flex-1 w-full pt-16">
+        {renderCurrentPage()}
       </main>
+      <Footer />
     </div>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <RouterProvider>
+      <AppContent />
+    </RouterProvider>
+  );
+}

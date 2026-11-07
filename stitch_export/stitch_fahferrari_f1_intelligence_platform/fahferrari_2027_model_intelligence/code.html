@@ -1,0 +1,639 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><title>FahFerrari 2027 F1 Performance Intelligence</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-dim":"#111317","border-subtle":"#292D33","surface-container-high":"#282a2e","error":"#ffb4ab","tertiary-fixed":"#d6e3ff","on-primary":"#680200","inverse-primary":"#c00500","canvas-base":"#08090B","outline-variant":"#5e3f3a","on-tertiary-fixed":"#001b3c","primary-fixed":"#ffdad4","secondary-fixed":"#89f9b9","surface-container":"#1e2024","surface-panel":"#111317","primary":"#ffb4a8","on-primary-fixed-variant":"#930300","on-background":"#e2e2e8","ferrari-red-hover":"#FF3028","secondary-container":"#2ea46c","surface-bright":"#37393e","error-container":"#93000a","outline":"#af8781","telemetry-delta-pos":"#55C58A","surface-variant":"#333539","tertiary-container":"#3070c3","surface-raised":"#191C21","on-primary-fixed":"#410100","on-primary-container":"#fff2f0","on-secondary-fixed":"#002111","text-primary":"#F4F4F2","border-focus":"#3E434D","on-secondary-container":"#00311b","surface-tint":"#ffb4a8","on-error":"#690005","text-subtle":"#6F7680","text-muted":"#A0A5AD","on-tertiary-fixed-variant":"#00468a","primary-fixed-dim":"#ffb4a8","tertiary":"#a8c8ff","primary-container":"#e10600","on-tertiary-container":"#f2f5ff","telemetry-amber":"#E7B45A","on-surface-variant":"#e9bcb5","inverse-on-surface":"#2f3035","surface-container-lowest":"#0c0e12","on-tertiary":"#003062","on-secondary":"#003920","on-surface":"#e2e2e8","secondary-fixed-dim":"#6cdc9f","tertiary-fixed-dim":"#a8c8ff","on-secondary-fixed-variant":"#005231","surface":"#111317","surface-container-low":"#1a1c20","secondary":"#6cdc9f","telemetry-delta-neg":"#E10600","inverse-surface":"#e2e2e8","background":"#111317","on-error-container":"#ffdad6","surface-container-highest":"#333539"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-lg":"1.5rem","gutter":"1.75rem","gutter-tablet":"1.75rem","space-md":"0.875rem","margin-tablet":"2rem","gutter-desktop":"3rem","gutter-mobile":"1.125rem","margin-desktop":"3rem","space-xl":"2.25rem","margin":"1.5rem","margin-mobile":"1rem","space-xs":"0.25rem","space-sm":"0.5rem"},fontFamily:{"body-md":["Inter"],"headline-sm":["Barlow Condensed"],"headline-lg-mobile":["Barlow Condensed"],"data-mono-md":["Inter"],"body-sm":["Inter"],"display-xl-mobile":["Barlow Condensed"],"label-caps":["Inter"],"display-xl":["Barlow Condensed"],"headline-lg":["Barlow Condensed"],"body-lg":["Inter"],"headline-md":["Barlow Condensed"],"data-mono-lg":["Inter"]},fontSize:{"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"headline-sm":["18px",{"lineHeight":"22px","letterSpacing":"0.05em","fontWeight":"600"}],"headline-lg-mobile":["28px",{"lineHeight":"32px","letterSpacing":"0.03em","fontWeight":"600"}],"data-mono-md":["14px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"600"}],"body-sm":["12px",{"lineHeight":"18px","fontWeight":"400"}],"display-xl-mobile":["38px",{"lineHeight":"42px","letterSpacing":"0.02em","fontWeight":"700"}],"label-caps":["11px",{"lineHeight":"14px","letterSpacing":"0.08em","fontWeight":"600"}],"display-xl":["56px",{"lineHeight":"60px","letterSpacing":"0.02em","fontWeight":"700"}],"headline-lg":["36px",{"lineHeight":"40px","letterSpacing":"0.03em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"headline-md":["24px",{"lineHeight":"28px","letterSpacing":"0.04em","fontWeight":"600"}],"data-mono-lg":["24px",{"lineHeight":"28px","letterSpacing":"-0.02em","fontWeight":"700"}]}}}};</script></head><body class="bg-canvas-base font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-text-primary"><header class="fixed top-0 left-0 w-full z-50 bg-canvas-base/95 backdrop-blur-md border-b border-border-subtle"><div class="h-16 w-full max-w-[1440px] mx-auto px-margin md:px-margin-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg shrink-0"><a class="flex flex-col group" data-path="overview" href="#"><div class="flex items-center gap-space-xs"><span class="w-2 h-4 bg-primary-container inline-block"></span><span class="font-headline-sm text-headline-sm uppercase text-text-primary tracking-wider group-hover:text-ferrari-red-hover transition-colors">FAHFERRARI</span></div><span class="font-label-caps text-label-caps uppercase text-text-muted tracking-widest pl-[12px]">F1 PERFORMANCE INTELLIGENCE</span></a></div><nav class="hidden xl:flex items-center gap-space-md self-stretch pt-[2px]" data-active-classes="text-text-primary border-b-2 border-primary-container pb-[22px] shadow-[0_4px_12px_rgba(225,6,0,0.35)]"><a class="font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary tracking-wider transition-colors pt-[22px] pb-[22px]" data-path="overview" href="#">Overview</a><a class="font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary tracking-wider transition-colors pt-[22px] pb-[22px]" data-path="championship" href="#">Championship</a><a class="font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary tracking-wider transition-colors pt-[22px] pb-[22px]" data-path="ferrari" href="#">Ferrari</a><a class="font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary tracking-wider transition-colors pt-[22px] pb-[22px]" data-path="race-calendar" href="#">Race Calendar</a><a class="font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary tracking-wider transition-colors pt-[22px] pb-[22px]" data-path="simulation-lab" href="#">Simulation Lab</a><a class="font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary tracking-wider transition-colors pt-[22px] pb-[22px]" data-path="model-intelligence" href="#">Model Intelligence</a><a class="font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary tracking-wider transition-colors pt-[22px] pb-[22px]" data-path="ai-strategist" href="#">AI Strategist</a><a class="font-label-caps text-label-caps uppercase text-text-muted hover:text-text-primary tracking-wider transition-colors pt-[22px] pb-[22px]" data-path="2026-retrospective" href="#">2026 Retrospective</a></nav><div class="flex items-center gap-space-sm shrink-0"><div class="hidden lg:flex items-center bg-surface-panel border border-border-subtle px-space-sm py-1"><span class="font-data-mono-md text-body-sm text-text-muted tracking-wider uppercase mr-1">SEASON</span><span class="font-data-mono-md text-body-sm text-text-primary uppercase">2027 PRESEASON</span><span class="material-symbols-outlined text-[16px] text-text-muted ml-1">expand_more</span></div><div class="hidden sm:flex items-center gap-space-xs bg-surface-panel border border-border-subtle px-space-sm py-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_8px_#55C58A] animate-pulse"></span><span class="font-label-caps text-label-caps uppercase text-text-primary">PRESEASON SNAPSHOT · FROZEN</span></div><div class="hidden 2xl:block bg-surface-panel border border-border-subtle px-space-sm py-1 font-label-caps text-label-caps uppercase text-text-subtle">DATA CUTOFF: FEB 18, 2027</div><button aria-label="Telemetry Terminal Search" class="p-1.5 bg-surface-panel border border-border-subtle hover:border-border-focus hover:bg-surface-raised text-text-muted hover:text-text-primary transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">terminal</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-canvas-base min-h-screen"><div class="flex flex-col w-full">
+<!-- PAGE HEADER & SUBHEADER STRIP -->
+<section class="w-full bg-surface border-b border-border-subtle py-space-lg">
+<div class="w-full max-w-[1440px] mx-auto px-margin md:px-margin-desktop flex flex-col gap-space-md">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md border-b border-border-subtle pb-space-md">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 bg-primary-container inline-block"></span>
+<span class="font-label-caps text-label-caps uppercase text-text-subtle tracking-widest">
+              FAHFERRARI 2027 // PROBABILISTIC FOUNDATIONS &amp; MCMC BACKTESTING ENGINE
+            </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg uppercase text-text-primary tracking-wide">
+            THE SCIENCE BEHIND THE FORECAST
+          </h1>
+<div class="flex flex-wrap items-center gap-space-sm pt-1">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 bg-surface-raised border border-border-subtle font-label-caps text-label-caps text-text-muted">
+<span class="w-1.5 h-1.5 rounded-full bg-telemetry-delta-pos"></span>
+              CORE ENGINE V2027.4
+            </span>
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">·</span>
+<span class="font-label-caps text-label-caps uppercase text-text-muted">FORMAL SPECIFICATION</span>
+<span class="font-label-caps text-label-caps uppercase text-text-subtle">·</span>
+<span class="font-label-caps text-label-caps uppercase text-telemetry-amber">FROZEN PRESEASON BASELINE</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="inline-flex items-center gap-2 px-space-md py-2 bg-primary-container hover:bg-ferrari-red-hover text-text-primary font-headline-sm text-headline-sm uppercase tracking-wider transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">menu_book</span>
+<span class="">DOWNLOAD MATHEMATICAL SPEC (PDF)</span>
+</button>
+<button class="inline-flex items-center gap-2 px-space-md py-2 bg-surface-raised border border-border-subtle hover:border-border-focus text-text-primary font-headline-sm text-headline-sm uppercase tracking-wider transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span class="">OPEN GITHUB CODE</span>
+</button>
+</div>
+</div>
+<!-- Live Pipeline Telemetry Summary Bar -->
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-space-sm font-data-mono-md text-body-sm">
+<div class="bg-surface-raised border border-border-subtle p-space-sm">
+<span class="text-text-subtle block font-label-caps text-label-caps mb-1">MARKOV CHAINS</span>
+<span class="text-text-primary font-bold">4 × 10,000</span>
+<span class="text-telemetry-delta-pos text-body-sm ml-1.5">CONVERGED</span>
+</div>
+<div class="bg-surface-raised border border-border-subtle p-space-sm">
+<span class="text-text-subtle block font-label-caps text-label-caps mb-1">GELMAN-RUBIN R̂</span>
+<span class="text-text-primary font-bold">1.004</span>
+<span class="text-telemetry-delta-pos text-body-sm ml-1.5">&lt; 1.008 OK</span>
+</div>
+<div class="bg-surface-raised border border-border-subtle p-space-sm">
+<span class="text-text-subtle block font-label-caps text-label-caps mb-1">SIMULATED SEASONS</span>
+<span class="text-text-primary font-bold">10,000 RUNS</span>
+<span class="text-text-muted text-body-sm ml-1">JAX GPU</span>
+</div>
+<div class="bg-surface-raised border border-border-subtle p-space-sm">
+<span class="text-text-subtle block font-label-caps text-label-caps mb-1">OUT-OF-SAMPLE BRIER</span>
+<span class="text-text-primary font-bold">0.084</span>
+<span class="text-telemetry-delta-pos text-body-sm ml-1.5">-31.1% vs NAÏVE</span>
+</div>
+<div class="bg-surface-raised border border-border-subtle p-space-sm">
+<span class="text-text-subtle block font-label-caps text-label-caps mb-1">90% HDI COVERAGE</span>
+<span class="text-text-primary font-bold">89.4%</span>
+<span class="text-telemetry-delta-pos text-body-sm ml-1.5">±0.6% DELTA</span>
+</div>
+<div class="bg-surface-raised border border-border-subtle p-space-sm">
+<span class="text-text-subtle block font-label-caps text-label-caps mb-1">LEAKAGE SHIELD</span>
+<span class="text-telemetry-delta-pos font-bold">STRICT 0.0%</span>
+<span class="text-text-subtle text-body-sm ml-1">FROZEN T₀</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 01 // END-TO-END MODELLING PIPELINE ARCHITECTURE -->
+<section class="w-full py-space-xl bg-canvas-base border-b border-border-subtle">
+<div class="w-full max-w-[1440px] mx-auto px-margin md:px-margin-desktop flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm">
+<div>
+<span class="font-label-caps text-label-caps uppercase text-primary-container tracking-wider block">SECTION 01 // ARCHITECTURAL FLOW</span>
+<h2 class="font-headline-lg text-headline-lg uppercase text-text-primary tracking-wide">8-STAGE PREDICTIVE PIPELINE</h2>
+</div>
+<div class="flex items-center gap-space-sm font-label-caps text-label-caps text-text-muted">
+<span class="flex items-center gap-1.5"><span class="w-2 h-2 bg-primary-container"></span>BAYESIAN INFERENCE</span>
+<span class="flex items-center gap-1.5"><span class="w-2 h-2 bg-tertiary"></span>MACHINE LEARNING RESIDUAL</span>
+<span class="flex items-center gap-1.5"><span class="w-2 h-2 bg-telemetry-delta-pos"></span>MONTE CARLO SAMPLING</span>
+</div>
+</div>
+<!-- Pipeline Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Stage 01 -->
+<div class="bg-surface border border-border-subtle p-space-md relative flex flex-col justify-between group hover:border-border-focus transition-colors">
+<div class="flex items-center justify-between pb-space-sm border-b border-border-subtle">
+<span class="font-data-mono-md text-body-sm text-text-subtle">STAGE 01</span>
+<span class="font-label-caps text-label-caps text-text-muted uppercase">INGESTION</span>
+</div>
+<div class="my-space-sm">
+<h3 class="font-headline-sm text-headline-sm uppercase text-text-primary mb-1">CANONICAL TELEMETRY AUDIT</h3>
+<p class="font-body-sm text-body-sm leading-relaxed text-on-surface">
+              Lap-by-lap high-frequency telemetry, ambient/track sensor arrays, micro-sector velocity traces, and historical race logs from 2014–2026. Zero look-ahead temporal leakage.
+            </p>
+</div>
+<div class="pt-space-sm border-t border-border-subtle flex items-center justify-between font-label-caps text-label-caps text-text-subtle">
+<span class="">2.4M SECTORS</span>
+<span class="text-telemetry-delta-pos">SHA-256 VERIFIED</span>
+</div>
+</div>
+<!-- Stage 02 -->
+<div class="bg-surface border border-border-subtle p-space-md relative flex flex-col justify-between group hover:border-border-focus transition-colors">
+<div class="flex items-center justify-between pb-space-sm border-b border-border-subtle">
+<span class="font-data-mono-md text-body-sm text-text-subtle">STAGE 02</span>
+<span class="font-label-caps text-label-caps text-text-muted uppercase">FEATURE ENGINE</span>
+</div>
+<div class="my-space-sm">
+<h3 class="font-headline-sm text-headline-sm uppercase text-text-primary mb-1">POINT-IN-TIME FEATURE SPLIT</h3>
+<p class="font-body-sm text-body-sm leading-relaxed text-on-surface">
+              Rolling-origin retrospective windows. Calculates fuel-corrected stint pace, thermal tyre degradation slopes, aerodynamic dirty air wake penalties, and kerb compliance.
+            </p>
+</div>
+<div class="pt-space-sm border-t border-border-subtle flex items-center justify-between font-label-caps text-label-caps text-text-subtle">
+<span class="">142 FEATURES</span>
+<span class="text-text-muted">T₀ BOUNDED</span>
+</div>
+</div>
+<!-- Stage 03 -->
+<div class="bg-surface border-l-2 border-l-primary-container border-t border-r border-b border-border-subtle p-space-md relative flex flex-col justify-between group hover:border-border-focus transition-colors">
+<div class="flex items-center justify-between pb-space-sm border-b border-border-subtle">
+<span class="font-data-mono-md text-body-sm text-primary-container">STAGE 03</span>
+<span class="font-label-caps text-label-caps text-primary uppercase">BAYESIAN CORE</span>
+</div>
+<div class="my-space-sm">
+<h3 class="font-headline-sm text-headline-sm uppercase text-text-primary mb-1">HIERARCHICAL PACE MODEL</h3>
+<p class="font-body-sm text-body-sm leading-relaxed text-on-surface">
+              Disentangles latent driver raw speed (α), chassis aerodynamic efficiency (β), and PU energy deployment (γ) using weakly informative half-Student-t shrinkage priors.
+            </p>
+</div>
+<div class="pt-space-sm border-t border-border-subtle flex items-center justify-between font-label-caps text-label-caps text-text-subtle">
+<span class="">STAN / PYMC</span>
+<span class="text-telemetry-delta-pos">NUTS MCMC</span>
+</div>
+</div>
+<!-- Stage 04 -->
+<div class="bg-surface border border-border-subtle p-space-md relative flex flex-col justify-between group hover:border-border-focus transition-colors">
+<div class="flex items-center justify-between pb-space-sm border-b border-border-subtle">
+<span class="font-data-mono-md text-body-sm text-tertiary">STAGE 04</span>
+<span class="font-label-caps text-label-caps text-text-muted uppercase">NON-LINEAR</span>
+</div>
+<div class="my-space-sm">
+<h3 class="font-headline-sm text-headline-sm uppercase text-text-primary mb-1">GBM RESIDUAL LEARNER</h3>
+<p class="font-body-sm text-body-sm leading-relaxed text-on-surface">
+              LightGBM boosting tree trained purely on Bayesian posterior residuals. Captures track-specific micro-interactions, asphalt roughness correlations, and cooling delta nonlinearities.
+            </p>
+</div>
+<div class="pt-space-sm border-t border-border-subtle flex items-center justify-between font-label-caps text-label-caps text-text-subtle">
+<span class="">LIGHTGBM 4.3</span>
+<span class="text-text-muted">RESIDUAL FIT</span>
+</div>
+</div>
+<!-- Stage 05 -->
+<div class="bg-surface border border-border-subtle p-space-md relative flex flex-col justify-between group hover:border-border-focus transition-colors">
+<div class="flex items-center justify-between pb-space-sm border-b border-border-subtle">
+<span class="font-data-mono-md text-body-sm text-text-subtle">STAGE 05</span>
+<span class="font-label-caps text-label-caps text-text-muted uppercase">RELIABILITY</span>
+</div>
+<div class="my-space-sm">
+<h3 class="font-headline-sm text-headline-sm uppercase text-text-primary mb-1">WEIBULL HAZARD FUNCTION</h3>
+<p class="font-body-sm text-body-sm leading-relaxed text-on-surface">
+              Parametric survival curves for internal combustion engines (ICE), MGU-K, turbochargers, hydraulics, and acute spatial crash/collision probabilities at high-risk corners.
+            </p>
+</div>
+<div class="pt-space-sm border-t border-border-subtle flex items-center justify-between font-label-caps text-label-caps text-text-subtle">
+<span class="">k = 1.24</span>
+<span class="text-telemetry-amber">WEAR ACCUMULATION</span>
+</div>
+</div>
+<!-- Stage 06 -->
+<div class="bg-surface border border-border-subtle p-space-md relative flex flex-col justify-between group hover:border-border-focus transition-colors">
+<div class="flex items-center justify-between pb-space-sm border-b border-border-subtle">
+<span class="font-data-mono-md text-body-sm text-text-subtle">STAGE 06</span>
+<span class="font-label-caps text-label-caps text-text-muted uppercase">DYNAMIC RACE</span>
+</div>
+<div class="my-space-sm">
+<h3 class="font-headline-sm text-headline-sm uppercase text-text-primary mb-1">STOCHASTIC PIT STRATEGY</h3>
+<p class="font-body-sm text-body-sm leading-relaxed text-on-surface">
+              Real-time lap-by-lap discrete event simulation. Models Safety Car deployment hazards, Virtual Safety Cars, undercut delta efficacy, and pit-crew execution standard deviations.
+            </p>
+</div>
+<div class="pt-space-sm border-t border-border-subtle flex items-center justify-between font-label-caps text-label-caps text-text-subtle">
+<span class="">DISCRETE EVENT</span>
+<span class="text-text-muted">LAP STEPPING</span>
+</div>
+</div>
+<!-- Stage 07 -->
+<div class="bg-surface border-l-2 border-l-telemetry-delta-pos border-t border-r border-b border-border-subtle p-space-md relative flex flex-col justify-between group hover:border-border-focus transition-colors">
+<div class="flex items-center justify-between pb-space-sm border-b border-border-subtle">
+<span class="font-data-mono-md text-body-sm text-telemetry-delta-pos">STAGE 07</span>
+<span class="font-label-caps text-label-caps text-secondary uppercase">MONTE CARLO</span>
+</div>
+<div class="my-space-sm">
+<h3 class="font-headline-sm text-headline-sm uppercase text-text-primary mb-1">10,000 PAIRED SEASONS</h3>
+<p class="font-body-sm text-body-sm leading-relaxed text-on-surface">
+              JAX vectorized simulation across 24 Grand Prix + 6 Sprint events. Preserves joint intra-team pace covariance (ρ = +0.62) and chassis correlation to avoid independent driver fallacies.
+            </p>
+</div>
+<div class="pt-space-sm border-t border-border-subtle flex items-center justify-between font-label-caps text-label-caps text-text-subtle">
+<span class="">ρ = +0.62</span>
+<span class="text-telemetry-delta-pos">10k PARALLEL</span>
+</div>
+</div>
+<!-- Stage 08 -->
+<div class="bg-surface border border-border-subtle p-space-md relative flex flex-col justify-between group hover:border-border-focus transition-colors">
+<div class="flex items-center justify-between pb-space-sm border-b border-border-subtle">
+<span class="font-data-mono-md text-body-sm text-text-subtle">STAGE 08</span>
+<span class="font-label-caps text-label-caps text-text-muted uppercase">QUANTIFICATION</span>
+</div>
+<div class="my-space-sm">
+<h3 class="font-headline-sm text-headline-sm uppercase text-text-primary mb-1">POSTERIOR AGGREGATION</h3>
+<p class="font-body-sm text-body-sm leading-relaxed text-on-surface">
+              Generates 90% Highest Density Intervals (HDI), championship win likelihood densities, head-to-head driver probabilities, and cryptographically signs the frozen forecast artifact.
+            </p>
+</div>
+<div class="pt-space-sm border-t border-border-subtle flex items-center justify-between font-label-caps text-label-caps text-text-subtle">
+<span class="">90% HDI</span>
+<span class="text-telemetry-delta-pos">IMMUTABLE FROZEN</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 02 // MATHEMATICAL FORMULATION & LATENT FACTOR EQUATIONS -->
+<section class="w-full py-space-xl bg-surface border-b border-border-subtle">
+<div class="w-full max-w-[1440px] mx-auto px-margin md:px-margin-desktop flex flex-col gap-space-lg">
+<div>
+<span class="font-label-caps text-label-caps uppercase text-primary-container tracking-wider block">SECTION 02 // FORMAL METHODOLOGY</span>
+<h2 class="font-headline-lg text-headline-lg uppercase text-text-primary tracking-wide">MATHEMATICAL FORMULATION &amp; LATENT EQUATIONS</h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
+<!-- Latent Pace Decomposition Card -->
+<div class="bg-surface-raised border border-border-subtle p-space-lg flex flex-col justify-between"><div class="flex flex-col gap-space-sm"><div class="flex items-center justify-between border-b border-border-subtle pb-space-sm"><span class="font-headline-sm text-headline-sm uppercase text-text-primary">LATENT PACE DECOMPOSITION</span><span class="font-data-mono-md text-body-sm text-text-muted">EQ. 01</span></div><div class="bg-surface-panel border border-border-subtle p-space-md text-center my-space-xs font-data-mono-md text-body-lg text-text-primary"><span class="text-primary-container font-bold">y</span><sub class="text-text-primary font-medium">i,j,t</sub> = <span class="text-text-primary font-bold">μ</span> + <span class="text-telemetry-delta-pos font-bold">α</span><sub class="text-text-primary font-medium">driver[i]</sub> + <span class="text-tertiary font-bold">β</span><sub class="text-text-primary font-medium">chassis[j]</sub> + <span class="text-telemetry-amber font-bold">γ</span><sub class="text-text-primary font-medium">PU[k]</sub> + <span class="text-text-primary font-bold">f</span><sub class="text-text-primary font-medium">ML</sub>(X<sub class="text-text-primary font-medium">i,j,t</sub>) + <span class="text-text-primary font-bold">ϵ</span><sub class="text-text-primary font-medium">i,j,t</sub></div><p class="font-body-sm text-body-sm text-on-surface leading-relaxed">Total observed lap delta <span class="font-data-mono-md text-text-primary font-bold">y</span> is isolated into independent hierarchical parameters. Priors enforce partial pooling:</p><div class="bg-canvas-base p-space-md border border-border-subtle font-data-mono-md text-body-sm text-on-surface space-y-1.5"><div class=""><span class="text-text-primary font-semibold">α<sub>driver</sub></span> ~ Normal(0, σ<sub>α</sub>²) · σ<sub>α</sub> ~ Half-Cauchy(0, 0.25)</div><div class=""><span class="text-text-primary font-semibold">β<sub>chassis</sub></span> ~ Normal(0, σ<sub>β</sub>²) · σ<sub>β</sub> ~ Half-Cauchy(0, 0.40)</div><div class=""><span class="text-text-primary font-semibold">γ<sub>PU</sub></span> ~ Normal(0, σ<sub>γ</sub>²) · σ<sub>γ</sub> ~ Half-Normal(0, 0.15)</div></div><p class="font-body-sm text-body-sm text-text-muted">Shrinkage prevents overfitting early preseason testing stints while accounting for high circuit-specific aerodynamic variation.</p></div><div class="pt-space-md border-t border-border-subtle mt-space-md flex items-center justify-between font-label-caps text-label-caps"><span class="text-text-muted">SOLVER: NUTS-HMC SAMPLER</span><span class="text-telemetry-delta-pos">NO DIVERGENCES</span></div></div>
+<!-- Teammate Joint Covariance Card -->
+<div class="bg-surface-raised border border-border-subtle p-space-lg flex flex-col justify-between"><div class="flex flex-col gap-space-sm"><div class="flex items-center justify-between border-b border-border-subtle pb-space-sm"><span class="font-headline-sm text-headline-sm uppercase text-text-primary">TEAMMATE JOINT COVARIANCE</span><span class="font-data-mono-md text-body-sm text-text-muted">EQ. 02</span></div><div class="bg-surface-panel border border-border-subtle p-space-md text-center my-space-xs font-data-mono-md text-body-md text-text-primary"><div class="flex items-center justify-center gap-2"><span class="">[ θ<sub>LEC</sub> , θ<sub>HAM</sub> ]<sup>T</sup> ~ <span class="text-primary-container font-bold">𝒩</span>₂ ( [ μ<sub>LEC</sub> , μ<sub>HAM</sub> ]<sup>T</sup> , <span class="text-secondary font-bold">Σ</span><sub>Ferrari</sub> )</span></div><div class="text-body-sm text-on-surface mt-2 border-t border-border-subtle pt-2">Σ<sub>1,2</sub> = ρ · σ<sub>LEC</sub> · σ<sub>HAM</sub> &nbsp;|&nbsp; <span class="text-text-primary font-bold">ρ = +0.62</span></div></div><p class="font-body-sm text-body-sm text-on-surface leading-relaxed">Standard Monte Carlo engines treat drivers independently, disastrously underestimating Constructor Championship variance. Scuderia's paired matrix preserves structural vehicle correlation:</p><div class="bg-canvas-base p-space-md border border-border-subtle font-data-mono-md text-body-sm text-on-surface space-y-1.5"><div class=""><span class="text-text-primary font-semibold">Var(Points<sub>Team</sub>)</span> = Var(LEC) + Var(HAM) + 2·Cov(LEC, HAM)</div><div class="">Covariance Coefficient <span class="text-text-primary font-semibold">ρ = +0.620 ± 0.041</span> (10-yr empirical)</div><div class="">Joint double-podium probability: <span class="text-telemetry-delta-pos font-semibold">P(LEC &amp; HAM ≥ P3) = 28.4%</span></div></div><p class="font-body-sm text-body-sm text-text-muted">Ensures that wind-tunnel performance shocks or upgrades appropriately lift both cars simultaneously in all synthetic trajectories.</p></div><div class="pt-space-md border-t border-border-subtle mt-space-md flex items-center justify-between font-label-caps text-label-caps"><span class="text-text-muted">COVARIANCE: BIVARIATE GAUSSIAN</span><span class="text-secondary">PAIRED STRUCTURE ACTIVE</span></div></div>
+<!-- Reliability Weibull Survival Card -->
+<div class="bg-surface-raised border border-border-subtle p-space-lg flex flex-col justify-between"><div class="flex flex-col gap-space-sm"><div class="flex items-center justify-between border-b border-border-subtle pb-space-sm"><span class="font-headline-sm text-headline-sm uppercase text-text-primary">WEIBULL HAZARD FUNCTION</span><span class="font-data-mono-md text-body-sm text-text-muted">EQ. 03</span></div><div class="bg-surface-panel border border-border-subtle p-space-md text-center my-space-xs font-data-mono-md text-body-lg text-text-primary"><span class="text-text-primary font-bold">S(t)</span> = exp( - ( <span class="text-telemetry-amber font-bold">t</span> / <span class="text-text-primary font-bold">λ</span> )<sup><span class="text-primary-container font-bold">k</span></sup> )<div class="text-body-sm text-on-surface mt-2 border-t border-border-subtle pt-2">k = 1.240 (Wear-out Phase) &nbsp;|&nbsp; λ = 0.0410</div></div><p class="font-body-sm text-body-sm text-on-surface leading-relaxed">Hardware mortality is parameterized per power-unit element (ICE, TC, MGU-K, ES, CE, EX). Shape parameter <span class="font-data-mono-md text-text-primary font-bold">k &gt; 1</span> confirms wear-out hazard acceleration over mileage:</p><div class="bg-canvas-base p-space-md border border-border-subtle font-data-mono-md text-body-sm text-on-surface space-y-1.5"><div class=""><span class="text-text-primary font-semibold">h(t)</span> = (k/λ) · (t/λ)<sup>k-1</sup> &nbsp;[Instantaneous Hazard Rate]</div><div class="">Mean Time Between Failure (MTBF): <span class="text-text-primary font-semibold">3,840 racing km</span></div><div class="">Grid penalty risk by Race 18: <span class="text-telemetry-amber font-semibold">34.2% across pool</span></div></div><p class="font-body-sm text-body-sm text-text-muted">Accounts for cumulative thermal stress, gear shifts under sustained kerb vibrations, and electrical transient spikes.</p></div><div class="pt-space-md border-t border-border-subtle mt-space-md flex items-center justify-between font-label-caps text-label-caps"><span class="text-text-muted">PARAMETRIC SURVIVAL</span><span class="text-telemetry-amber">COMPONENT LEVEL HAZARD</span></div></div>
+</div>
+</div>
+</section>
+<!-- SECTION 03 // HISTORICAL BACKTESTING, CONVERGENCE & CALIBRATION METRICS -->
+<section class="w-full py-space-xl bg-canvas-base border-b border-border-subtle">
+<div class="w-full max-w-[1440px] mx-auto px-margin md:px-margin-desktop flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm">
+<div>
+<span class="font-label-caps text-label-caps uppercase text-primary-container tracking-wider block">SECTION 03 // EMPIRICAL VALIDATION</span>
+<h2 class="font-headline-lg text-headline-lg uppercase text-text-primary tracking-wide">HISTORICAL BACKTESTING &amp; SHAP EXPLAINABILITY</h2>
+</div>
+<span class="font-label-caps text-label-caps text-text-subtle uppercase">
+          EVALUATED ACROSS 120 OUT-OF-SAMPLE GRANDS PRIX (2020–2026)
+        </span>
+</div>
+<!-- Main Visualizations Grid: Calibration Plot + SHAP Feature Importance -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-stretch">
+<!-- Left: Visual Calibration & Reliability Plot (7 Cols) -->
+<div class="lg:col-span-7 bg-surface border border-border-subtle p-space-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-sm border-b border-border-subtle mb-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[20px]">show_chart</span>
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary">PROBABILITY CALIBRATION CURVE</span>
+</div>
+<div class="flex items-center gap-space-md font-label-caps text-label-caps">
+<span class="flex items-center gap-1.5 text-text-muted"><span class="w-2.5 h-0.5 bg-text-subtle inline-block"></span>PERFECT CALIBRATION</span>
+<span class="flex items-center gap-1.5 text-primary-container"><span class="w-2.5 h-1 bg-primary-container inline-block"></span>FAHFERRARI POSTERIOR</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm mb-space-md text-on-surface">
+              Reliability diagram plotting forecasted win/podium probabilities against observed event frequency across historical backtests. Proximity to the 45° diagonal confirms zero probability inflation.
+            </p>
+<!-- Inline SVG Calibration Chart -->
+<div class="w-full bg-surface-raised border border-border-subtle p-space-md relative">
+<svg class="w-full h-auto overflow-visible" viewBox="0 0 540 280" xmlns="http://www.w3.org/2000/svg">
+<!-- Grid Lines -->
+<line stroke="#292D33" stroke-width="1" x1="40" x2="520" y1="240" y2="240"></line>
+<line stroke="#292D33" stroke-dasharray="3 3" stroke-width="1" x1="40" x2="520" y1="185" y2="185"></line>
+<line stroke="#292D33" stroke-dasharray="3 3" stroke-width="1" x1="40" x2="520" y1="130" y2="130"></line>
+<line stroke="#292D33" stroke-dasharray="3 3" stroke-width="1" x1="40" x2="520" y1="75" y2="75"></line>
+<line stroke="#292D33" stroke-dasharray="3 3" stroke-width="1" x1="40" x2="520" y1="20" y2="20"></line>
+<line stroke="#292D33" stroke-width="1" x1="40" x2="40" y1="20" y2="240"></line>
+<line stroke="#292D33" stroke-dasharray="3 3" stroke-width="1" x1="160" x2="160" y1="20" y2="240"></line>
+<line stroke="#292D33" stroke-dasharray="3 3" stroke-width="1" x1="280" x2="280" y1="20" y2="240"></line>
+<line stroke="#292D33" stroke-dasharray="3 3" stroke-width="1" x1="400" x2="400" y1="20" y2="240"></line>
+<line stroke="#292D33" stroke-width="1" x1="520" x2="520" y1="20" y2="240"></line>
+<!-- Ideal 45° Diagonal Reference -->
+<line stroke="#6F7680" stroke-dasharray="4 4" stroke-width="1.5" x1="40" x2="520" y1="240" y2="20"></line>
+<!-- 90% Confidence Envelope (Shaded polygon) -->
+<polygon fill="#E10600" fill-opacity="0.08" points="40,240 88,210 160,172 232,138 304,102 376,68 448,38 520,20 520,32 448,46 376,82 304,118 232,152 160,190 88,226 40,240"></polygon>
+<!-- Model Forecast Curve -->
+<polyline fill="none" points="40,240 88,218 160,182 232,143 304,110 376,73 448,42 520,20" stroke="#E10600" stroke-width="2.5"></polyline>
+<!-- Discrete Calibration Bin Markers -->
+<circle cx="40" cy="240" fill="#E10600" r="3.5"></circle>
+<circle cx="88" cy="218" fill="#E10600" r="3.5"></circle>
+<circle cx="160" cy="182" fill="#E10600" r="3.5"></circle>
+<circle cx="232" cy="143" fill="#E10600" r="3.5"></circle>
+<circle cx="304" cy="110" fill="#E10600" r="3.5"></circle>
+<circle cx="376" cy="73" fill="#E10600" r="3.5"></circle>
+<circle cx="448" cy="42" fill="#E10600" r="3.5"></circle>
+<circle cx="520" cy="20" fill="#E10600" r="3.5"></circle>
+<!-- Bin sample count annotations -->
+<text fill="#A0A5AD" font-family="Inter" font-size="9" text-anchor="middle" x="88" y="210">n=482</text>
+<text fill="#A0A5AD" font-family="Inter" font-size="9" text-anchor="middle" x="160" y="174">n=312</text>
+<text fill="#A0A5AD" font-family="Inter" font-size="9" text-anchor="middle" x="232" y="135">n=198</text>
+<text fill="#A0A5AD" font-family="Inter" font-size="9" text-anchor="middle" x="304" y="102">n=144</text>
+<text fill="#A0A5AD" font-family="Inter" font-size="9" text-anchor="middle" x="376" y="65">n=88</text>
+<text fill="#A0A5AD" font-family="Inter" font-size="9" text-anchor="middle" x="448" y="34">n=54</text>
+<!-- Axis Labels -->
+<text fill="#6F7680" font-family="Inter" font-size="10" text-anchor="middle" x="40" y="255">0%</text>
+<text fill="#6F7680" font-family="Inter" font-size="10" text-anchor="middle" x="160" y="255">25%</text>
+<text fill="#6F7680" font-family="Inter" font-size="10" text-anchor="middle" x="280" y="255">50%</text>
+<text fill="#6F7680" font-family="Inter" font-size="10" text-anchor="middle" x="400" y="255">75%</text>
+<text fill="#6F7680" font-family="Inter" font-size="10" text-anchor="middle" x="520" y="255">100%</text>
+<text fill="#6F7680" font-family="Inter" font-size="10" text-anchor="end" x="32" y="244">0%</text>
+<text fill="#6F7680" font-family="Inter" font-size="10" text-anchor="end" x="32" y="188">25%</text>
+<text fill="#6F7680" font-family="Inter" font-size="10" text-anchor="end" x="32" y="133">50%</text>
+<text fill="#6F7680" font-family="Inter" font-size="10" text-anchor="end" x="32" y="78">75%</text>
+<text fill="#6F7680" font-family="Inter" font-size="10" text-anchor="end" x="32" y="24">100%</text>
+<text fill="#A0A5AD" font-family="Inter" font-size="11" font-weight="600" text-anchor="middle" x="280" y="274">FORECASTED PROBABILITY BIN</text>
+<text fill="#A0A5AD" font-family="Inter" font-size="11" font-weight="600" text-anchor="middle" transform="rotate(-90 10 130)" x="10" y="130">OBSERVED FREQUENCY</text>
+</svg>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-space-sm pt-space-md border-t border-border-subtle mt-space-md font-data-mono-md text-body-sm">
+<div class="p-space-lg">
+<span class="text-text-subtle block font-label-caps text-label-caps">LOG-LOSS</span>
+<span class="text-text-primary font-bold">0.312</span>
+<span class="text-telemetry-delta-pos text-body-sm block">CALIBRATED</span>
+</div>
+<div class="p-space-lg">
+<span class="text-text-subtle block font-label-caps text-label-caps">BRIER SCORE</span>
+<span class="text-text-primary font-bold">0.084</span>
+<span class="text-telemetry-delta-pos text-body-sm block">BENCHMARK TOP</span>
+</div>
+<div class="p-space-lg">
+<span class="text-text-subtle block font-label-caps text-label-caps">POINTS MAE</span>
+<span class="text-text-primary font-bold">14.2 PTS</span>
+<span class="text-text-muted text-body-sm block">FULL SEASON</span>
+</div>
+</div>
+</div>
+<!-- Right: Explainable AI / SHAP Global Feature Importance (5 Cols) -->
+<div class="lg:col-span-5 bg-surface border border-border-subtle p-space-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-sm border-b border-border-subtle mb-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">psychology</span>
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary">SHAP FEATURE IMPORTANCE</span>
+</div>
+<span class="font-label-caps text-label-caps text-text-subtle uppercase">EXPLAINABLE AI ENGINE</span>
+</div>
+<p class="font-body-sm text-body-sm mb-space-md text-on-surface">
+              Mean absolute Shapley values measuring marginal contribution to lap-time delta predictions across 24 Grand Prix profiles:
+            </p>
+<!-- SHAP Horizontal Bar Charts -->
+<div class="flex flex-col gap-space-sm font-data-mono-md text-body-sm">
+<!-- Feature 1 -->
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="text-text-primary">Fuel-Corrected S2 Stint Pace</span>
+<span class="text-telemetry-delta-pos font-bold">+0.284 SHAP</span>
+</div>
+<div class="w-full h-3 bg-surface-raised border border-border-subtle flex">
+<div class="h-full bg-secondary" style="width: 88%;"></div>
+</div>
+</div>
+<!-- Feature 2 -->
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="text-text-primary">Slow-Speed Traction Rotation Index</span>
+<span class="text-telemetry-delta-pos font-bold">+0.218 SHAP</span>
+</div>
+<div class="w-full h-3 bg-surface-raised border border-border-subtle flex">
+<div class="h-full bg-secondary" style="width: 68%;"></div>
+</div>
+</div>
+<!-- Feature 3 -->
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="text-text-primary">Straight-Line V-Max Trap Speed</span>
+<span class="text-telemetry-delta-pos font-bold">+0.192 SHAP</span>
+</div>
+<div class="w-full h-3 bg-surface-raised border border-border-subtle flex">
+<div class="h-full bg-secondary" style="width: 60%;"></div>
+</div>
+</div>
+<!-- Feature 4 -->
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="text-text-primary">Tyre Degradation Slope</span>
+<span class="text-primary-container font-bold">-0.165 SHAP</span>
+</div>
+<div class="w-full h-3 bg-surface-raised border border-border-subtle flex">
+<div class="h-full bg-primary-container" style="width: 52%;"></div>
+</div>
+</div>
+<!-- Feature 5 -->
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="text-text-primary">Ambient Track Temp Interaction</span>
+<span class="text-telemetry-delta-pos font-bold">+0.114 SHAP</span>
+</div>
+<div class="w-full h-3 bg-surface-raised border border-border-subtle flex">
+<div class="h-full bg-secondary" style="width: 36%;"></div>
+</div>
+</div>
+<!-- Feature 6 -->
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="text-text-primary">Kerb Strike Mechanical Compliance</span>
+<span class="text-telemetry-delta-pos font-bold">+0.098 SHAP</span>
+</div>
+<div class="w-full h-3 bg-surface-raised border border-border-subtle flex">
+<div class="h-full bg-secondary" style="width: 30%;"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-space-md border-t border-border-subtle mt-space-md flex items-center justify-between font-label-caps text-label-caps">
+<span class="text-text-subtle">TREE-SHAP ACCELERATED (LIGHTGBM)</span>
+<span class="text-text-muted">EXACT SHAPLEY COHORT</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 04 // DATA LINEAGE, INTEGRITY & COVERAGE AUDIT -->
+<section class="w-full py-space-xl bg-surface border-b border-border-subtle">
+<div class="w-full max-w-[1440px] mx-auto px-margin md:px-margin-desktop flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm">
+<div>
+<span class="font-label-caps text-label-caps uppercase text-primary-container tracking-wider block">SECTION 04 // DATA PROVENANCE</span>
+<h2 class="font-headline-lg text-headline-lg uppercase text-text-primary tracking-wide">CANONICAL LINEAGE &amp; TEMPORAL INTEGRITY</h2>
+</div>
+<div class="font-label-caps text-label-caps text-telemetry-delta-pos uppercase flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-telemetry-delta-pos"></span>
+          ZERO LOOK-AHEAD TEMPORAL SPLIT CERTIFIED
+        </div>
+</div>
+<!-- Audit Table -->
+<div class="w-full bg-surface-raised border border-border-subtle overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-canvas-base border-b border-border-subtle font-label-caps text-label-caps text-text-subtle uppercase">
+<th class="p-space-md">DATA SOURCE / PIPELINE</th>
+<th class="p-space-md">TEMPORAL SCOPE</th>
+<th class="p-space-md">RECORD DENSITY</th>
+<th class="p-space-md">LATENCY / RESOLUTION</th>
+<th class="p-space-md">LEAKAGE SAFEGUARD</th>
+<th class="p-space-md text-right">AUDIT STATUS</th>
+</tr>
+</thead>
+<tbody class="font-data-mono-md text-body-sm divide-y divide-border-subtle">
+<!-- Row 1 -->
+<tr class="hover:bg-surface transition-colors border-l-2 border-l-primary-container">
+<td class="p-space-md font-semibold text-text-primary flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-primary-container"></span>
+                FastF1 Open Telemetry Streams
+              </td>
+<td class="p-space-md text-text-muted">2018–2026 Season Laps</td>
+<td class="p-space-md text-text-primary">1,842,109 Laps</td>
+<td class="p-space-md text-text-muted">10 Hz GPS / Gearbox / Throttle</td>
+<td class="p-space-md text-text-muted">Point-in-Time Lagged t-1</td>
+<td class="p-space-md text-right text-telemetry-delta-pos">VERIFIED</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface transition-colors">
+<td class="p-space-md font-semibold text-text-primary flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-text-subtle"></span>
+                FIA Official Timing &amp; Weather Feeds
+              </td>
+<td class="p-space-md text-text-muted">2014–2026 Hybrid Era</td>
+<td class="p-space-md text-text-primary">286 Grands Prix</td>
+<td class="p-space-md text-text-muted">Micro-sector (1/1000s) + Weather</td>
+<td class="p-space-md text-text-muted">Strict Window Exclusion</td>
+<td class="p-space-md text-right text-telemetry-delta-pos">VERIFIED</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface transition-colors">
+<td class="p-space-md font-semibold text-text-primary flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-text-subtle"></span>
+                Ergast / OpenF1 Historical Database
+              </td>
+<td class="p-space-md text-text-muted">1950–2026 Classification</td>
+<td class="p-space-md text-text-primary">1,120 Race Events</td>
+<td class="p-space-md text-text-muted">Final Classification &amp; Penalties</td>
+<td class="p-space-md text-text-muted">Hierarchical Prior Prioritization</td>
+<td class="p-space-md text-right text-telemetry-delta-pos">VERIFIED</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface transition-colors">
+<td class="p-space-md font-semibold text-text-primary flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-telemetry-amber"></span>
+                Pirelli Official Thermal Wear Bulletins
+              </td>
+<td class="p-space-md text-text-muted">2022–2026 Ground Effect</td>
+<td class="p-space-md text-text-primary">1,480 Stint Reports</td>
+<td class="p-space-md text-text-muted">Compound C1–C5 Degradation Coeffs</td>
+<td class="p-space-md text-text-muted">Pre-session Stint Fit Only</td>
+<td class="p-space-md text-right text-telemetry-delta-pos">VERIFIED</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface transition-colors">
+<td class="p-space-md font-semibold text-text-primary flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-primary-container"></span>
+                Maranello Wind Tunnel Calibration Deltas
+              </td>
+<td class="p-space-md text-text-muted">2026 Preseason Frozen</td>
+<td class="p-space-md text-text-primary">60% Scale Aero Matrices</td>
+<td class="p-space-md text-text-muted">Front Wing / Venturi Floor Downforce</td>
+<td class="p-space-md text-text-muted">Immutable Feb 18 Cutoff</td>
+<td class="p-space-md text-right text-telemetry-delta-pos">LOCKED T₀</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Leakage Guard Proof Callout Strip -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="bg-surface-raised border border-border-subtle p-space-md">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-telemetry-delta-pos text-[18px]">verified</span>
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary">ROLLING ORIGIN WINDOWS</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted leading-relaxed">
+            All predictive evaluations strictly preserve temporal ordering. Models trained up to Race T only utilize data from races ≤ T-1. No back-filling or post-season recalibration is permitted.
+          </p>
+</div>
+<div class="bg-surface-raised border border-border-subtle p-space-md">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-telemetry-delta-pos text-[18px]">lock</span>
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary">FROZEN T₀ ANCHOR</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted leading-relaxed">
+            Preseason projections were locked on February 18, 2027 at 23:59 CET prior to official Bahrain shakedown sessions. The parameter space reflects true ex-ante knowledge.
+          </p>
+</div>
+<div class="bg-surface-raised border border-border-subtle p-space-md">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-telemetry-delta-pos text-[18px]">shield</span>
+<span class="font-headline-sm text-headline-sm uppercase text-text-primary">AUDITED DRIFT PROTECTION</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted leading-relaxed">
+            Population stability index (PSI &lt; 0.04) and Kolmogorov-Smirnov continuous tests confirm zero covariate distribution drift between historical datasets and 2027 technical regulations.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 05 // SYSTEM PROVENANCE & REPRODUCIBILITY MANIFEST -->
+<section class="w-full py-space-xl bg-canvas-base">
+<div class="w-full max-w-[1440px] mx-auto px-margin md:px-margin-desktop flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm">
+<div>
+<span class="font-label-caps text-label-caps uppercase text-primary-container tracking-wider block">SECTION 05 // RUN INTEGRITY</span>
+<h2 class="font-headline-lg text-headline-lg uppercase text-text-primary tracking-wide">REPRODUCIBILITY TERMINAL &amp; MANIFEST</h2>
+</div>
+<span class="font-label-caps text-label-caps text-text-subtle uppercase">
+          POINT-IN-TIME CRYPTOGRAPHIC CERTIFICATION
+        </span>
+</div>
+<!-- Terminal Emulator Window -->
+<div class="bg-surface border border-border-subtle flex flex-col">
+<!-- Terminal Top Bar -->
+<div class="bg-canvas-base border-b border-border-subtle px-space-md py-2 flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-telemetry-amber"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+</div>
+<span class="font-data-mono-md text-body-sm text-text-subtle ml-2">fahferrari-mcmc-daemon — core-v2027.4</span>
+</div>
+<div class="flex items-center gap-2 font-label-caps text-label-caps text-telemetry-delta-pos">
+<span class="w-1.5 h-1.5 rounded-full bg-telemetry-delta-pos animate-pulse"></span>
+            IMMUTABLE SNAPSHOT RECORD
+          </div>
+</div>
+<!-- Terminal Output Body -->
+<div class="p-space-lg font-data-mono-md text-body-sm leading-relaxed space-y-2 text-text-muted overflow-x-auto">
+<div class="text-text-primary">$ fahferrari --verify-run --manifest /var/opt/fahferrari/runs/2027-preseason.lock</div>
+<div class="text-text-subtle">[INFO] 2027-02-18T23:59:58.412Z Initializing deterministic verification protocol...</div>
+<div class=""><span class="text-text-subtle">[CONF]</span> FORECAST_VERSION: <span class="text-text-primary">v2027.4-preseason-frozen</span></div>
+<div class=""><span class="text-text-subtle">[CONF]</span> MCMC_PSEUDO_SEED:  <span class="text-text-primary">#4416</span> (Mersenne Twister 64-bit mt19937_64)</div>
+<div class=""><span class="text-text-subtle">[CONF]</span> GIT_COMMIT_SHA:    <span class="text-text-primary">c8f92e4416d2027b49a1ff0931bb890aef6e8891</span></div>
+<div class=""><span class="text-text-subtle">[CONF]</span> DATA_SNAPSHOT_HASH: <span class="text-text-primary">0x9AF4B01C88219E007B642C991</span></div>
+<div class=""><span class="text-text-subtle">[CONF]</span> INFERENCE_ENGINE:  <span class="text-text-primary">PyMC 5.10.3 / Stan 2.33 + LightGBM 4.3.0 + JAX 0.4.24</span></div>
+<div class=""><span class="text-text-subtle">[CONF]</span> SAMPLING_PROFILE:   <span class="text-text-primary">4 chains × 14,000 draws (4,000 warmup, 10,000 retained)</span></div>
+<div class="text-text-subtle">------------------------------------------------------------------------------------------------</div>
+<div class=""><span class="text-telemetry-delta-pos">[PASS]</span> Convergence Check: Gelman-Rubin R̂ max = 1.0078 (threshold &lt; 1.0100) — <span class="text-telemetry-delta-pos">SATISFIED</span></div>
+<div class=""><span class="text-telemetry-delta-pos">[PASS]</span> Energy Transition Check: BFMI = 0.941 (threshold &gt; 0.300) — <span class="text-telemetry-delta-pos">SATISFIED</span></div>
+<div class=""><span class="text-telemetry-delta-pos">[PASS]</span> Joint Teammate Covariance Check: Ferrari ρ(LEC, HAM) = +0.6200 — <span class="text-telemetry-delta-pos">VALIDATED</span></div>
+<div class=""><span class="text-telemetry-delta-pos">[PASS]</span> Snapshot Immutability: SHA-512 Match with decentralized ledger — <span class="text-telemetry-delta-pos">LOCKED</span></div>
+<div class="text-text-primary pt-2">&gt;&gt;&gt; RUN STATUS: ALL 10,000 SYNTHETIC 2027 CHAMPIONSHIPS FULLY REPRODUCIBLE.</div>
+</div>
+<!-- Terminal Footer Actions -->
+<div class="bg-surface-raised border-t border-border-subtle p-space-md flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm font-label-caps text-label-caps text-text-subtle">
+<span class="">TIMESTAMP: 2027-02-18 23:59:58 UTC</span>
+<span class="">·</span>
+<span class="">NODE: MARANELLO-SIM-09</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-1.5 bg-surface border border-border-subtle hover:border-border-focus text-text-primary font-headline-sm text-headline-sm uppercase tracking-wider transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">query_stats</span>
+              INSPECT MCMC TRACE DIAGNOSTICS
+            </button>
+<button class="px-space-md py-1.5 bg-primary-container hover:bg-ferrari-red-hover text-text-primary font-headline-sm text-headline-sm uppercase tracking-wider transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">download</span>
+              EXPORT RUN MANIFEST (.JSON)
+            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Client Behavior for Terminal / Inspector -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Micro-interaction: Active Nav highlighting & Log Terminal copy confirmation
+      const exportBtn = document.querySelector('button:has(.material-symbols-outlined:contains("download"))') || document.querySelectorAll('button')[3];
+      if (exportBtn) {
+        exportBtn.addEventListener('click', () => {
+          const originalText = exportBtn.innerHTML;
+          exportBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">check</span> MANIFEST DOWNLOADED';
+          setTimeout(() => {
+            exportBtn.innerHTML = originalText;
+          }, 2500);
+        });
+      }
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-panel border-t border-border-subtle"><div class="w-full max-w-[1440px] mx-auto px-margin md:px-margin-desktop py-space-xl"><div class="grid grid-cols-1 md:grid-cols-12 gap-gutter-desktop items-start pb-space-lg border-b border-border-subtle"><div class="md:col-span-6 flex flex-col gap-space-sm"><div class="flex items-center gap-space-xs"><span class="w-2 h-4 bg-primary-container inline-block"></span><span class="font-headline-sm text-headline-sm uppercase text-text-primary tracking-wider">FAHFERRARI</span><span class="font-label-caps text-label-caps uppercase text-text-subtle ml-2">v2.7.4 ENTERPRISE</span></div><p class="font-body-sm text-body-sm text-text-muted max-w-xl leading-relaxed">FahFerrari is an independent performance intelligence project and is not affiliated with, endorsed by, or sponsored by Scuderia Ferrari, Ferrari S.p.A., or Formula 1.</p><div class="mt-space-xs"><span class="font-label-caps text-label-caps uppercase text-text-subtle block mb-1">ENGINEERING ARCHITECTURE</span><span class="font-data-mono-md text-body-sm text-text-muted">Hybrid Bayesian Hierarchical Pace + Gradient-Boosted Residuals + 10,000 Monte Carlo Simulations</span></div></div><div class="md:col-span-3 flex flex-col gap-space-sm"><span class="font-label-caps text-label-caps uppercase text-text-subtle tracking-wider">FAST NAVIGATION</span><nav class="flex flex-col gap-1.5" data-active-classes="text-text-primary"><a class="font-body-sm text-body-sm text-text-muted hover:text-text-primary transition-colors" data-path="overview" href="#">Overview</a><a class="font-body-sm text-body-sm text-text-muted hover:text-text-primary transition-colors" data-path="model-integrity" href="#">Model Integrity</a><a class="font-body-sm text-body-sm text-text-muted hover:text-text-primary transition-colors" data-path="api-docs" href="#">API Docs</a><a class="font-body-sm text-body-sm text-text-muted hover:text-text-primary transition-colors" data-path="github" href="#">GitHub</a><a class="font-body-sm text-body-sm text-text-muted hover:text-text-primary transition-colors" data-path="2026-retrospective" href="#">Retrospective</a></nav></div><div class="md:col-span-3 flex flex-col gap-space-sm"><span class="font-label-caps text-label-caps uppercase text-text-subtle tracking-wider">SYSTEM VERIFICATION</span><div class="p-space-sm bg-surface-raised border border-border-subtle flex flex-col gap-1"><div class="flex items-center justify-between"><span class="font-label-caps text-label-caps text-text-muted">PROVENANCE</span><span class="font-label-caps text-label-caps text-telemetry-delta-pos">ACTIVE</span></div><span class="font-data-mono-md text-body-sm text-text-primary">BUILD v2.7.4 · SEED #4416</span><span class="font-label-caps text-label-caps text-text-subtle">POINT-IN-TIME VERIFIED</span></div></div></div><div class="pt-space-md flex flex-col sm:flex-row items-center justify-between gap-space-sm font-label-caps text-label-caps text-text-subtle uppercase"><span class="">© 2027 FAHFERRARI PERFORMANCE INTELLIGENCE. ALL RIGHTS RESERVED.</span><span class="">HIGH-THROUGHPUT FORMULA 1 PREDICTIVE TELEMETRY</span></div></div></footer>
+
+</body></html>
