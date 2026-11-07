@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link } from '../../context/RouterContext';
 import { get2027Predictions, get2027Provenance } from '../../services/api';
 import CredibleIntervalBar from '../../components/common/CredibleIntervalBar';
+import TelemetryVfxCanvas from './components/TelemetryVfxCanvas';
+import CircuitMapVisualizer from './components/CircuitMapVisualizer';
+import LapTelemetryDemo from './components/LapTelemetryDemo';
+import VideoModal from './components/VideoModal';
+import AudioTelemetryEngine from './components/AudioTelemetryEngine';
 import {
   ShieldAlert,
   Sparkles,
@@ -16,12 +21,18 @@ import {
   BarChart3,
   Calendar,
   Lock,
+  Play,
+  Activity,
+  MapPin,
+  Flame,
 } from 'lucide-react';
 
 export default function OverviewPage() {
   const [data, setData] = useState(null);
   const [provenance, setProvenance] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [isVfxActive, setIsVfxActive] = useState(true);
 
   useEffect(() => {
     async function loadData() {
@@ -56,7 +67,6 @@ export default function OverviewPage() {
   const standings = data.constructors_standings;
   const races = data.race_by_race_forecast;
 
-  // Selected highlight races
   const highlightRaces = [
     races.find((r) => r.round === 1) || races[0],
     races.find((r) => r.circuit_id === 'monaco') || races[7],
@@ -66,24 +76,31 @@ export default function OverviewPage() {
 
   return (
     <div className="flex flex-col w-full">
-      {/* 1. CINEMATIC HERO SECTION */}
-      <section className="relative w-full min-h-[520px] bg-canvas-base overflow-hidden flex flex-col justify-between border-b border-border-subtle">
-        {/* Hero Background Photography with Precision Vignette */}
+      {/* VIDEO DEMONSTRATION MODAL */}
+      <VideoModal isOpen={isVideoModalOpen} onClose={() => setIsVideoModalOpen(false)} />
+
+      {/* 1. CINEMATIC HERO SECTION WITH VFX */}
+      <section className="relative w-full min-h-[580px] bg-canvas-base overflow-hidden flex flex-col justify-between border-b border-border-subtle">
+        {/* Hero Background Photography (Local photorealistic 2027 render or fallback) */}
         <div
-          className="absolute inset-0 bg-cover bg-right md:bg-center opacity-40 mix-blend-luminosity filter contrast-125"
+          className="absolute inset-0 bg-cover bg-right md:bg-center opacity-55 mix-blend-luminosity filter contrast-125 transition-all duration-700"
           style={{
             backgroundImage:
-              "url('https://lh3.googleusercontent.com/aida-public/AB6AXuAHF8xzGI5Ao-G1VwnnagKm1k2zGc-eDE97IS-LhOEoYJ2TtE9iDZpbs0hkJuvk716xFRdq3zsmmFLmByv3E2NyI0SqzuFstwMhDTEu0Tfuczro-ux1EPdXt78mWUBlocuqmtXNrfr5otzKZKvwFfQeq1KkzMmadXHW5718ZLAVARW6wLqHPFkzhpCu6RkOTk1EeWW8Hr5ClkRXAAbDk0dM3ba7rXlEa3_jG5qZaoBZNkFYuGmkIFQ')",
+              "url('/ferrari_sf27_hero.jpg'), url('https://lh3.googleusercontent.com/aida-public/AB6AXuAHF8xzGI5Ao-G1VwnnagKm1k2zGc-eDE97IS-LhOEoYJ2TtE9iDZpbs0hkJuvk716xFRdq3zsmmFLmByv3E2NyI0SqzuFstwMhDTEu0Tfuczro-ux1EPdXt78mWUBlocuqmtXNrfr5otzKZKvwFfQeq1KkzMmadXHW5718ZLAVARW6wLqHPFkzhpCu6RkOTk1EeWW8Hr5ClkRXAAbDk0dM3ba7rXlEa3_jG5qZaoBZNkFYuGmkIFQ')",
           }}
         />
+
+        {/* Live Aerodynamic Flow Stream Canvas (VFX) */}
+        {isVfxActive && <TelemetryVfxCanvas active={isVfxActive} density={70} />}
+
         {/* Layered Technical Gradients */}
-        <div className="absolute inset-0 bg-gradient-to-r from-canvas-base via-canvas-base/90 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-canvas-base via-canvas-base/85 to-transparent pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-t from-canvas-base via-transparent to-canvas-base/60 pointer-events-none" />
 
         {/* Content Body */}
-        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 md:px-margin-desktop pt-12 pb-8 flex-1 flex flex-col justify-center">
+        <div className="relative z-20 w-full max-w-[1440px] mx-auto px-4 md:px-margin-desktop pt-14 pb-10 flex-1 flex flex-col justify-center">
           <div className="max-w-3xl flex flex-col gap-space-sm">
-            {/* Eyebrow & Frozen Badge */}
+            {/* Eyebrow & Badges */}
             <div className="flex flex-wrap items-center gap-space-sm">
               <div className="flex items-center gap-1.5">
                 <span className="w-1.5 h-3 bg-primary-container inline-block"></span>
@@ -95,6 +112,17 @@ export default function OverviewPage() {
                 <Lock className="w-3 h-3 text-secondary" />
                 FROZEN PRESEASON BASELINE
               </span>
+              <button
+                onClick={() => setIsVfxActive(!isVfxActive)}
+                className={`px-2 py-0.5 text-[10px] font-label-caps uppercase border transition-colors flex items-center gap-1 ${
+                  isVfxActive
+                    ? 'bg-secondary/20 border-secondary text-secondary font-bold'
+                    : 'bg-surface-panel border-border-subtle text-text-subtle hover:text-text-primary'
+                }`}
+              >
+                <Flame className="w-3 h-3" />
+                <span>{isVfxActive ? 'AERO VFX: ACTIVE' : 'AERO VFX: OFF'}</span>
+              </button>
             </div>
 
             {/* Main Headline */}
@@ -117,19 +145,21 @@ export default function OverviewPage() {
                 <ArrowRight className="w-4 h-4" />
               </a>
 
-              <Link
-                href="/model-intelligence"
-                className="px-5 py-2.5 bg-surface-panel hover:bg-surface-raised border border-border-subtle hover:border-border-focus text-text-primary font-headline-sm text-headline-sm uppercase tracking-wider transition-colors inline-flex items-center gap-2"
+              <button
+                onClick={() => setIsVideoModalOpen(true)}
+                className="px-5 py-2.5 bg-surface-panel hover:bg-surface-raised border border-border-focus hover:border-primary-container text-text-primary font-headline-sm text-headline-sm uppercase tracking-wider transition-all inline-flex items-center gap-2 group"
               >
-                <span>HOW THE MODEL WORKS</span>
-                <ChevronRight className="w-4 h-4 text-text-muted" />
-              </Link>
+                <Play className="w-4 h-4 text-primary-container group-hover:scale-110 transition-transform" />
+                <span>WATCH 2027 DEMO</span>
+              </button>
+
+              <AudioTelemetryEngine />
             </div>
           </div>
         </div>
 
         {/* Hero Metadata Strip */}
-        <div className="relative z-10 w-full border-t border-border-subtle bg-surface-panel/80 backdrop-blur-sm">
+        <div className="relative z-20 w-full border-t border-border-subtle bg-surface-panel/85 backdrop-blur-sm">
           <div className="max-w-[1440px] mx-auto px-4 md:px-margin-desktop py-2.5 grid grid-cols-2 md:grid-cols-4 gap-3 text-xs font-label-caps uppercase text-text-subtle">
             <div className="flex items-center gap-2">
               <span className="text-text-muted">MODEL:</span>
@@ -309,7 +339,7 @@ export default function OverviewPage() {
           </div>
         </section>
 
-        {/* 4. THE DRIVER EQUATION: LECLERC VS HAMILTON */}
+        {/* 4. THE DRIVER EQUATION: LECLERC VS HAMILTON (WITH IMAGERY) */}
         <section className="flex flex-col gap-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-2 border-b border-border-subtle pb-3">
             <div>
@@ -333,19 +363,33 @@ export default function OverviewPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Charles Leclerc Card */}
-            <div className="bg-surface-panel p-6 border border-border-subtle border-t-2 border-t-primary-container flex flex-col justify-between gap-4">
+            {/* Charles Leclerc Card with High-Res Portrait */}
+            <div className="bg-surface-panel p-6 border border-border-subtle border-t-2 border-t-primary-container flex flex-col justify-between gap-4 overflow-hidden relative group">
               <div>
                 <div className="flex justify-between items-start">
-                  <div>
-                    <span className="font-headline-md text-3xl font-bold text-primary-container">#16</span>
-                    <h3 className="font-headline-md text-2xl uppercase text-text-primary font-bold mt-1">
-                      CHARLES LECLERC
-                    </h3>
-                    <span className="font-label-caps text-xs text-text-subtle uppercase">
-                      MONACO · CONTRACTED LEAD
-                    </span>
+                  <div className="flex items-center gap-4">
+                    <div className="w-20 h-24 bg-surface-raised border border-border-subtle overflow-hidden shrink-0 relative">
+                      <img
+                        src="/leclerc.jpg"
+                        alt="Charles Leclerc"
+                        className="w-full h-full object-cover object-top filter grayscale contrast-125 group-hover:filter-none transition-all duration-300"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-surface-panel to-transparent" />
+                    </div>
+                    <div>
+                      <span className="font-headline-md text-3xl font-bold text-primary-container">#16</span>
+                      <h3 className="font-headline-md text-2xl uppercase text-text-primary font-bold mt-0.5">
+                        CHARLES LECLERC
+                      </h3>
+                      <span className="font-label-caps text-xs text-text-subtle uppercase block">
+                        MONACO · CONTRACTED LEAD QUALIFIER
+                      </span>
+                    </div>
                   </div>
+
                   <div className="text-right">
                     <span className="font-label-caps text-[10px] text-text-subtle uppercase">P(WDC TITLE)</span>
                     <div className="font-data-mono-md text-xl text-primary-container font-bold tnum">
@@ -394,19 +438,33 @@ export default function OverviewPage() {
               </div>
             </div>
 
-            {/* Lewis Hamilton Card */}
-            <div className="bg-surface-panel p-6 border border-border-subtle border-t-2 border-t-telemetry-amber flex flex-col justify-between gap-4">
+            {/* Lewis Hamilton Card with High-Res Portrait */}
+            <div className="bg-surface-panel p-6 border border-border-subtle border-t-2 border-t-telemetry-amber flex flex-col justify-between gap-4 overflow-hidden relative group">
               <div>
                 <div className="flex justify-between items-start">
-                  <div>
-                    <span className="font-headline-md text-3xl font-bold text-telemetry-amber">#44</span>
-                    <h3 className="font-headline-md text-2xl uppercase text-text-primary font-bold mt-1">
-                      LEWIS HAMILTON
-                    </h3>
-                    <span className="font-label-caps text-xs text-text-subtle uppercase">
-                      GREAT BRITAIN · 7-TIME WORLD CHAMPION
-                    </span>
+                  <div className="flex items-center gap-4">
+                    <div className="w-20 h-24 bg-surface-raised border border-border-subtle overflow-hidden shrink-0 relative">
+                      <img
+                        src="/hamilton.jpg"
+                        alt="Lewis Hamilton"
+                        className="w-full h-full object-cover object-top filter grayscale contrast-125 group-hover:filter-none transition-all duration-300"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-surface-panel to-transparent" />
+                    </div>
+                    <div>
+                      <span className="font-headline-md text-3xl font-bold text-telemetry-amber">#44</span>
+                      <h3 className="font-headline-md text-2xl uppercase text-text-primary font-bold mt-0.5">
+                        LEWIS HAMILTON
+                      </h3>
+                      <span className="font-label-caps text-xs text-text-subtle uppercase block">
+                        GREAT BRITAIN · 7-TIME WORLD CHAMPION
+                      </span>
+                    </div>
                   </div>
+
                   <div className="text-right">
                     <span className="font-label-caps text-[10px] text-text-subtle uppercase">P(WDC TITLE)</span>
                     <div className="font-data-mono-md text-xl text-telemetry-amber font-bold tnum">
@@ -457,7 +515,17 @@ export default function OverviewPage() {
           </div>
         </section>
 
-        {/* 5. THE COMPETITIVE FIELD */}
+        {/* 5. INTERACTIVE LAP TELEMETRY DEMONSTRATION (VFX & LIVE TRACE) */}
+        <section className="flex flex-col gap-6">
+          <LapTelemetryDemo />
+        </section>
+
+        {/* 6. RACETRACK TELEMETRY ENGINE & CIRCUIT MAPS */}
+        <section className="flex flex-col gap-6">
+          <CircuitMapVisualizer selectedCircuitId="monza" />
+        </section>
+
+        {/* 7. THE COMPETITIVE FIELD */}
         <section className="flex flex-col gap-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-2 border-b border-border-subtle pb-3">
             <div>
@@ -549,7 +617,7 @@ export default function OverviewPage() {
           </div>
         </section>
 
-        {/* 6. RACES TO WATCH */}
+        {/* 8. RACES TO WATCH */}
         <section className="flex flex-col gap-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-2 border-b border-border-subtle pb-3">
             <div>
@@ -619,12 +687,12 @@ export default function OverviewPage() {
           </div>
         </section>
 
-        {/* 7. MODEL INTEGRITY & PROVENANCE PANEL */}
+        {/* 9. MODEL INTEGRITY & PROVENANCE PANEL */}
         <section className="bg-surface-panel p-6 border border-border-subtle border-l-4 border-l-secondary flex flex-col gap-4">
           <div className="flex items-center gap-2">
             <ShieldAlert className="w-5 h-5 text-secondary" />
             <h3 className="font-headline-sm text-lg uppercase text-text-primary font-bold">
-              MODEL INTEGRITY, PROVENANCE & METHODOLOGY NOTICE
+              MODEL INTEGRITY, PROVENANCE &amp; METHODOLOGY NOTICE
             </h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-text-muted leading-relaxed">
@@ -652,4 +720,3 @@ export default function OverviewPage() {
     </div>
   );
 }
-

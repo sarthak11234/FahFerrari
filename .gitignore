@@ -409,6 +409,9 @@ sandbox/
 # Large visualizations
 *.png
 *.jpg
+!ferrari-f1-predictor/frontend/public/*.jpg
+!ferrari-f1-predictor/frontend/public/*.png
+!ferrari-f1-predictor/frontend/public/*.svg
 *.jpeg
 *.gif
 *.svg
