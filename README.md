@@ -1,71 +1,97 @@
-# 🏎️ Ferrari F1 "Next Year™" Predictor
+# 🏎️ FAHFERRARI — Formula 1 Performance Intelligence (2027 Season)
 
-> *"We are checking..."* - Every Ferrari Engineer ever.
+> **"Data, not delusion."** — Quantitative probabilistic modeling for Scuderia Ferrari's 2027 campaign.
 
-Welcome to the **Ferrari F1 Predictor**, the only piece of software more reliable than the SF-25's power unit. This advanced AI system attempts the impossible: predicting when Ferrari will finally win another championship (spoiler: it's always "next year").
+Welcome to **FahFerrari**, an independent Formula 1 performance-intelligence platform engineered to forecast Scuderia Ferrari’s 2027 season using Bayesian hierarchical pace estimation, discrete-time reliability hazard modeling, and 10,000 paired Monte Carlo season simulations.
 
-## 🧐 What is this?
-
-This is a machine learning project that analyzes historical data to generate predictions for the 2026 season, because let's face it, we've already given up on the current one. It features:
-
-*   **Analysis Engine**: Crunches numbers harder than a wheel gun stripping a wheel nut at a pit stop.
-*   **Chatbot Strategist**: An AI assistant that simulates the authentic Ferrari strategy experience. If you ask if we'll win, it claims telemetry is down. (It's a feature, not a bug).
-*   **Performance Metrics**: Tracks driver stats, reliability scores, and the exact probability of a trusted strategy call actually working.
-
-## 🚀 Features
-
--   **2026 Crystal Ball**: Uses XGBoost, Random Forest, and a hint of delusion to forecast the 2026 constructor standings.
--   **Driver Therapy**: Compare Hamilton's regret levels vs. Leclerc's patience reserves.
--   **Authentic Simulation**: The API occasionally throws a 500 error just to simulate an engine failure in Q3.
--   **Race-by-Race Grief Model**: Predicts exactly which lap the strategy team will pit for Hards on a wet track.
-
-## 🛠️ Installation
-
-1.  **Clone the repository**
-    (Try not to copy Red Bull's aero concept 2 years too late)
-    ```bash
-    git clone https://github.com/your-username/ferrari-f1-predictor.git
-    cd ferrari-f1-predictor
-    ```
-
-2.  **Install Dependencies**
-    (Unlike our upgrades, these actually work)
-    ```bash
-    # Create valid environment
-    python -m venv venv
-    .\venv\Scripts\activate
-    
-    # Install
-    pip install -r requirements.txt
-    ```
-
-3.  **Run the Backend**
-    (Faster than a pit stop under Mattia Binotto)
-    ```bash
-    python -m api.app
-    ```
-
-4.  **Start the Frontend**
-    ```bash
-    cd frontend
-    npm install
-    npm run dev
-    ```
-
-## 🎮 Usage
-
-Open `http://localhost:5173` and ask the chatbot:
-*   *"Will we win in 2026?"*
-*   *"Compare 2024 (Plan A) and 2025 (Plan F)"*
-*   *"Why is the hard tyre working?"* (It won't answer this, nobody knows).
-
-## 🤝 Contributing
-
-Pull requests are welcome. If you find a bug, please label it as "Strategy Error" and we will ignore it until the end of the season.
-
-## 📜 License
-
-Distributed under the "We are checking" License. See `LICENSE` for more information (which we will get back to you on).
+While Ferrari is the primary subject, all 10 constructors and driver contenders are fully modeled for competitive benchmarking. The 2026 implementation is formally preserved as an audited historical baseline and forensic retrospective.
 
 ---
-*Built with 💔 and Pasta.*
+
+## ⚡ 2027 Preseason Frozen Baseline (v2027.1)
+
+The inaugural 2027 forecast is an immutable preseason baseline frozen prior to Bahrain pre-season testing:
+
+*   **Scuderia Expected Points:** `488.8 pts` (Median: `488.0 pts`)
+*   **90% High Density Credible Interval (HDI):** `[403.0 – 577.0 pts]`
+*   **P1 Championship Win Probability:** `1.1%` (109 of 10,000 simulated seasons)
+*   **Top-3 Podium Finish Probability:** `98.5%` (Expected finish: **P3** with 80.3% probability)
+*   **Driver Paired Battle:**
+    *   **Lewis Hamilton (#44):** `269.3 pts` expected, `2.6 wins`, `7.8 podiums`, `1.4 DNFs` (3.2% WDC probability)
+    *   **Charles Leclerc (#16):** `219.5 pts` expected, `1.8 wins`, `5.9 podiums`, `3.0 DNFs` (0.2% WDC probability)
+*   **Baseline Commit:** `ae91b36` | **Data Cutoff:** `FEB 18, 2027` | **Simulation Budget:** `10,000 seasons`
+
+---
+
+## 🖥️ Scuderia Command UI (8 Core Modules)
+
+The frontend is built according to the **Scuderia Command** design system (`#08090B` canvas, `#111317` surface, `#E10600` Ferrari red, strict 0px sharp geometry, and OpenType tabular numerals `tnum`):
+
+1.  **Overview (`/`)**: Cinematic Ferrari hero, season intelligence strip, Scuderia championship outlook, driver equation, 10-team competitive field, and race watchlist.
+2.  **Championship (`/championship`)**: 10-constructor ranking with 90% HDI whiskers, finishing position probability heatmap (P1 to P10+), and top driver contender cards.
+3.  **Inside the Scuderia (`/ferrari`)**: Performance targets, qualifying vs race pace decomposition, circuit archetype sensitivities, and Weibull reliability analysis.
+4.  **Race Calendar (`/race-calendar`)**: 24-round master calendar with sprint indicators, circuit telemetry profiles, and interactive race inspector drawer.
+5.  **Simulation Lab (`/simulation-lab`)**: Real-time counterfactual sliders ($\Delta$ aero, reliability multiplier, qualifying variance, tire deg) with dynamic points recalculation and points density histogram.
+6.  **Model Intelligence (`/model-intelligence`)**: 8-stage predictive pipeline, mathematical latent pace formulations, and historical backtest validation matrix.
+7.  **AI Strategist (`/ai-strategist`)**: Telemetry query terminal powered by `POST /api/chat`, strictly distinguishing verified model facts from AI tactical interpretation.
+8.  **2026 Retrospective (`/2026-retrospective`)**: Forensic review of 2026 model accuracy drift, analysis of 5 critical lessons learned (DEF-01 to DEF-05), and toggleable preserved legacy 2026 raw UI.
+
+---
+
+## 🛠️ Quickstart
+
+### Prerequisites
+* Python 3.9+
+* Node.js 18+ and npm
+
+### 1. Launch the Frontend
+```bash
+cd ferrari-f1-predictor/frontend
+npm install
+npm run dev
+```
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+*(Note: The frontend operates completely self-contained out-of-the-box thanks to the embedded frozen 10,000-season preseason artifact).*
+
+### 2. (Optional) Launch the Backend API
+In a separate terminal:
+```bash
+cd ferrari-f1-predictor
+python3 -m api.app
+```
+The REST API runs on `http://localhost:5000` exposing `/api/predictions/2027`, `/api/predictions/2027/provenance`, `/api/predictions/2026`, `/api/historical`, and `/api/chat`.
+
+---
+
+## 🧪 Testing & Validation
+
+Run the automated data quality, schema verification, and model calibration tests:
+```bash
+cd ferrari-f1-predictor
+python3 -m unittest discover -s tests/data_quality
+```
+*Result: 17 unit tests passing across canonical schema validation, zero future leakage audit, Plackett-Luce choice sampling, and Weibull hazard functions.*
+
+To verify the frontend production build:
+```bash
+cd ferrari-f1-predictor/frontend
+npm run build
+```
+
+---
+
+## 📚 Technical Documentation
+
+*   [2027 Architecture Specification](./docs/2027-architecture.md)
+*   [2027 Preseason Forecast Freeze Report](./docs/2027-preseason-forecast.md)
+*   [2027 Canonical Data Dictionary](./docs/2027-data-dictionary.md)
+*   [2026 Model Retrospective & Defect Audit](./docs/2026-retrospective.md)
+*   [Validation & Backtesting Plan](./docs/2027-validation-plan.md)
+*   [Implementation Plan & Milestones](./docs/2027-implementation-plan.md)
+
+---
+
+## ⚖️ Legal & Governance Notice
+
+FahFerrari is an independent quantitative research and performance-intelligence project. All team names, driver names, circuit names, and trademarks are the property of their respective owners (Formula One Licensing B.V. and Scuderia Ferrari S.p.A.). This platform is not affiliated with, sponsored by, or endorsed by Ferrari or Formula 1.
