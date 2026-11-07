@@ -7,6 +7,7 @@ import CircuitMapVisualizer from './components/CircuitMapVisualizer';
 import LapTelemetryDemo from './components/LapTelemetryDemo';
 import VideoModal from './components/VideoModal';
 import AudioTelemetryEngine from './components/AudioTelemetryEngine';
+import frozenForecast2027 from '../../data/preseason2027Data.json';
 import {
   ShieldAlert,
   Sparkles,
@@ -28,9 +29,9 @@ import {
 } from 'lucide-react';
 
 export default function OverviewPage() {
-  const [data, setData] = useState(null);
-  const [provenance, setProvenance] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(frozenForecast2027);
+  const [provenance, setProvenance] = useState(frozenForecast2027.freeze_metadata);
+  const [loading, setLoading] = useState(false);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [isVfxActive, setIsVfxActive] = useState(true);
 

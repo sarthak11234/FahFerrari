@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { get2027Predictions } from '../../services/api';
 import CredibleIntervalBar from '../../components/common/CredibleIntervalBar';
+import frozenForecast2027 from '../../data/preseason2027Data.json';
 import {
   Calendar,
   Flag,
@@ -16,9 +17,9 @@ import {
 } from 'lucide-react';
 
 export default function RaceCalendarPage() {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [selectedRace, setSelectedRace] = useState(null);
+  const [data, setData] = useState(frozenForecast2027);
+  const [loading, setLoading] = useState(false);
+  const [selectedRace, setSelectedRace] = useState(frozenForecast2027.race_by_race_forecast[0]);
   const [filterType, setFilterType] = useState('all'); // 'all' | 'sprint' | 'high_win'
 
   // Race calendar dates and countries mapping

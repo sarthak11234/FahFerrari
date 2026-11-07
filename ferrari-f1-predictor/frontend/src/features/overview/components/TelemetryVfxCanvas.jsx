@@ -85,3 +85,4 @@ export default function TelemetryVfxCanvas({ active = true, density = 60 }) {
     />
   );
 }
+

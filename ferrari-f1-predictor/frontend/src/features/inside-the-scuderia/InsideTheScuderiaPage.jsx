@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { get2027Predictions } from '../../services/api';
 import CredibleIntervalBar from '../../components/common/CredibleIntervalBar';
+import frozenForecast2027 from '../../data/preseason2027Data.json';
 import {
   Flame,
   Shield,
@@ -16,8 +17,8 @@ import {
 } from 'lucide-react';
 
 export default function InsideTheScuderiaPage() {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(frozenForecast2027);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function load() {
@@ -186,22 +187,32 @@ export default function InsideTheScuderiaPage() {
               </h2>
             </div>
             <p className="font-body-sm text-text-muted mt-0.5">
-              Latent pace decomposition $\theta_{i,t}$, qualifying variance, and simulated intra-team head-to-head outcomes.
+              Latent pace decomposition &theta;<sub>i,t</sub>, qualifying variance, and simulated intra-team head-to-head outcomes.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Leclerc Card */}
-            <div className="bg-surface-panel p-6 border border-border-subtle border-t-2 border-t-primary-container flex flex-col gap-5">
+            <div className="bg-surface-panel p-6 border border-border-subtle border-t-2 border-t-primary-container flex flex-col gap-5 overflow-hidden group">
               <div className="flex justify-between items-start">
-                <div>
-                  <span className="font-headline-md text-3xl font-bold text-primary-container leading-none">#16</span>
-                  <h3 className="font-headline-md text-2xl uppercase text-text-primary font-bold mt-1">
-                    CHARLES LECLERC
-                  </h3>
-                  <span className="font-label-caps text-xs text-text-subtle uppercase">
-                    SCUDERIA FERRARI · LEAD QUALIFIER
-                  </span>
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-20 bg-surface-raised border border-border-subtle overflow-hidden shrink-0 relative">
+                    <img
+                      src="/leclerc.jpg"
+                      alt="Charles Leclerc"
+                      className="w-full h-full object-cover object-top filter grayscale contrast-125 group-hover:filter-none transition-all duration-300"
+                      onError={(e) => { e.target.style.display = 'none'; }}
+                    />
+                  </div>
+                  <div>
+                    <span className="font-headline-md text-3xl font-bold text-primary-container leading-none">#16</span>
+                    <h3 className="font-headline-md text-2xl uppercase text-text-primary font-bold mt-1">
+                      CHARLES LECLERC
+                    </h3>
+                    <span className="font-label-caps text-xs text-text-subtle uppercase">
+                      SCUDERIA FERRARI · LEAD QUALIFIER
+                    </span>
+                  </div>
                 </div>
                 <div className="text-right">
                   <span className="font-label-caps text-[10px] text-text-subtle uppercase">P(TITLE)</span>
@@ -253,16 +264,26 @@ export default function InsideTheScuderiaPage() {
             </div>
 
             {/* Hamilton Card */}
-            <div className="bg-surface-panel p-6 border border-border-subtle border-t-2 border-t-telemetry-amber flex flex-col gap-5">
+            <div className="bg-surface-panel p-6 border border-border-subtle border-t-2 border-t-telemetry-amber flex flex-col gap-5 overflow-hidden group">
               <div className="flex justify-between items-start">
-                <div>
-                  <span className="font-headline-md text-3xl font-bold text-telemetry-amber leading-none">#44</span>
-                  <h3 className="font-headline-md text-2xl uppercase text-text-primary font-bold mt-1">
-                    LEWIS HAMILTON
-                  </h3>
-                  <span className="font-label-caps text-xs text-text-subtle uppercase">
-                    SCUDERIA FERRARI · RACE EXECUTION
-                  </span>
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-20 bg-surface-raised border border-border-subtle overflow-hidden shrink-0 relative">
+                    <img
+                      src="/hamilton.jpg"
+                      alt="Lewis Hamilton"
+                      className="w-full h-full object-cover object-top filter grayscale contrast-125 group-hover:filter-none transition-all duration-300"
+                      onError={(e) => { e.target.style.display = 'none'; }}
+                    />
+                  </div>
+                  <div>
+                    <span className="font-headline-md text-3xl font-bold text-telemetry-amber leading-none">#44</span>
+                    <h3 className="font-headline-md text-2xl uppercase text-text-primary font-bold mt-1">
+                      LEWIS HAMILTON
+                    </h3>
+                    <span className="font-label-caps text-xs text-text-subtle uppercase">
+                      SCUDERIA FERRARI · RACE EXECUTION
+                    </span>
+                  </div>
                 </div>
                 <div className="text-right">
                   <span className="font-label-caps text-[10px] text-text-subtle uppercase">P(TITLE)</span>

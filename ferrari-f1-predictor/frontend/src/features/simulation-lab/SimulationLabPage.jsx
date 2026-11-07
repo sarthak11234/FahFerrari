@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { get2027Predictions } from '../../services/api';
 import CredibleIntervalBar from '../../components/common/CredibleIntervalBar';
+import frozenForecast2027 from '../../data/preseason2027Data.json';
 import {
   Sliders,
   RotateCcw,
@@ -14,8 +15,8 @@ import {
 } from 'lucide-react';
 
 export default function SimulationLabPage() {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(frozenForecast2027);
+  const [loading, setLoading] = useState(false);
 
   // Counterfactual sliders state
   const [aeroDelta, setAeroDelta] = useState(0.0); // -0.30 to +0.30 s/lap

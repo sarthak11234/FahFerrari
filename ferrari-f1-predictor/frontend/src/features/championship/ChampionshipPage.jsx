@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { get2027Predictions } from '../../services/api';
 import CredibleIntervalBar from '../../components/common/CredibleIntervalBar';
+import frozenForecast2027 from '../../data/preseason2027Data.json';
 import {
   Trophy,
   Filter,
@@ -13,8 +14,8 @@ import {
 } from 'lucide-react';
 
 export default function ChampionshipPage() {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(frozenForecast2027);
+  const [loading, setLoading] = useState(false);
   const [filterTier, setFilterTier] = useState('all'); // 'all' | 'top4' | 'midfield'
 
   useEffect(() => {

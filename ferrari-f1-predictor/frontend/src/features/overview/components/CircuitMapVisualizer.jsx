@@ -215,3 +215,4 @@ export default function CircuitMapVisualizer({ selectedCircuitId = 'monza' }) {
     </div>
   );
 }
+
